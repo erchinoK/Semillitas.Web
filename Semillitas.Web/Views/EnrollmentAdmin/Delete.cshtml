@@ -1,0 +1,136 @@
+﻿@model Semillitas.Web.Models.Enrollment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Enrollment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpirationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpirationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildBirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildBirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasSpecialNeed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasSpecialNeed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialNeedNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialNeedNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,173 @@
+﻿body {
+    /*padding-top: 50px;*/
+    /*padding-bottom: 20px;*/
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+.container-fluid {
+    /*background-color: blue;*/
+}
+.row {
+    /*background-color: red;*/
+}
+.col-md-4 {
+    /*background-color: green;*/
+}
+
+.btn-social img {
+    height: 40px;
+    width: 40px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.content-1 {
+    background-color: #fc9700;
+    color: #fff;
+}
+
+.content-2 {
+    background-color: #dbfdff;
+    color: #00aceb;
+}
+
+.content-3 {
+    
+}
+
+footer, .footer-bottom {
+    background-color: #fa4700;
+    color: #fff;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.footer-bottom {
+    background-color: #b83400;
+    margin-top: 25px;
+}
+.footer-bottom p {
+    margin: 0;
+}
+
+.jumbotron {
+    background-image: url("Images/desarrolloafectivo.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+}
+
+.media-list {
+    padding: 0 15px;
+}
+.media-list .media {
+    border-left: 7px solid green;
+    padding-left: 10px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+.navbar-brand {
+    padding-top: 0;
+    padding-left: 0;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    background-color: transparent;  /*Allows to change the bg color to the open menu (.navbar-nav-*:hover)*/
+}
+.navbar-default .navbar-nav .dropdown-menu {
+    padding: 0;
+}
+.navbar-default .navbar-nav .navbar-nav-1 > a {
+    color: #78d902;
+}
+.navbar-default .navbar-nav .navbar-nav-1:hover > a {
+    background-color: #78d902;
+    color: #fff;
+}
+.navbar-default .navbar-nav .navbar-nav-2 > a {
+    color: #cc381b;
+}
+.navbar-default .navbar-nav .navbar-nav-2:hover > a {
+    background-color: #cc381b;
+    color: #fff;
+}
+.navbar-default .navbar-nav .navbar-nav-3 > a { /*Main menu initially*/
+    color: #f58e18;
+}
+.navbar-default .navbar-nav .navbar-nav-3:hover > a, /*Main menu*/
+.navbar-default .navbar-nav .navbar-nav-3.open > a, /*Main menu open*/
+.navbar-default .navbar-nav .navbar-nav-3 > .dropdown-menu > li a:hover /*Sec menu*/ {
+    background-color: #f58e18;
+    color: #fff;
+}
+.navbar-default .navbar-nav .navbar-nav-4 > a { /*Main menu initially*/
+    color: #00b7fa;
+}
+.navbar-default .navbar-nav .navbar-nav-4:hover > a, /*Main menu*/
+.navbar-default .navbar-nav .navbar-nav-4.open > a, /*Main menu open*/
+.navbar-default .navbar-nav .navbar-nav-4 > .dropdown-menu > li a:hover /*Sec menu*/ {
+    background-color: #00b7fa;
+    color: #fff;
+}
+.navbar-default .navbar-nav .navbar-nav-5 > a {
+    color: #e639c3;
+}
+.navbar-default .navbar-nav .navbar-nav-5:hover > a {
+    background-color: #e639c3;
+    color: #fff;
+}
+
+.navbar-inverse.navbar {
+    min-height: 0;
+}
+
+.panorama {
+  height: 400px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.panorama img {
+  height: 100%;
+}
+
+.thumbnail-1 {
+    background-color: transparent;
+    border: none;
+}
+.thumbnail-1 .caption {
+    color: #fff;
+}
+
+.thumbnail-2 {
+
+}
+.thumbnail-2 .caption {
+    padding: 1px 0;
+}
+.thumbnail-2 .caption p {
+    margin-bottom: 0;
+}
+.thumbnail-2 .btn {
+    border-radius: 0;
+    width: 100%;
+}
