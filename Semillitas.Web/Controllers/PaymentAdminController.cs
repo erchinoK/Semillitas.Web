@@ -25,9 +25,19 @@ namespace Semillitas.Web.Controllers
         }
 
         // GET: Payment
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.Payments.ToList());
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var enrollment = db.Enrollments.Find(id);
+            if (enrollment == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(db.Payments.Where(p => p.Enrollment.ID == id && p.RenewalNumber == enrollment.RenewalNumber).ToList());
         }
 
         // GET: Payment/Details/5
@@ -418,7 +428,7 @@ namespace Semillitas.Web.Controllers
 
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = currentEnrollment.ID });
             }
 
             return View(model);
