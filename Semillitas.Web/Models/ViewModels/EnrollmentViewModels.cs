@@ -54,4 +54,27 @@ namespace Semillitas.Web.Models.ViewModels
 
         public string Notes { get; set; }
     }
+
+    public class EnrollmentAdminActivateViewModel
+    {
+        public int ID { get; set; } // Enrollment ID
+
+        public ApplicationUser User { get; set; }
+
+        public Membership Membership { get; set; }
+
+        public Enrollment Enrollment { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? StartDate { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? ExpirationDate { get; set; }
+
+        public string Notes { get; set; }
+    }
 }

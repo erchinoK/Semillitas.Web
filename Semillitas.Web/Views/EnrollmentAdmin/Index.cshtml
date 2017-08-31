@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.RenewalNumber)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
         <th>
@@ -62,6 +65,9 @@
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.RenewalNumber)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.StartDate)
         </td>
         <td>
@@ -104,7 +110,9 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Activate membership", "Activate", new { id = item.ID })
             @Html.ActionLink("Add Payment", "Create", "PaymentAdmin", new { id = item.ID }, null)
+            @Html.ActionLink("Renew Membership", "Renew", "PaymentAdmin", new { id = item.ID }, null)
         </td>
     </tr>
 }

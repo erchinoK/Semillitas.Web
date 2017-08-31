@@ -63,7 +63,7 @@ namespace Semillitas.Web.Models.ViewModels
                     }, "Value", "Text");
         
         public virtual IList<PaymentListItem> AllPayments { get; set; }
-
+        
         //[Range(typeof(bool), "true", "true", ErrorMessage = "You gotta tick the box!")]
         public bool PayingRegistration { get; set; }
         //[Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
@@ -124,4 +124,42 @@ namespace Semillitas.Web.Models.ViewModels
         public string NotesOther { get; set; }
     }
 
+    public class PaymentAdminRenewViewModel
+    {
+        public int ID { get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        public int EnrollmentID { get; set; }
+
+        public Enrollment Enrollment { get; set; }
+        
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime StartDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime ExpirationDate { get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        public string PaymentMethod { get; set; }      // Check ConfigVariables.cs (e.g. METHOD_CASH)
+        public SelectList MethodList = new SelectList(
+                new List<SelectListItem>
+                    {
+                        new SelectListItem { Selected = false, Text = Models.PaymentMethod.METHOD_CASH, Value = Models.PaymentMethod.METHOD_CASH },
+                        new SelectListItem { Selected = false, Text = Models.PaymentMethod.METHOD_DEBITCARD, Value = Models.PaymentMethod.METHOD_DEBITCARD },
+                        new SelectListItem { Selected = false, Text = Models.PaymentMethod.METHOD_CREDITCARD, Value = Models.PaymentMethod.METHOD_CREDITCARD},
+                    }, "Value", "Text");
+
+        public virtual IList<PaymentListItem> AllPayments { get; set; }
+        
+        //[Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
+        [DataType(DataType.Currency)]
+        public decimal Amount { get; set; }
+        public string Notes { get; set; }
+    }
 }

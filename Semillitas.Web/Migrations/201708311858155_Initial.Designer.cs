@@ -7,13 +7,13 @@ namespace Semillitas.Web.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addpayingmonth : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addpayingmonth));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708191203373_add-payingmonth"; }
+            get { return "201708311858155_Initial"; }
         }
         
         string IMigrationMetadata.Source

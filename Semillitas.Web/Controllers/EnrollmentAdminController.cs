@@ -200,6 +200,84 @@ namespace Semillitas.Web.Controllers
             return View(model);
         }
 
+        // GET: EnrollmentAdmin/Activate/5
+        public ActionResult Activate(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Enrollment enrollment = db.Enrollments.Find(id);
+            if (enrollment == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new EnrollmentAdminActivateViewModel()
+            {
+                ID = enrollment.ID,
+                StartDate = DateTime.Now,
+                ExpirationDate = Classes.Utility.AddDate(DateTime.Now, enrollment.Membership.Duration),
+                Notes = enrollment.Notes,
+                Enrollment = enrollment,                
+                User = enrollment.User,
+                Membership = enrollment.Membership
+            };
+            return View(model);
+        }
+
+
+
+        // POST: EnrollmentAdmin/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Activate(EnrollmentAdminActivateViewModel model)
+        {
+            var enrollment = db.Enrollments.Find(model.ID);
+
+            if (ModelState.IsValid)
+            {
+                var currentUser = userManager.FindById(User.Identity.GetUserId());
+
+                // Verifying if the enrollment exists
+                if (enrollment != null)
+                {
+                    enrollment.ModifDate = DateTime.Now;
+                    enrollment.ModifUserName = currentUser.UserName;
+                    enrollment.Notes = model.Notes;
+                    enrollment.StartDate = model.StartDate;
+                    enrollment.ExpirationDate = model.ExpirationDate;
+                    if (model.StartDate.HasValue) enrollment.IsActive = true;
+                    if (TryUpdateModel(enrollment, "",
+                        new string[] { "IsActive", "StartDate", "ExpirationDate", "Notes", "ModifDate", "ModifUserName" }))
+                    {
+                        try
+                        {
+                            db.SaveChanges();
+
+                            return RedirectToAction("Index");
+                        }
+                        catch (DataException /* dex */)
+                        {
+                            //Log the error (uncomment dex variable name and add a line here to write a log.
+                            ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                        }
+                    }
+                    
+                }
+            }
+
+            ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+
+            model.Enrollment = enrollment;
+            model.User = enrollment.User;
+            model.Membership = enrollment.Membership;
+
+            return View(model);
+        }
+
         // GET: EnrollmentAdmin/Delete/5
         public ActionResult Delete(int? id)
         {

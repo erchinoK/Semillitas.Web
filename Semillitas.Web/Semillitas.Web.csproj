@@ -167,6 +167,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Classes\Utility.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EnrollmentAdminController.cs" />
     <Compile Include="Controllers\EnrollmentController.cs" />
@@ -177,73 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708072212558_Init.cs" />
-    <Compile Include="Migrations\201708072212558_Init.Designer.cs">
-      <DependentUpon>201708072212558_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708180900156_add-enrollment.cs" />
-    <Compile Include="Migrations\201708180900156_add-enrollment.Designer.cs">
-      <DependentUpon>201708180900156_add-enrollment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708180928542_add-membership.cs" />
-    <Compile Include="Migrations\201708180928542_add-membership.Designer.cs">
-      <DependentUpon>201708180928542_add-membership.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708181200012_add-child-enrollment.cs" />
-    <Compile Include="Migrations\201708181200012_add-child-enrollment.Designer.cs">
-      <DependentUpon>201708181200012_add-child-enrollment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708181304590_add-inscription.cs" />
-    <Compile Include="Migrations\201708181304590_add-inscription.Designer.cs">
-      <DependentUpon>201708181304590_add-inscription.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708181434152_add-payment.cs" />
-    <Compile Include="Migrations\201708181434152_add-payment.Designer.cs">
-      <DependentUpon>201708181434152_add-payment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708191056288_add-code.cs" />
-    <Compile Include="Migrations\201708191056288_add-code.Designer.cs">
-      <DependentUpon>201708191056288_add-code.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708191121471_extending-membership.cs" />
-    <Compile Include="Migrations\201708191121471_extending-membership.Designer.cs">
-      <DependentUpon>201708191121471_extending-membership.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708191136438_modif-enroll-nulldates.cs" />
-    <Compile Include="Migrations\201708191136438_modif-enroll-nulldates.Designer.cs">
-      <DependentUpon>201708191136438_modif-enroll-nulldates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708191152365_add-paymentmethod.cs" />
-    <Compile Include="Migrations\201708191152365_add-paymentmethod.Designer.cs">
-      <DependentUpon>201708191152365_add-paymentmethod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708191203373_add-payingmonth.cs" />
-    <Compile Include="Migrations\201708191203373_add-payingmonth.Designer.cs">
-      <DependentUpon>201708191203373_add-payingmonth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708221212362_notnullabledates.cs" />
-    <Compile Include="Migrations\201708221212362_notnullabledates.Designer.cs">
-      <DependentUpon>201708221212362_notnullabledates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708221414218_datetime-to-date.cs" />
-    <Compile Include="Migrations\201708221414218_datetime-to-date.Designer.cs">
-      <DependentUpon>201708221414218_datetime-to-date.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708221428061_nullable-date.cs" />
-    <Compile Include="Migrations\201708221428061_nullable-date.Designer.cs">
-      <DependentUpon>201708221428061_nullable-date.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708281147300_add-renewalnumber.cs" />
-    <Compile Include="Migrations\201708281147300_add-renewalnumber.Designer.cs">
-      <DependentUpon>201708281147300_add-renewalnumber.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708310936242_modif-membership.cs" />
-    <Compile Include="Migrations\201708310936242_modif-membership.Designer.cs">
-      <DependentUpon>201708310936242_modif-membership.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708311846019_decimal-money.cs" />
-    <Compile Include="Migrations\201708311846019_decimal-money.Designer.cs">
-      <DependentUpon>201708311846019_decimal-money.cs</DependentUpon>
+    <Compile Include="Migrations\201708311858155_Initial.cs" />
+    <Compile Include="Migrations\201708311858155_Initial.Designer.cs">
+      <DependentUpon>201708311858155_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -407,6 +344,8 @@
     <Content Include="Views\EnrollmentAdmin\Details.cshtml" />
     <Content Include="Views\EnrollmentAdmin\Edit.cshtml" />
     <Content Include="Views\EnrollmentAdmin\Index.cshtml" />
+    <Content Include="Views\EnrollmentAdmin\Activate.cshtml" />
+    <Content Include="Views\PaymentAdmin\Renew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -416,56 +355,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708072212558_Init.resx">
-      <DependentUpon>201708072212558_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708180900156_add-enrollment.resx">
-      <DependentUpon>201708180900156_add-enrollment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708180928542_add-membership.resx">
-      <DependentUpon>201708180928542_add-membership.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708181200012_add-child-enrollment.resx">
-      <DependentUpon>201708181200012_add-child-enrollment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708181304590_add-inscription.resx">
-      <DependentUpon>201708181304590_add-inscription.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708181434152_add-payment.resx">
-      <DependentUpon>201708181434152_add-payment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708191056288_add-code.resx">
-      <DependentUpon>201708191056288_add-code.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708191121471_extending-membership.resx">
-      <DependentUpon>201708191121471_extending-membership.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708191136438_modif-enroll-nulldates.resx">
-      <DependentUpon>201708191136438_modif-enroll-nulldates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708191152365_add-paymentmethod.resx">
-      <DependentUpon>201708191152365_add-paymentmethod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708191203373_add-payingmonth.resx">
-      <DependentUpon>201708191203373_add-payingmonth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708221212362_notnullabledates.resx">
-      <DependentUpon>201708221212362_notnullabledates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708221414218_datetime-to-date.resx">
-      <DependentUpon>201708221414218_datetime-to-date.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708221428061_nullable-date.resx">
-      <DependentUpon>201708221428061_nullable-date.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708281147300_add-renewalnumber.resx">
-      <DependentUpon>201708281147300_add-renewalnumber.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708310936242_modif-membership.resx">
-      <DependentUpon>201708310936242_modif-membership.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708311846019_decimal-money.resx">
-      <DependentUpon>201708311846019_decimal-money.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708311858155_Initial.resx">
+      <DependentUpon>201708311858155_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

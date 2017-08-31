@@ -29,7 +29,7 @@ namespace Semillitas.Web.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            
+
             //var context = new ApplicationDbContext();
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -48,9 +48,10 @@ namespace Semillitas.Web.Migrations
                 var roleresult = roleManager.Create(new IdentityRole(RoleNames.ROLE_USER));
             }
             //context.SaveChanges();
-            
+
             // Creating users
-            if (userManager.FindByName("admin@semillitas.com") == null) {
+            if (userManager.FindByName("admin@semillitas.com") == null)
+            {
                 var user = new ApplicationUser()
                 {
                     UserName = "admin@semillitas.com",
@@ -76,7 +77,14 @@ namespace Semillitas.Web.Migrations
             }
 
             // p.Name indicates the variable that should be unique (if already exists, do not create)
-           
+            context.Memberships.AddOrUpdate(
+                  p => p.Name,
+                  new Membership { Code = MembershipCodes.MEMBERSHIP_ANNUAL, Name = "Annual", IsRegistrationRequired = true, NumberPayments = 12, PriceRegistration = 500, PriceFee = 100, Duration = "000001", CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" },
+                  new Membership { Code = MembershipCodes.MEMBERSHIP_MONTHLY, Name = "Monthly", IsRegistrationRequired = true, NumberPayments = 0, PriceRegistration = 150, PriceFee = 25, Duration = "000100", CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" },
+                  new Membership { Code = MembershipCodes.MEMBERSHIP_DAILY, Name = "Daily", IsRegistrationRequired = false, NumberPayments = 1, PriceRegistration = 10, PriceFee = 0, Duration = "010000", CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" }
+                );
+
+
 
         }
     }

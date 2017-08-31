@@ -45,7 +45,7 @@ namespace Semillitas.Web.Controllers
             return View(payment);
         }
 
-        public void AddPaymentsToModel(Enrollment currentEnrollment, PaymentAdminViewModel model)
+        public List<PaymentListItem> GetPayments(Enrollment currentEnrollment)
         {
             bool isRegistrationRequired = currentEnrollment.Membership.IsRegistrationRequired;
             int numberPayments = currentEnrollment.Membership.NumberPayments;
@@ -53,13 +53,13 @@ namespace Semillitas.Web.Controllers
             // Creating 12 empty payments to fill later and show to the user
             DateTime expirationDate = (DateTime)currentEnrollment.StartDate;   // Initializing the expiration date of the first month
 
-            model.AllPayments = new List<PaymentListItem>();
+            var AllPayments = new List<PaymentListItem>();
             if (isRegistrationRequired)
             {
-                model.AllPayments.Add(new PaymentListItem() { IsPaid = false, ExpirationDate = expirationDate, Type = PaymentType.PAYMENT_REGISTRATION, PayingMonth = "0" });   // Adding registration payment
+                AllPayments.Add(new PaymentListItem() { IsPaid = false, ExpirationDate = expirationDate, Type = PaymentType.PAYMENT_REGISTRATION, PayingMonth = "0" });   // Adding registration payment
             } else
             {
-                model.AllPayments.Add(new PaymentListItem() { IsPaid = true, ExpirationDate = null, Type = PaymentType.PAYMENT_REGISTRATION, PayingMonth = "0", Notes = "No registration required" });   // Adding registration payment
+                AllPayments.Add(new PaymentListItem() { IsPaid = true, ExpirationDate = null, Type = PaymentType.PAYMENT_REGISTRATION, PayingMonth = "0", Notes = "No registration required" });   // Adding registration payment
             }
             for (int i = 1; i <= numberPayments; i++)
             {
@@ -70,7 +70,8 @@ namespace Semillitas.Web.Controllers
                     ExpirationDate = expirationDate
                 };
                 expirationDate = expirationDate.AddMonths(1);
-                model.AllPayments.Add(listItem);
+                AllPayments.Add(listItem);
+                
             }
 
             // Obtaining real payments to fill the list of empty payments
@@ -78,13 +79,15 @@ namespace Semillitas.Web.Controllers
             foreach (var p in PaidPayments)
             {
                 int pos = Convert.ToInt32(p.PayingMonth);
-                model.AllPayments.ElementAt(pos).IsPaid = true;
-                model.AllPayments.ElementAt(pos).ID = p.ID;
-                model.AllPayments.ElementAt(pos).Date = p.Date;
-                model.AllPayments.ElementAt(pos).Type = p.Type;
-                model.AllPayments.ElementAt(pos).Amount = p.Amount;
-                model.AllPayments.ElementAt(pos).Notes = p.Notes;
+                AllPayments.ElementAt(pos).IsPaid = true;
+                AllPayments.ElementAt(pos).ID = p.ID;
+                AllPayments.ElementAt(pos).Date = p.Date;
+                AllPayments.ElementAt(pos).Type = p.Type;
+                AllPayments.ElementAt(pos).Amount = p.Amount;
+                AllPayments.ElementAt(pos).Notes = p.Notes;              
             }
+
+            return AllPayments;
         }
 
         // GET: Payment/Create
@@ -106,7 +109,7 @@ namespace Semillitas.Web.Controllers
             model.Enrollment = currentEnrollment;
             model.Date = DateTime.Now;  // Initilializing the payment date as now because is paying at this moment
 
-            AddPaymentsToModel(currentEnrollment, model);
+            model.AllPayments = GetPayments(currentEnrollment);
 
             return View(model);
         }
@@ -121,7 +124,7 @@ namespace Semillitas.Web.Controllers
             // Re-populating the last payments in case the view has to be displayed again
             var currentEnrollment = db.Enrollments.Find(model.EnrollmentID);
             model.Enrollment = currentEnrollment;
-            AddPaymentsToModel(currentEnrollment, model);
+            model.AllPayments = GetPayments(currentEnrollment);
 
             if (ModelState.IsValid)
             {
@@ -143,6 +146,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "0",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesRegistration,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -162,6 +166,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "1",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth1,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -181,6 +186,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "2",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth2,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -200,6 +206,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "3",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth3,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -219,6 +226,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "4",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth4,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -238,6 +246,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "5",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth5,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -257,6 +266,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "6",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth6,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -276,6 +286,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "7",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth7,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -295,6 +306,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "8",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth8,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -314,6 +326,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "9",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth9,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -333,6 +346,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "10",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth10,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -352,6 +366,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "11",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth11,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -371,6 +386,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "12",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesMonth12,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -379,8 +395,7 @@ namespace Semillitas.Web.Controllers
                     };
                     db.Payments.Add(payment);
                 }
-                db.SaveChanges();
-
+                
                 if (model.PayingOther)
                 {
                     Payment payment = new Payment
@@ -391,6 +406,7 @@ namespace Semillitas.Web.Controllers
                         Date = model.Date,
                         PaymentMethod = model.PaymentMethod,
                         PayingMonth = "0",
+                        RenewalNumber = currentEnrollment.RenewalNumber,
                         Notes = model.NotesOther,
                         CreationDate = DateTime.Now,
                         CreationUserName = currentUser.UserName,
@@ -399,25 +415,90 @@ namespace Semillitas.Web.Controllers
                     };
                     db.Payments.Add(payment);
                 }
+
                 db.SaveChanges();
 
-                //Payment payment = new Payment
-                //{
-                //    Enrollment = currentEnrollment,
-                //    Amount = model.Amount,
-                //    Type = model.Type,
-                //    Date = model.Date,
-                //    PaymentMethod = model.PaymentMethod,
-                //    PayingMonth = model.PayingMonth,
-                //    Notes = model.Notes,
-                //    CreationDate = DateTime.Now,
-                //    CreationUserName = currentUser.UserName,
-                //    ModifDate = DateTime.Now,
-                //    ModifUserName = currentUser.UserName
-                //};
+                return RedirectToAction("Index");
+            }
 
-                //db.Payments.Add(payment);
-                //db.SaveChanges();
+            return View(model);
+        }
+
+        // GET: Payment/Renew
+        public ActionResult Renew(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Enrollment currentEnrollment = db.Enrollments.Find(id);
+            if (currentEnrollment == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Creating an empty payment to pass the enrollment ID to the hidden input
+            var model = new PaymentAdminRenewViewModel();
+            model.EnrollmentID = (int)id;
+            model.Enrollment = currentEnrollment;
+            model.Date = DateTime.Now;  // Initilializing the payment date as now because is paying at this moment
+            model.StartDate = DateTime.Now;     // Changing the new starting date
+            model.ExpirationDate = Classes.Utility.AddDate(DateTime.Now, currentEnrollment.Membership.Duration);    // Changing the new expiration date
+
+            model.AllPayments = GetPayments(currentEnrollment);
+
+            return View(model);
+        }
+
+        // POST: Payment/Renew
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Renew([Bind(Include = "EnrollmentID,Date,StartDate,ExpirationDate,PaymentMethod,Amount,Notes")] PaymentAdminRenewViewModel model)
+        {
+            // Re-populating the last payments in case the view has to be displayed again
+            var currentEnrollment = db.Enrollments.Find(model.EnrollmentID);
+            model.Enrollment = currentEnrollment;
+            model.AllPayments = GetPayments(currentEnrollment);
+
+            if (ModelState.IsValid)
+            {
+                var currentUser = userManager.FindById(User.Identity.GetUserId());
+
+                if (currentEnrollment == null)
+                {
+
+                    return View(model);
+
+                }
+
+                currentEnrollment.RenewalNumber++;
+                currentEnrollment.StartDate = model.StartDate;
+                currentEnrollment.ExpirationDate = model.ExpirationDate;
+                currentEnrollment.ModifDate = DateTime.Now;
+                currentEnrollment.ModifUserName = currentUser.UserName;
+                db.Entry(currentEnrollment).State = EntityState.Modified;
+
+                Payment payment = new Payment
+                {
+                    Enrollment = currentEnrollment,
+                    Amount = model.Amount,
+                    Type = PaymentType.PAYMENT_RENEW,
+                    Date = model.Date,
+                    PaymentMethod = model.PaymentMethod,
+                    PayingMonth = "0",
+                    RenewalNumber = currentEnrollment.RenewalNumber,
+                    Notes = model.Notes,
+                    CreationDate = DateTime.Now,
+                    CreationUserName = currentUser.UserName,
+                    ModifDate = DateTime.Now,
+                    ModifUserName = currentUser.UserName
+                };
+                db.Payments.Add(payment);
+                
+                db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
 
