@@ -173,7 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MembershipController.cs" />
-    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PaymentAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -233,12 +233,24 @@
     <Compile Include="Migrations\201708221428061_nullable-date.Designer.cs">
       <DependentUpon>201708221428061_nullable-date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708281147300_add-renewalnumber.cs" />
+    <Compile Include="Migrations\201708281147300_add-renewalnumber.Designer.cs">
+      <DependentUpon>201708281147300_add-renewalnumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708310936242_modif-membership.cs" />
+    <Compile Include="Migrations\201708310936242_modif-membership.Designer.cs">
+      <DependentUpon>201708310936242_modif-membership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708311846019_decimal-money.cs" />
+    <Compile Include="Migrations\201708311846019_decimal-money.Designer.cs">
+      <DependentUpon>201708311846019_decimal-money.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\PaymentViewModels.cs" />
-    <Compile Include="Models\EnrollmentViewModels.cs" />
+    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\PaymentViewModels.cs" />
+    <Compile Include="Models\ViewModels\EnrollmentViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\MembershipModel.cs" />
     <Compile Include="Models\ConfigVariables.cs" />
     <Compile Include="Models\EnrollmentModel.cs" />
@@ -385,11 +397,11 @@
     <Content Include="Views\Membership\Details.cshtml" />
     <Content Include="Views\Membership\Edit.cshtml" />
     <Content Include="Views\Membership\Index.cshtml" />
-    <Content Include="Views\Payment\Create.cshtml" />
-    <Content Include="Views\Payment\Delete.cshtml" />
-    <Content Include="Views\Payment\Details.cshtml" />
-    <Content Include="Views\Payment\Edit.cshtml" />
-    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\PaymentAdmin\Create.cshtml" />
+    <Content Include="Views\PaymentAdmin\Delete.cshtml" />
+    <Content Include="Views\PaymentAdmin\Details.cshtml" />
+    <Content Include="Views\PaymentAdmin\Edit.cshtml" />
+    <Content Include="Views\PaymentAdmin\Index.cshtml" />
     <Content Include="Views\EnrollmentAdmin\Create.cshtml" />
     <Content Include="Views\EnrollmentAdmin\Delete.cshtml" />
     <Content Include="Views\EnrollmentAdmin\Details.cshtml" />
@@ -445,6 +457,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708221428061_nullable-date.resx">
       <DependentUpon>201708221428061_nullable-date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708281147300_add-renewalnumber.resx">
+      <DependentUpon>201708281147300_add-renewalnumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708310936242_modif-membership.resx">
+      <DependentUpon>201708310936242_modif-membership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708311846019_decimal-money.resx">
+      <DependentUpon>201708311846019_decimal-money.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

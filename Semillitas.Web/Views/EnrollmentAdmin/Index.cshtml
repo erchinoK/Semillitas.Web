@@ -104,7 +104,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            @Html.ActionLink("Add Payment", "Create", "Payment", new { enrollmentID = item.ID }, null)
+            @Html.ActionLink("Add Payment", "Create", "PaymentAdmin", new { id = item.ID }, null)
         </td>
     </tr>
 }

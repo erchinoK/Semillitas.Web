@@ -1,0 +1,534 @@
+﻿@using  Semillitas.Web.Models.ViewModels
+@model Semillitas.Web.Models.ViewModels.PaymentAdminViewModel
+
+@section Styles {
+    <!-- jQuery UI CSS Reference -->
+    <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+}
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Payment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.EnrollmentID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control date-picker" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PaymentMethod, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.PaymentMethod, Model.MethodList, "Select one", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PaymentMethod, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @{
+            PaymentListItem item;
+            // Payment 0 (registration)
+            if (Model.Enrollment.Membership.IsRegistrationRequired)
+            {
+                item = Model.AllPayments.ElementAt(0);
+                if (item.IsPaid)
+                {
+
+                <div>
+                    @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                    @Html.DisplayFor(modelItem => item.PayingMonth)
+                    @Html.DisplayFor(modelItem => item.Amount)
+                    @Html.DisplayFor(modelItem => item.Type)
+                    @Html.DisplayFor(modelItem => item.Date)                                        
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </div>
+                }
+                else
+                {
+                <div>
+                    @Html.CheckBoxFor(model => model.PayingRegistration, false)
+                    @Html.EditorFor(model => model.AmountRegistration)
+                    @Html.EditorFor(model => model.NotesRegistration)
+                    @if (item.ExpirationDate >= DateTime.Now)
+                    {
+                        <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                    }
+                    else
+                    {
+                        <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                    }
+                    @Html.ValidationMessageFor(model => model.PayingRegistration, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.AmountRegistration, "", new { @class = "text-danger" })
+                </div>
+                    }
+            }
+          
+            if (Model.Enrollment.Membership.NumberPayments >= 1)
+            {
+                // Payment 1
+                item = Model.AllPayments.ElementAt(1);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth1, false)
+                        @Html.EditorFor(model => model.AmountMonth1)
+                        @Html.EditorFor(model => model.NotesMonth1)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+                }
+
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 2)
+            {
+                // Payment 2
+                item = Model.AllPayments.ElementAt(2);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth2, false)
+                        @Html.EditorFor(model => model.AmountMonth2)
+                        @Html.EditorFor(model => model.NotesMonth2)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+                }
+
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 3)
+            {
+                // Payment 3
+                item = Model.AllPayments.ElementAt(3);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth3, false)
+                        @Html.EditorFor(model => model.AmountMonth3)
+                        @Html.EditorFor(model => model.NotesMonth3)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+
+                }
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 4)
+            {
+                // Payment 4
+                item = Model.AllPayments.ElementAt(4);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth4, false)
+                        @Html.EditorFor(model => model.AmountMonth4)
+                        @Html.EditorFor(model => model.NotesMonth4)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+                }
+
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 5)
+            {
+                // Payment 5
+                item = Model.AllPayments.ElementAt(5);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth5, false)
+                        @Html.EditorFor(model => model.AmountMonth5)
+                        @Html.EditorFor(model => model.NotesMonth5)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+                }
+
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 6)
+            {
+                // Payment 6
+                item = Model.AllPayments.ElementAt(6);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth6, false)
+                        @Html.EditorFor(model => model.AmountMonth6)
+                        @Html.EditorFor(model => model.NotesMonth6)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+
+                }
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 7)
+            {
+                // Payment 7
+                item = Model.AllPayments.ElementAt(7);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth7, false)
+                        @Html.EditorFor(model => model.AmountMonth7)
+                        @Html.EditorFor(model => model.NotesMonth7)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+                }
+
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 8)
+            {
+                // Payment 8
+                item = Model.AllPayments.ElementAt(8);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth8, false)
+                        @Html.EditorFor(model => model.AmountMonth8)
+                        @Html.EditorFor(model => model.NotesMonth8)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+                }
+
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 9)
+            {
+                // Payment 9
+                item = Model.AllPayments.ElementAt(9);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth9, false)
+                        @Html.EditorFor(model => model.AmountMonth9)
+                        @Html.EditorFor(model => model.NotesMonth9)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+
+                }
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 10)
+            {
+                // Payment 10
+                item = Model.AllPayments.ElementAt(10);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth10, false)
+                        @Html.EditorFor(model => model.AmountMonth10)
+                        @Html.EditorFor(model => model.NotesMonth10)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+                }
+
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 11)
+            {
+                // Payment 11
+                item = Model.AllPayments.ElementAt(11);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth11, false)
+                        @Html.EditorFor(model => model.AmountMonth11)
+                        @Html.EditorFor(model => model.NotesMonth11)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+                }
+
+            }
+
+            if (Model.Enrollment.Membership.NumberPayments >= 12)
+            {
+                // Payment 12
+                item = Model.AllPayments.ElementAt(12);
+                if (item.IsPaid)
+                {
+
+                    <div>
+                        @Html.ActionLink(item.Type, "Details", new { id = item.ID })
+                        @Html.DisplayFor(modelItem => item.PayingMonth)
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        @Html.DisplayFor(modelItem => item.Type)
+                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.CheckBoxFor(model => model.PayingMonth12, false)
+                        @Html.EditorFor(model => model.AmountMonth12)
+                        @Html.EditorFor(model => model.NotesMonth12)
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                    </div>
+
+                }
+            }
+
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- Required jQuery and jQuery UI Javascript references -->
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
+
+    <!-- Code to wire up your DatePicker -->
+    <script type="text/javascript">
+            $(function () {
+
+                // Changing the date format of the validator
+                $.validator.methods.date = function (value, element) {
+                    return this.optional(element) || $.datepicker.parseDate('dd/mm/yy', value);
+                }
+
+                // This will make every element with the class "date-picker" into a DatePicker element
+                $('.date-picker').datepicker({
+                    dateFormat: "dd/mm/yy"
+                });
+            })
+    </script>
+}

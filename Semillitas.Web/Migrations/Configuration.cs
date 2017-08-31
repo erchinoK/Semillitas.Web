@@ -76,14 +76,7 @@ namespace Semillitas.Web.Migrations
             }
 
             // p.Name indicates the variable that should be unique (if already exists, do not create)
-            context.Memberships.AddOrUpdate(
-                  p => p.Name,
-                  new Membership { Code = MembershipCodes.MEMBERSHIP_ANNUAL, Name = "Annual", Price = 500, Inscription = 100, DurationInDays = 365, CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" },
-                  new Membership { Code = MembershipCodes.MEMBERSHIP_MONTHLY, Name = "Monthly", Price = 150, Inscription = 25, DurationInDays = 30, CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" },
-                  new Membership { Code = MembershipCodes.MEMBERSHIP_DAILY, Name = "Daily", Price = 10, Inscription = 0, DurationInDays = 1, CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" }
-                );
-
-            
+           
 
         }
     }

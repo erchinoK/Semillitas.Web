@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Semillitas.Web.Models
 {
@@ -22,6 +23,7 @@ namespace Semillitas.Web.Models
         public string LastName { get; set; }
         public string Address { get; set; }
         public string PostCode { get; set; }
+        
         //public bool IsActive { get; set; }
         //public string Status { get; set;  }
         //public bool AllowMarketing { get; set; }

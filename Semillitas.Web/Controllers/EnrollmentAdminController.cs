@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Semillitas.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Semillitas.Web.Models.ViewModels;
 
 namespace Semillitas.Web.Controllers
 {
@@ -92,6 +93,7 @@ namespace Semillitas.Web.Controllers
                     SpecialNeedNotes = model.SpecialNeedNotes,
                     ChildNotes = model.ChildNotes,
                     IsActive = false,
+                    RenewalNumber = 0,
                     CreationDate = DateTime.Now,
                     CreationUserName = currentUser.UserName,
                     ModifDate = DateTime.Now,
@@ -134,7 +136,9 @@ namespace Semillitas.Web.Controllers
                 ChildNotes = enrollment.ChildNotes,
                 Notes = enrollment.Notes,
                 UserID = enrollment.User.Id,
-                MembershipID = enrollment.Membership.ID
+                MembershipID = enrollment.Membership.ID,
+                StartDate = enrollment.StartDate,
+                ExpirationDate = enrollment.ExpirationDate
             };
             ViewBag.UserList = new SelectList(db.Users.ToList(), "ID", "UserName", model.UserID);
             ViewBag.MembershipList = new SelectList(db.Memberships.ToList(), "ID", "Name", model.MembershipID);
@@ -146,7 +150,7 @@ namespace Semillitas.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,UserID,MembershipID,ChildFirstName,ChildLastName,ChildBirthDate,HasSpecialNeed,SpecialNeedNotes,ChildNotes,Notes")] EnrollmentAdminViewModel model)
+        public ActionResult Edit([Bind(Include = "ID,UserID,MembershipID,ChildFirstName,ChildLastName,ChildBirthDate,HasSpecialNeed,SpecialNeedNotes,ChildNotes,StartDate,ExpirationDate,Notes")] EnrollmentAdminViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -184,6 +188,8 @@ namespace Semillitas.Web.Controllers
                     enrollment.ModifDate = DateTime.Now;
                     enrollment.ModifUserName = currentUser.UserName;
                     enrollment.Notes = model.Notes;
+                    enrollment.StartDate = model.StartDate;
+                    enrollment.ExpirationDate = model.ExpirationDate;                    
                     db.Entry(enrollment).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");

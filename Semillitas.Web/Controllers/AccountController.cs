@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Semillitas.Web.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Semillitas.Web.Models.ViewModels;
 
 namespace Semillitas.Web.Controllers
 {

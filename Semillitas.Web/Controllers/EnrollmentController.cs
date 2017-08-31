@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Semillitas.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Semillitas.Web.Models.ViewModels;
 
 namespace Semillitas.Web.Controllers
 {
@@ -80,6 +81,7 @@ namespace Semillitas.Web.Controllers
                     SpecialNeedNotes = model.SpecialNeedNotes,
                     ChildNotes = model.ChildNotes,
                     IsActive = false,
+                    RenewalNumber = 0,
                     User = currentUser,
                     CreationDate = DateTime.Now,
                     CreationUserName = currentUser.UserName,

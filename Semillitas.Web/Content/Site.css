@@ -150,6 +150,13 @@ footer, .footer-bottom {
   height: 100%;
 }
 
+span.vigent {
+    color: green;
+}
+span.expired {
+    color: red;
+}
+
 .thumbnail-1 {
     background-color: transparent;
     border: none;
