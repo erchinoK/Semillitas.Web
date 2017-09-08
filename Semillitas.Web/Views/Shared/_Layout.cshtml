@@ -63,9 +63,9 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
                            aria-haspopup="true" aria-expanded="false">Planes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Membresia Anual", "Index", "Home")</li>    
-                            <li>@Html.ActionLink("Plan 1 Mes", "Index", "Home")</li>    
-                            <li>@Html.ActionLink("Pase Diario", "Index", "Home")</li>    
+                            <li>@Html.ActionLink("Membresia Anual", "Plans", "Home")</li>    
+                            <li>@Html.ActionLink("Plan 1 Mes", "Plans", "Home")</li>    
+                            <li>@Html.ActionLink("Pase Diario", "Plans", "Home")</li>    
                         </ul>
                     </li>
                     <li class="dropdown navbar-nav-4">
@@ -108,12 +108,26 @@
             @*Verifying if the menu for user/admin must be displayed*@
             @if (!Request.RequestContext.RouteData.Values["controller"].ToString().Contains("Home"))
             {
-                @Html.Partial("_AccountMenuPartial")
-            }            
+                <div class="col-sm-2">
 
-            @RenderBody()
+                    @Html.Partial("_AccountMenuPartial")
+                
+                </div>
 
-        </div>
+                <div class="col-sm-10">
+
+                    @RenderBody()
+                
+                </div>
+            }
+            else
+            {
+                @RenderBody()
+            }
+
+                
+
+                </div>
 
         <footer>
             

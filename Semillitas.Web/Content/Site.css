@@ -108,6 +108,36 @@ footer, .footer-bottom {
     margin: 0 auto 50px;
 }
 
+.margin-bottom-15 {
+    margin-bottom: 15px;
+}
+.margin-bottom-25 {
+    margin-bottom: 25px;
+}
+.margin-bottom-50 {
+    margin-bottom: 50px;
+}
+.margin-bottom-75 {
+    margin-bottom: 75px;
+}
+.margin-top-15 {
+    margin-top: 15px;
+}
+.margin-top-25 {
+    margin-top: 25px;
+}
+.margin-top-50 {
+    margin-top: 50px;
+}
+.margin-top-75 {
+    margin-top: 75px;
+}
+.blue {
+background-color: blue;}
+.green {
+background-color: green;}
+.red {
+background-color: red;}
 .media-list {
     padding: 0 15px;
 }
@@ -198,19 +228,6 @@ footer, .footer-bottom {
 }
 .panorama img {
   height: 100%;
-}
-
-.push-under {
-    margin-bottom: 25px;
-}
-.push-top {
-    margin-top: 25px;
-}
-.push-under-more {
-    margin-bottom: 50px;
-}
-.push-top-more {
-    margin-top: 50px;
 }
 
 span.vigent {
