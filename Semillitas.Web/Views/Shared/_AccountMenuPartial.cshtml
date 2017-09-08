@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <div class="col-sm-2">
+        <ul class="nav nav-pills nav-stacked" id="menu-account">
+            <li role="separator">Menu</li>
+            <li role="presentation" class="active">@Html.ActionLink("Inicio", "Index", "Manage")</li>
+            <li role="presentation">@Html.ActionLink("Membresias", "Index", "Enrollment")</li>
+            <li role="separator">Administrador</li>
+            <li role="presentation">@Html.ActionLink("Membresias", "Index", "EnrollmentAdmin")</li>
+            <li role="presentation">@Html.ActionLink("Pagos", "Index", "PaymentAdmin")</li>
+        </ul>
+    </div>
+}

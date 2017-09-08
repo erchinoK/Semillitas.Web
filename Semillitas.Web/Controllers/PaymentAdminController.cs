@@ -24,7 +24,7 @@ namespace Semillitas.Web.Controllers
             userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         }
 
-        // GET: Payment
+        // GET: Payment/5
         public ActionResult Index(int? id)
         {
             if (id == null)

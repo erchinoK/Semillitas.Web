@@ -10,30 +10,42 @@
 
 </head>
 <body>
-    <div class="navbar navbar-static-top navbar-inverse hidden-xs">
+    <div class="navbar navbar-static-top navbar-inverse navbar-slim hidden-xs">
         <div class="container">
-            <div class="navbar-collapse2 collapse2">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="@Url.Action("Index", "Home")">
-                            <img alt="Espanol" src="~/Content/Images/Spain-48.png" style="height: 25px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Home")">
-                            <img alt="English" src="~/Content/Images/Great Britain-48.png" style="height: 25px">
-                        </a>
-                    </li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <a href="@Url.Action("Contact", "Home")">
+                        <span class="glyphicon glyphicon-earphone"></span>
+                        (+353) 86 390 98 43
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Contact", "Home")">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        hola@semillitas.com
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="@Url.Action("Index", "Home")">
+                        <img alt="Espanol" src="~/Content/Images/Spain-48.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Home")">
+                        <img alt="English" src="~/Content/Images/Great Britain-48.png">
+                    </a>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
 
     <div class="navbar navbar-static-top navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-menu">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -43,7 +55,7 @@
                     <img alt="Semillitas" src="~/Content/Images/Semillitas.png" class="visible-xs-block" style="width: 200px;">
                 </a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" id="navbar-collapse-menu">
                 <ul class="nav navbar-nav">
                     <li class="navbar-nav-1">@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li class="navbar-nav-2">@Html.ActionLink("Quienes Somos", "About", "Home")</li>
@@ -60,6 +72,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">De Interes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Galeria", "Gallery", "Home")</li>
                             <li>@Html.ActionLink("Yoga", "Index", "Home")</li>
                             <li role="separator" class="divider"></li>
                             <li>@Html.ActionLink("Fiestas y Eventos", "Index", "Home")</li>
@@ -85,24 +98,33 @@
             </div>
         </div>
     </div>
-
-    @RenderSection("fullwidth", required: false)
-    
+       
     <div class="container-fluid body-content">
-        <h1>@ViewBag.Message</h1>
-        @RenderBody()
+        
+        @*<h1>@ViewBag.Message</h1>*@
+
+        <div class="row">
+            
+            @*Verifying if the menu for user/admin must be displayed*@
+            @if (!Request.RequestContext.RouteData.Values["controller"].ToString().Contains("Home"))
+            {
+                @Html.Partial("_AccountMenuPartial")
+            }            
+
+            @RenderBody()
+
+        </div>
+
         <footer>
             
-            <div class="row">
-
-                <hr />
+            <div class="row" id="footer">
 
                 <div class="col-md-4">
-                    <h2>Ubicanos</h2>
+                    <h2>Contactanos</h2>
 
-                    <div class="media">
+                    <div class="media border-down">
                         <div class="media-left">
-                            <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ4NWY1MDRlMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDg1ZjUwNGUzIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi41IiB5PSIzNi44Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="...">
+                            <img class="media-object" src="~/Content/Images/Marker-64.png" alt="Marker">
                         </div>
                         <div class="media-body">
                             <address>
@@ -113,11 +135,11 @@
                         </div>
                     </div>                   
                     
-                    <hr />
+                    
 
-                    <div class="media">
+                    <div class="media border-down">
                         <div class="media-left">
-                            <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ4NWY1MDRlMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDg1ZjUwNGUzIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi41IiB5PSIzNi44Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="...">
+                            <img class="media-object" src="~/Content/Images/Phone-64.png" alt="Phone">
                         </div>
                         <div class="media-body media-middle">
                             <p>+353 86 390 98 43</p>
@@ -125,24 +147,24 @@
                         </div>
                     </div>                   
                     
-                    <hr />
+                    
 
-                    <div class="media">
+                    <div class="media border-down">
                         <div class="media-left">
-                            <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ4NWY1MDRlMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDg1ZjUwNGUzIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi41IiB5PSIzNi44Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="...">
+                            <img class="media-object" src="~/Content/Images/Email-64.png" alt="Email">
                         </div>
                         <div class="media-body media-middle">
                             <p>hola@semillitas.com</p>
                         </div>
                     </div>
                     
-                    <hr />
+                    
 
                     <p>
                         Siguenos por: 
-                        <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/Facebook-48.png" /></a>
-                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/Instagram-48.png" /></a>
-                        <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/Twitter-48.png" /></a>
+                        <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/Facebook-White-48.png" /></a>
+                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/Instagram-White-48.png" /></a>
+                        <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/Twitter-White-48.png" /></a>
                     </p>
 
                 </div>
@@ -171,8 +193,8 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-4">
-                    <h2>Mapa</h2>
-                    <div id="googleMap" style="width:100%;height:400px;"></div>
+                    <h2>Ubicacion</h2>
+                    <div id="googleMap" style="width:100%;height:300px;"></div>
                 </div>
             </div>
             <div class="footer-bottom">

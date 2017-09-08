@@ -26,5 +26,12 @@ namespace Semillitas.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Gallery()
+        {
+            ViewBag.Message = "Your photos page.";
+
+            return View();
+        }
     }
 }

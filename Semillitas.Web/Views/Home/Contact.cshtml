@@ -1,35 +1,43 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Como llegar";
 }
 
-@section Fullwidth {
-    <div class="jumbotron">
-        <div class="container">
-            <h2>@ViewBag.Title.</h2>
-            <h3>@ViewBag.Message</h3>
-            <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="jumbotron">
+    <div class="container">
+        <h2>@ViewBag.Title.</h2>
+        <h3>@ViewBag.Message</h3>
+    </div>
+</div>
+
+<div class="row push-top-more">
+    @*<h2 class="text-center push-under">Como llegar</h2>*@
+    <div class="col-sm-3 text-center push-under-more">
+        <img src="~/Content/Images/Info-100.png" alt="Coche" />
+        <h3>Semillitas</h3>
+        <hr />
+        <div class="text-left">            
+            <p><span class="glyphicon glyphicon-map-marker"></span>8 Whitworth Terrace. Drumcondra. Dublin 3</p>
+            <p><span class="glyphicon glyphicon-earphone"></span>(+353) 86 390 98 43</p>
+            <p><span class="glyphicon glyphicon-envelope"></span>hola@semillitas.com</p>
         </div>
     </div>
-}
-
-<h2>Semillitas</h2>
-<p>8 Whitworth Terrace. Drumcondra. Dublin 3</p>
-<p>+353 86 390 98 43</p>
-<p>hola@semillitas.com</p>
-
-<div class="row">
-    <h2>Como llegar</h2>
-    <div class="col-sm-4 text-center">
+    <div class="col-sm-3 text-center push-under-more">
+        <img src="~/Content/Images/Car-100.png" alt="Coche" />
         <h3>Coche</h3>
         <p>M50</p>
+        <p>Phasellus consequat, ligula in hendrerit malesuada, libero elit semper massa, eget venenatis ante nisl sit amet ex. Pellentesque mollis tincidunt gravida.</p>
     </div>
-    <div class="col-sm-4 text-center">
+    <div class="col-sm-3 text-center push-under-more">
+        <img src="~/Content/Images/Bus-100.png" alt="Bus" />
         <h3>Autobus</h3>
         <p>Ruta 16, 13, 40</p>
+        <p>Quisque ligula dui, congue id aliquet porta, aliquam sit amet lorem. Ut sed velit nec est sollicitudin suscipit. Maecenas id dui eros.</p>
     </div>
-    <div class="col-sm-4 text-center">
+    <div class="col-sm-3 text-center push-under-more">
+        <img src="~/Content/Images/Subway-100.png" alt="Metro" />
         <h3>Metro</h3>
         <p>Linea roja</p>
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean nec ex quam. Aliquam cursus urna nunc, sed ornare sem bibendum vel. Sed a vehicula risus, vitae molestie libero. Morbi elementum sed nibh in ornare. </p>
     </div>
 </div>
 

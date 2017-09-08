@@ -20,6 +20,8 @@
 }
 .row {
     /*background-color: red;*/
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .col-md-4 {
     /*background-color: green;*/
@@ -35,6 +37,25 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.border-down {
+    border-bottom: 1px solid #FCAD8E; 
+}
+
+.carousel {
+    margin: 0 -15px;
+}
+.carousel h1 {
+    margin-bottom: 25px;
+}
+.carousel span.highlight {
+    display: inline;
+    background-color: rgba(250, 71, 0, 0.7);
+    padding: 10px;
+}
+.carousel span.highlight-slim {
+    padding: 2px 15px;
 }
 
 .content-1 {
@@ -67,11 +88,24 @@ footer, .footer-bottom {
     margin: 0;
 }
 
-.jumbotron {
+#footer {
+    padding-top: 25px;
+}
+#footer hr {
+    margin: 5px;
+}
+
+.container-fluid .jumbotron {
+    border-radius: 0;
     background-image: url("Images/desarrolloafectivo.jpg");
     background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
+    margin: 0 -15px;
+}
+
+#googleMapZoomIn {
+    margin: 0 auto 50px;
 }
 
 .media-list {
@@ -137,17 +171,46 @@ footer, .footer-bottom {
     color: #fff;
 }
 
-.navbar-inverse.navbar {
-    min-height: 0;
+.nav-pills#menu-account {
+    margin-top: 10px;
+}
+
+.navbar-slim {
+    font-size: 80%;
+}
+.navbar.navbar-slim {
+    min-height: 25px;
+}
+.navbar-slim li a {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.navbar-slim img {
+    height: 20px;
 }
 
 .panorama {
   height: 400px;
+  margin-left: -15px;
+  margin-right: -15px;
   overflow-x: scroll;
   overflow-y: hidden;
 }
 .panorama img {
   height: 100%;
+}
+
+.push-under {
+    margin-bottom: 25px;
+}
+.push-top {
+    margin-top: 25px;
+}
+.push-under-more {
+    margin-bottom: 50px;
+}
+.push-top-more {
+    margin-top: 50px;
 }
 
 span.vigent {
