@@ -9,73 +9,76 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExpirationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChildFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChildLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChildBirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HasSpecialNeed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SpecialNeedNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChildNotes)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive margin-bottom-25">
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpirationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildBirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasSpecialNeed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialNeedNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildNotes)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpirationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChildFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChildLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChildBirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HasSpecialNeed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SpecialNeedNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChildNotes)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpirationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChildFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChildLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChildBirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasSpecialNeed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecialNeedNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChildNotes)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

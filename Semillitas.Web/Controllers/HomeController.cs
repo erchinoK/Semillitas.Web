@@ -40,5 +40,12 @@ namespace Semillitas.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Workshops()
+        {
+            ViewBag.Message = "Your workshop page.";
+
+            return View();
+        }
     }
 }

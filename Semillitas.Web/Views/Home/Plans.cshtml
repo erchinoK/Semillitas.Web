@@ -2,6 +2,10 @@
     ViewBag.Title = "Planes";
 }
 
+@section Styles {
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+}
+
 <div class="jumbotron">
     <div class="container">
         <h2>@ViewBag.Title.</h2>
@@ -11,16 +15,16 @@
 
 <div class="row">
 
-    <div class="col-sm-4 red">
-        <p><span>01.</span>Choose age</p>
+    <div class="col-sm-4 inline-item bg-color-1">
+        <p class="title"><span class="num font-color-1-bold">01.</span>Choose age</p>
         <p>Ut efficitur odio sapien. Duis elit ex, congue fermentum gravida in, dignissim ac enim. Maecenas eu magna porttitor, consectetur metus ac, hendrerit mi. </p>
     </div>
-    <div class="col-sm-4 blue">
-        <p><span>02.</span>Choose duration</p>
+    <div class="col-sm-4 inline-item bg-color-2">
+        <p class="title"><span class="num font-color-2-bold">02.</span>Choose duration</p>
         <p>Nulla a dolor eget nulla hendrerit maximus non vitae nibh. Phasellus egestas varius molestie. Praesent tempor diam nibh, a consectetur turpis gravida quis. Donec pellentesque nisl nibh, ut pharetra purus rutrum non. </p>
     </div>
-    <div class="col-sm-4 green">
-        <p><span>01.</span>Ask for quotation</p>
+    <div class="col-sm-4 inline-item bg-color-3">
+        <p class="title"><span class="num font-color-3-bold">03.</span>Ask for quotation</p>
         <p>Nullam egestas, ipsum a dignissim imperdiet, orci lorem feugiat nulla, eu cursus ex quam at odio. </p>
     </div>
     
@@ -30,32 +34,136 @@
 
     <h2>Main Packages <small>Choose the best package for your child</small></h2>
 
-    <div class="col-sm-6 red">
+    <div class="col-sm-6 col-md-4">
 
-        <div class="dual-item">
+        <div class="row dual-item">
 
-            <div class="overview">
-
+            <div class="col-xs-12 col-sm-6 subitem-1 bg-color-4">
+                <div class="content">
+                    <p>&euro; 90.00</p>
+                    <span class="separator-fixed"></span>
+                    <p class="text-uppercase small">Anual</p>
+                </div>
             </div>
 
-            <div class="description">
-
+            <div class="col-xs-12 col-sm-6 subitem-2">
+                <div class="content">
+                    <p class="text-uppercase">Edad 0 - 16 anos</p>
+                    <p>Proin mi sem, volutpat eu molestie sit amet, consequat at tellus. Fusce mi purus, lacinia et rhoncus vitae, ultricies placerat eros. </p>
+                </div>
             </div>
 
         </div>
 
     </div>
 
-    <div class="col-sm-6 red">
+    <div class="col-sm-6 col-md-4">
 
-        test
+        <div class="row dual-item">
+
+            <div class="col-xs-12 col-sm-6 subitem-1 bg-color-5">
+                <div class="content">
+                    <p>&euro; 123.00</p>
+                    <span class="separator-fixed"></span>
+                    <p class="text-uppercase small">Mensual</p>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 subitem-2">
+                <div class="content">
+                    <p class="text-uppercase">Edad 0 - 16 anos</p>
+                    <p>Proin mi sem, volutpat eu molestie sit amet, consequat at tellus. Fusce mi purus, lacinia et rhoncus vitae, ultricies placerat eros. </p>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="col-sm-6 red">
+    <div class="col-sm-6 col-md-4">
 
-        test
+        <div class="row dual-item">
 
+            <div class="col-xs-12 col-sm-6 subitem-1 bg-color-6">
+                <div class="content">
+                    <p>&euro; 10.00</p>
+                    <span class="separator-fixed"></span>
+                    <p class="text-uppercase small">Diario</p>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 subitem-2">
+                <div class="content">
+                    <p class="text-uppercase">Edad 0 - 16 anos</p>
+                    <p>Proin mi sem, volutpat eu molestie sit amet, consequat at tellus. Fusce mi purus, lacinia et rhoncus vitae, ultricies placerat eros. </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <h2>Main Packages <small>Choose the best package for your child</small></h2>
+
+    <div class="col-sm-6 col-md-4 column-item">
+        <div class="content">
+            <div class="title">
+                12 meses
+            </div>
+            <div class="description bg-color-4">
+                &euro; 123.00
+                <span class="separator-fixed"></span>
+                <span class="small">Mensual</span>
+            </div>
+            <div class="more">
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Entrada ilimitada</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Comida incluida</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Yoga</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Clases personalizadas por un especialista</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 column-item">
+        <div class="content">
+            <div class="title">
+                20 dias
+            </div>
+            <div class="description bg-color-5">
+                &euro; 123.00
+                <span class="separator-fixed"></span>
+                <span class="small">Mensual</span>
+            </div>
+            <div class="more">
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Entrada ilimitada</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Comida incluida</p>
+                <p><img src="~/Content/Images/No-50.png" alt="No" class="icon" />Yoga</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Clases personalizadas por un especialista</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 column-item">
+        <div class="content">
+            <div class="title">
+                1 dia
+            </div>
+            <div class="description bg-color-6">
+                &euro; 123.00
+                <span class="separator-fixed"></span>
+                <span class="small">Mensual</span>
+            </div>
+            <div class="more">
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Entrada ilimitada</p>
+                <p><img src="~/Content/Images/No-50.png" alt="No" class="icon" />Comida incluida</p>
+                <p><img src="~/Content/Images/No-50.png" alt="No" class="icon" />Yoga</p>
+                <p><img src="~/Content/Images/No-50.png" alt="No" class="icon" />Clases personalizadas por un especialista</p>
+            </div>
+        </div>
     </div>
 
 </div>

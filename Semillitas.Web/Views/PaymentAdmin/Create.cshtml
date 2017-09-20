@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PaymentMethod, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.PaymentMethod, Model.MethodList, "Select one", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.PaymentMethod, Model.MethodList, "Select one", htmlAttributes: new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.PaymentMethod, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,7 +59,26 @@
                 }
                 else
                 {
-                <div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            @*<input type="checkbox" aria-label="...">*@
+                            @Html.CheckBoxFor(model => model.PayingRegistration, false)
+                        </span>
+                        @Html.EditorFor(model => model.AmountRegistration, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.NotesRegistration, new { htmlAttributes = new { @class = "form-control", placeholder = "Agregue una nota" } })
+                        @if (item.ExpirationDate >= DateTime.Now)
+                        {
+                            <span class="vigent">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        else
+                        {
+                            <span class="expired">@Html.DisplayFor(model => item.ExpirationDate)</span>
+                        }
+                        @Html.ValidationMessageFor(model => model.PayingRegistration, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.AmountRegistration, "", new { @class = "text-danger" })
+                    </div>
+
+                @*<div>
                     @Html.CheckBoxFor(model => model.PayingRegistration, false)
                     @Html.EditorFor(model => model.AmountRegistration)
                     @Html.EditorFor(model => model.NotesRegistration)
@@ -73,7 +92,7 @@
                     }
                     @Html.ValidationMessageFor(model => model.PayingRegistration, "", new { @class = "text-danger" })
                     @Html.ValidationMessageFor(model => model.AmountRegistration, "", new { @class = "text-danger" })
-                </div>
+                </div>*@
                     }
             }
           

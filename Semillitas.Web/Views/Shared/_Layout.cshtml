@@ -59,7 +59,8 @@
                 <ul class="nav navbar-nav">
                     <li class="navbar-nav-1">@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li class="navbar-nav-2">@Html.ActionLink("Quienes Somos", "About", "Home")</li>
-                    <li class="dropdown navbar-nav-3">
+                    <li class="navbar-nav-3">@Html.ActionLink("Planes", "Plans", "Home")</li>
+                    @*<li class="dropdown navbar-nav-3">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
                            aria-haspopup="true" aria-expanded="false">Planes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -67,7 +68,7 @@
                             <li>@Html.ActionLink("Plan 1 Mes", "Plans", "Home")</li>    
                             <li>@Html.ActionLink("Pase Diario", "Plans", "Home")</li>    
                         </ul>
-                    </li>
+                    </li>*@
                     <li class="dropdown navbar-nav-4">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">De Interes <span class="caret"></span></a>
@@ -106,7 +107,7 @@
         <div class="row">
             
             @*Verifying if the menu for user/admin must be displayed*@
-            @if (!Request.RequestContext.RouteData.Values["controller"].ToString().Contains("Home"))
+            @if (!Request.RequestContext.RouteData.Values["controller"].ToString().Contains("Home") && User.Identity.IsAuthenticated)
             {
                 <div class="col-sm-2">
 
