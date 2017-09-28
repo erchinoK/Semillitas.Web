@@ -192,8 +192,9 @@ textarea {
     background-color: #f9f9f9;
     border-style: solid;
     border-color: #ececec;
-    border-width: 0 1px 1px 0;
+    border-width: 0 0 1px 0;
     border-radius: 5px;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5) !important;
 }
 .column-item .title {
     background-color: #495052;
@@ -646,6 +647,12 @@ background-color: red;}
     transition: all 500ms ease 0s;
 }
 
+.navbar-brand-xs {
+    text-align: center;
+    color: #8d8d8d;
+    text-transform: lowercase;
+}
+
 .panorama {
   height: 400px;
   margin-left: -15px;
@@ -776,6 +783,7 @@ span.separator-flexible::after {
     clear: both;
     overflow: auto;
     height: 100%;
+    min-height: 115px;
 }
 .simple-item-workshop .image {
     margin-right: 10px;
