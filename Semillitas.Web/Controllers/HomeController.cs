@@ -47,5 +47,19 @@ namespace Semillitas.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Events()
+        {
+            ViewBag.Message = "Your events page.";
+
+            return View();
+        }
+
+        public ActionResult Blog()
+        {
+            ViewBag.Message = "Your blog page.";
+
+            return View();
+        }
     }
 }

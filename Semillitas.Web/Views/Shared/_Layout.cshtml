@@ -3,10 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/Content/Images/favicon.png">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
+    @*Menu*@ 
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet"> 
 
 </head>
 <body>
@@ -27,18 +31,37 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                @*<li>
                     <a href="@Url.Action("Index", "Home")">
                         <img alt="Espanol" src="~/Content/Images/Spain-48.png">
+                        Espanol
                     </a>
-                </li>
+                </li>*@
                 <li>
                     <a href="@Url.Action("Index", "Home")">
                         <img alt="English" src="~/Content/Images/Great Britain-48.png">
+                        English
                     </a>
                 </li>
             </ul>
             @Html.Partial("_LoginPartial")
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
+                </li>
+                <li>
+                    <a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>
+                </li>
+                <li>
+                    <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
+                </li>
+                <li>
+                    <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
+                </li>
+                <li>
+                    <a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -74,24 +97,35 @@
                            aria-haspopup="true" aria-expanded="false">De Interes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Galeria", "Gallery", "Home")</li>
-                            <li>@Html.ActionLink("Yoga", "Index", "Home")</li>
-                            <li role="separator" class="divider"></li>
-                            <li>@Html.ActionLink("Fiestas y Eventos", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Talleres", "Workshops", "Home")</li>
+                            @*<li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Fiestas y Eventos", "Index", "Home")</li>*@
                         </ul>
                     </li>
                     <li class="navbar-nav-5">@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 </ul>
                 <div class="visible-xs">
+                    <ul class="nav navbar-nav navbar-right navbar-social-xs">
+                        <li>
+                            <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
+                            <a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>
+                            <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
+                            <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
+                            <a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>                        
+                        </li>
+                    </ul>
                     @Html.Partial("_LoginPartial")
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
+                        @*<li>
                             <a href="@Url.Action("Index", "Home")">
                                 <img alt="Espanol" src="~/Content/Images/Spain-48.png" style="height: 25px">
+                                Espanol
                             </a>
-                        </li>
+                        </li>*@
                         <li>
                             <a href="@Url.Action("Index", "Home")">
                                 <img alt="English" src="~/Content/Images/Great Britain-48.png" style="height: 25px">
+                                English
                             </a>
                         </li>
                     </ul>
@@ -164,7 +198,7 @@
                     
                     
 
-                    <div class="media border-down">
+                    <div class="media">
                         <div class="media-left">
                             <img class="media-object" src="~/Content/Images/Email-64.png" alt="Email">
                         </div>
@@ -173,14 +207,13 @@
                         </div>
                     </div>
                     
-                    
-
-                    <p>
-                        Siguenos por: 
-                        <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/Facebook-White-48.png" /></a>
-                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/Instagram-White-48.png" /></a>
-                        <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/Twitter-White-48.png" /></a>
-                    </p>
+                    <div class="media">
+                        <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
+                        <a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>
+                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
+                        <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
+                        <a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>                        
+                    </div>
 
                 </div>
                 <div class="col-md-4">
@@ -240,6 +273,7 @@
                 var mapZoomIn = new google.maps.Map(document.getElementById("googleMapZoomIn"), mapPropZoomIn);
             } catch (err) { /*Not in the Contact page*/ }            
         }
+
     </script> 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCyDVf5H8vzovSYPYPhs_hQlxJkODjDrw &callback=myMap"></script>
 
