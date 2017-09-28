@@ -180,7 +180,7 @@ textarea {
 }
 
 .content-3 {
-    
+    padding: 25px 0;
 }
 
 .column-item {
@@ -376,11 +376,14 @@ footer, .footer-bottom {
 }
 
 .item-content-image {
-    clear: both;
-    overflow: hidden;
     max-height: 190px;
-    background-color: red;
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 25px;
+    border: 1px solid #f7f7f7;
 }
 .item-content-image .image {
     float: left;
@@ -389,27 +392,34 @@ footer, .footer-bottom {
 .item-content-image .content {
     float: left;
     width: 60%;
-    padding: 5px 15px 0 5px;
-    position: relative;
+    padding: 0 15px 0 5px;
+    
     max-height: 190px;
+}
+.item-content-image .content h4 {
+    margin-top: 5px;
 }
 .item-content-image .content p {
     margin-top: 0;
 }
-.item-content-image .content a {
+.item-content-image a {
     position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
-    text-align: right;
+    text-align: center;
     padding: 5px;
-    
-    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
-    background-image: -o-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
-    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
-    background-image: linear-gradient(to right, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
-    background-repeat: repeat-x;
+    color: #fff;
+    text-decoration: none;
+
+    -webkit-transition: all 500ms ease 0s;
+    -moz-transition: all 500ms ease 0s;
+    -o-transition: all 500ms ease 0s;
+    transition: all 500ms ease 0s;
+}
+.item-content-image a:hover {
+    padding: 20px 5px;
+    text-decoration: none;
 }
 
 .item-icon-switch {    /*icon on left or top (xs)*/
