@@ -171,6 +171,14 @@ textarea {
     background-size: cover;
     padding: 105px 0;
     text-align: center;
+
+    -webkit-transition: all 500ms ease 0s;
+    -moz-transition: all 500ms ease 0s;
+    -o-transition: all 500ms ease 0s;
+    transition: all 500ms ease 0s;
+}
+.content-1:hover {
+    padding: 115px 0;
 }
 
 .content-2 {
