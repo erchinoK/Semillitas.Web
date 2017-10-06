@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="~/Content/Images/favicon.png">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Ludoteca Semillitas</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
@@ -20,13 +20,13 @@
                 <li>
                     <a href="@Url.Action("Contact", "Home")">
                         <span class="glyphicon glyphicon-earphone"></span>
-                        (+353) 86 390 98 43
+                        (+34) 692 340 490
                     </a>
                 </li>
                 <li>
                     <a href="@Url.Action("Contact", "Home")">
                         <span class="glyphicon glyphicon-envelope"></span>
-                        hola@semillitas.com
+                        hola@ludotecasemillitas.com
                     </a>
                 </li>
             </ul>
@@ -49,18 +49,18 @@
                 <li>
                     <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
                 </li>
-                <li>
+                @*<li>
                     <a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>
-                </li>
-                <li>
-                    <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
-                </li>
+                </li>*@
                 <li>
                     <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
                 </li>
                 <li>
-                    <a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>
+                    <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
                 </li>
+                @*<li>
+                    <a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>
+                </li>*@
             </ul>
         </div>
     </div>
@@ -81,11 +81,11 @@
             <div class="visible-xs navbar-brand-xs">
                 <p>
                     <span class="glyphicon glyphicon-earphone"></span>
-                    (+353) 86 390 98 43
+                    (+34) 692 340 490
                 </p>
                 <p>
                     <span class="glyphicon glyphicon-envelope"></span>
-                    hola@semillitas.com
+                    hola@ludotecasemillitas.com
                 </p>
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapse-menu">
@@ -174,14 +174,14 @@
 
                 
 
-                </div>
+        </div>
 
         <footer>
             
             <div class="row" id="footer">
 
                 <div class="col-md-4">
-                    <h2>Contactanos</h2>
+                    <h2>Contáctanos</h2>
 
                     <div class="media border-down">
                         <div class="media-left">
@@ -190,8 +190,8 @@
                         <div class="media-body">
                             <address>
                                 <strong>Semillitas</strong><br>
-                                8 Whitworth Terrace. Dublin 3<br>
-                                Dublin, Ireland<br>
+                                Ronda del General Mitre 132, 08022<br>
+                                Barcelona, Espa&ntilde;a<br>
                             </address>
                         </div>
                     </div>                   
@@ -203,8 +203,7 @@
                             <img class="media-object" src="~/Content/Images/Phone-64.png" alt="Phone">
                         </div>
                         <div class="media-body media-middle">
-                            <p>+353 86 390 98 43</p>
-                            <p>+353 86 123 45 67</p>
+                            <p>(+34) 692 340 490</p>
                         </div>
                     </div>                   
                     
@@ -215,46 +214,47 @@
                             <img class="media-object" src="~/Content/Images/Email-64.png" alt="Email">
                         </div>
                         <div class="media-body media-middle">
-                            <p>hola@semillitas.com</p>
+                            <p>hola@ludotecasemillitas.com</p>
                         </div>
                     </div>
                     
                     <div class="media">
                         <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
-                        <a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>
-                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
+                        @*<a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>*@
                         <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
-                        <a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>                        
+                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>                        
+                        @*<a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>*@                        
                     </div>
 
                 </div>
                 <div class="col-md-4">
                     <h2>Horario</h2>
                     <p class="pull-left">Lunes:</p>
-                    <p class="pull-right">08:00am - 06:00pm</p>
+                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Martes:</p>
-                    <p class="pull-right">08:00am - 06:00pm</p>
+                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
                     <div class="clearfix"></div>
-                    <p class="pull-left">Miercoles:</p>
-                    <p class="pull-right">08:00am - 06:00pm</p>
+                    <p class="pull-left">Miércoles:</p>
+                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Jueves:</p>
-                    <p class="pull-right">08:00am - 06:00pm</p>
+                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Viernes:</p>
-                    <p class="pull-right">08:00am - 06:00pm</p>
+                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
                     <div class="clearfix"></div>
-                    <p class="pull-left">Sabado:</p>
-                    <p class="pull-right">08:00am - 06:00pm</p>
+                    <p class="pull-left">Sábado:</p>
+                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Domingo:</p>
-                    <p class="pull-right">08:00am - 06:00pm</p>
+                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-4">
-                    <h2>Ubicacion</h2>
-                    <div id="googleMap" style="width:100%;height:300px;"></div>
+                    <h2>Ubicación</h2>
+                    @*<div id="googleMap" style="width:100%;height:300px;"></div>*@
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d748.1680969880688!2d2.137803929216489!3d41.402920604636286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4980ce8c073d3%3A0x79d8ee583700e624!2sLittle+Lond!5e0!3m2!1ses!2sie!4v1507127596243" width="100%" height="300px" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -262,32 +262,34 @@
                 <p class="text-center"><small>Site designed by <a href="http://www.polygonwd.com" target="_blank">Polygon Web Design</a>. Icons by <a href="http://www.icons8.com" target="_blank">Icons8</a></small></p>
             </div>
         </footer>
+
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    <script>
+    @*<script>
         function myMap() {
             var mapProp= {
-                center:new google.maps.LatLng(51.508742,-0.120850),
-                zoom:5,
+                center: new google.maps.LatLng(41.4029974, 2.138232),
+                zoom:15,
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
             // Map inside Contact page
             var mapPropZoomIn = {
-                center: new google.maps.LatLng(51.508742, -0.120850),
-                zoom: 15,
+                center: new google.maps.LatLng(41.4029974, 2.138232),
+                zoom: 17,
             };
             try {
                 var mapZoomIn = new google.maps.Map(document.getElementById("googleMapZoomIn"), mapPropZoomIn);
-            } catch (err) { /*Not in the Contact page*/ }            
+            } catch (err) { /*Not in the Contact page*/ }
         }
 
     </script> 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCyDVf5H8vzovSYPYPhs_hQlxJkODjDrw &callback=myMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCyDVf5H8vzovSYPYPhs_hQlxJkODjDrw &callback=myMap"></script>*@
 
 </body>
 </html>

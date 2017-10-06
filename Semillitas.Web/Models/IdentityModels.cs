@@ -56,6 +56,9 @@ namespace Semillitas.Web.Models
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Membership> Memberships { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Blog> Blog { get; set; }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<Marketing> Marketing { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Semillitas.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,9 +11,33 @@ namespace Semillitas.Web.Controllers
     {
         public ActionResult Index()
         {
+            // Checking if the cookies has been accepted and if marketing should be displayed
+            ViewBag.CookiesAccepted = false;
+            ViewBag.HideMarketing = false;
+            try
+            {
+                if (HttpContext.Request.Cookies.AllKeys.Contains("SemillitasCookie"))
+                {
+                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["SemillitasCookie"];
+
+                    bool cookiesAccepted = false;
+                    if (semillitasCookie.Values["IsAccepted"] != null)
+                        Boolean.TryParse(semillitasCookie.Values["IsAccepted"], out cookiesAccepted);
+                    ViewBag.CookiesAccepted = cookiesAccepted;
+
+                    bool hideMarketing = false;
+                    if (semillitasCookie.Values["HideMarketing"] != null)
+                        Boolean.TryParse(semillitasCookie.Values["HideMarketing"], out hideMarketing);
+                    ViewBag.HideMarketing = hideMarketing;
+                }
+
+            } catch (Exception e)
+            {
+            }
+
             return View();
         }
-
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -59,6 +84,19 @@ namespace Semillitas.Web.Controllers
         {
             ViewBag.Message = "Your blog page.";
 
+            return View();
+        }
+
+        public ActionResult BlogEntry()
+        {
+            ViewBag.Message = "Your blog page.";
+
+            return View();
+        }
+
+        public ActionResult UnderConstruction()
+        {
+           
             return View();
         }
     }

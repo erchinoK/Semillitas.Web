@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model Semillitas.Web.Models.ViewModels.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "Inicio";
 }
 
 @section styles {
@@ -38,11 +40,11 @@
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">Anterior</span>
     </a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">Siguiente</span>
     </a>
 </div>
 
@@ -53,7 +55,7 @@
 </div>*@
 
 <div class="row content-2">
-    <h1 class="text-center separator-middle">De Interes</h1>
+    <h1 class="text-center separator-middle">De Interés</h1>
     <div class="col-sm-6 col-md-3 item-link-image">
         <a href="@Url.Action("Events", "Home")" class="">
             <img src="~/Content/Images/birthday.jpg" alt="..." class="img-responsive">
@@ -90,11 +92,11 @@
 
 <div class="row content-1">
     <h1 class="text-center">Planes y Servicios</h1>
-    <p class="separator-middle">Registrate ya</p>
+    <p class="separator-middle">Regístrate ya</p>
     <p>
         <a href="@Url.Action("Plans", "Home")" class="btn btn-primary">
             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-            Mas informacion
+            Mas información
         </a>
     </p>
 </div>
@@ -191,7 +193,7 @@
         </div>
     </div>
 
-    <p class="text-center"><a href="#" class="btn btn-primary" role="button">Mas Noticias</a></p>
+    <p class="text-center"><a href="@Url.Action("Index", "Blog")" class="btn btn-primary" role="button">Más Noticias</a></p>
 
 </div>
 
@@ -199,42 +201,115 @@
 <button type="button" id="btn-modal" class="hidden" data-toggle="modal" data-target="#myModal"></button>
 
 <!-- Modal -->
-<div class="modal fade modal-image-form" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            @*<div class="modal-header">
-            </div>*@
-            <div class="modal-body">
-                <div class="row bg-color-2">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <div class="col-xs-12 col-sm-6 item-image hidden-xs">
-                        <img src="~/Content/Images/workshop.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="col-xs-12 col-sm-6 item-content">
-                        <h1 class="separator-left">Interesado en recibir actualizaciones y novedades</h1>
-                        <p>Ingrese su correo electronico y recibira correos con noticias, promociones y eventos</p>
-                        @using (Html.BeginForm())
-                        {
-                            @Html.AntiForgeryToken()
-                            <p><input type="text" class="form-control" /></p>
-                            <p><button type="button" class="btn btn-primary">Enviar</button></p>
-                        }
+@{
+    if (!ViewBag.HideMarketing)
+    {
+        <div class="modal fade modal-image-form" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row bg-color-2">
+                            <button type="button" id="modal_close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="col-xs-12 col-sm-6 item-image hidden-xs">
+                                <img src="~/Content/Images/workshop.jpg" alt="" class="img-responsive" />
+                            </div>
+                            <div class="col-xs-12 col-sm-6 item-content">
+                                <h1 class="separator-left">¿Tienes algún interés en recibir actualizaciones y novedades?</h1>
+                                <p>Ingrese su correo electrónico y recibirá noticias, promociones y eventos</p>
+                                @using (Ajax.BeginForm("Create", "Marketing", new AjaxOptions
+                                {
+                                    HttpMethod = "POST",
+                                    UpdateTargetId = "modal_result",
+                                    OnBegin = "closeModal"
+                                }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    <input type="submit" id="modal_send" value="Enviar" class="btn btn-primary" />
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    <div id="modal_result"></div>
+                                }
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                
             </div>
-            @*<div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>*@
         </div>
-    </div>
-</div>
+
+    }
+}
+
+@{
+    if (!ViewBag.CookiesAccepted)
+    {
+        <div class="alert alert-warning alert-fixed alert-dismissible fade in" role="alert">
+            <button id="alert-close" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Nuestro sitio Web utiliza cookies para ofrecerle un mejor servicio. Al continuar navegando en nuestra p&aacute;gina usted est&aacute; aceptando el <a href="#">uso de cookies</a></p>
+        </div>
+    }
+}
+
 
 @section scripts {
+
+@* Script necessary for Ajax.BeginForm *@
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
     <script>
+
+        // Function to close the modal (needs to be called)
+        closeModal = function () {
+            $('#modal_close').click();
+        }
+
         $(document).ready(function () {
-            $("#btn-modal").click();
+
+            // Shows the modal
+            $("#btn-modal").click();    
+
+            // Handler when user closes the modal
+            $("#modal_close, #modal_send").click(
+                function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Cookies/HideMarketing",
+                        contentType: "application/json; charset=utf-8",
+                        data: '',
+                        dataType: "html",
+                        success: function (result, status, xhr) {
+                            // Cookie created
+                        },
+                        error: function (xhr, status, error) {
+                            // Cookie not created
+                        }
+                    })
+                }
+            );
+
+            // Handler when user closes the cookies alert
+            $("#alert-close").click(
+                function () {
+                    $.ajax({  
+                        type: "POST",  
+                        url: "/Cookies/Accept",  
+                        contentType: "application/json; charset=utf-8",  
+                        data: '',  
+                        dataType: "html",  
+                        success: function (result, status, xhr) {
+                            // Cookie created
+                        },  
+                        error: function (xhr, status, error) {  
+                            // Cookie not created
+                        }  
+                    })
+                }
+            );
+            
         });
 </script> 
 }

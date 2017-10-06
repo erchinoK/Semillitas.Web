@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Semillitas.Web.Models.Blog>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>@ViewBag.Title.</h2>
+        <h3 class="separator-left">@ViewBag.Message</h3>
+    </div>
+</div>
+
+<div class="row content-3">
+    <h1 class="text-center separator-middle font-color-3">Noticias y Novedades</h1>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+@{
+    int i = 1;
+}
+
+    @foreach (var item in Model)
+    {
+        
+        <div class="col-xs-12 col-sm-6">
+            <div class="item-content-image">
+                <div class="image">
+                    <img class="img-responsive" src="~/Content/Images/pregnant.jpg" alt="...">
+                </div>
+                <div class="content">
+                    <h4 class="separator-left">@Html.DisplayFor(modelItem => item.Title)</h4>
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+                <a href="@Url.Action("Blog", "Home")" class="bg-color-@i"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
+            </div>
+        </div>
+        i = ((i + 1) % 6) + 1;
+    }
+
+</div>
+
+

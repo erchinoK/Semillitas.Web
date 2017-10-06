@@ -1,0 +1,82 @@
+﻿@model Semillitas.Web.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>@Html.DisplayFor(model => model.Title)</h2>
+        <h3 class="separator-left">@Html.DisplayFor(model => model.Description)</h3>
+    </div>
+</div>
+
+<div class="row  margin-top-25">
+
+    @if (Model.Layout == "IMAGE_LEFT")
+    {
+        <div class="col-xs-12 col-sm-6 margin-bottom-15">
+            <img src="~/Content/Images/iStock-544357260.jpg" alt="Workshop" class="img-responsive" />
+            @Html.DisplayFor(model => model.Image)
+        </div>
+
+        <div class="col-xs-12 col-sm-6 margin-bottom-50">
+
+            <p><span class="capital bg-color-1">M</span>aecenas suscipit velit a vestibulum aliquet. Aliquam sagittis nisl ac risus tincidunt lacinia. Ut lacus eros, dapibus luctus consequat eget, vulputate non tellus. Ut ac malesuada eros. Donec aliquet quam justo, eu consequat nunc sollicitudin in. Donec non turpis dui. Sed sollicitudin tellus augue, cursus dictum mauris rhoncus in. Suspendisse auctor odio enim, non sollicitudin ex tempus a. Sed lobortis fringilla euismod. Etiam id lacus in augue maximus ornare in et nulla. Nunc consequat consequat nisi sit amet posuere. Quisque at fringilla ligula.</p>
+
+            <p>Content @Html.DisplayFor(model => model.Content)</p>
+
+        </div>
+    }
+    else if (Model.Layout == "IMAGE_RIGHT")
+    {
+        <div class="col-xs-12 col-sm-6 margin-bottom-50">
+
+            <p><span class="capital bg-color-1">M</span>aecenas suscipit velit a vestibulum aliquet. Aliquam sagittis nisl ac risus tincidunt lacinia. Ut lacus eros, dapibus luctus consequat eget, vulputate non tellus. Ut ac malesuada eros. Donec aliquet quam justo, eu consequat nunc sollicitudin in. Donec non turpis dui. Sed sollicitudin tellus augue, cursus dictum mauris rhoncus in. Suspendisse auctor odio enim, non sollicitudin ex tempus a. Sed lobortis fringilla euismod. Etiam id lacus in augue maximus ornare in et nulla. Nunc consequat consequat nisi sit amet posuere. Quisque at fringilla ligula.</p>
+
+            <p>Content @Html.DisplayFor(model => model.Content)</p>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-6 margin-bottom-15">
+            <img src="~/Content/Images/iStock-544357260.jpg" alt="Workshop" class="img-responsive" />
+            @Html.DisplayFor(model => model.Image)
+        </div>
+
+
+    }
+    else if (Model.Layout == "IMAGE_TOP")
+    {
+        <div class="col-xs-12margin-bottom-15">
+            <img src="~/Content/Images/iStock-544357260.jpg" alt="Workshop" class="img-responsive" />
+            @Html.DisplayFor(model => model.Image)
+        </div>
+
+        <div class="col-xs-12">
+
+            <p><span class="capital bg-color-1">M</span>aecenas suscipit velit a vestibulum aliquet. Aliquam sagittis nisl ac risus tincidunt lacinia. Ut lacus eros, dapibus luctus consequat eget, vulputate non tellus. Ut ac malesuada eros. Donec aliquet quam justo, eu consequat nunc sollicitudin in. Donec non turpis dui. Sed sollicitudin tellus augue, cursus dictum mauris rhoncus in. Suspendisse auctor odio enim, non sollicitudin ex tempus a. Sed lobortis fringilla euismod. Etiam id lacus in augue maximus ornare in et nulla. Nunc consequat consequat nisi sit amet posuere. Quisque at fringilla ligula.</p>
+
+            <p>Content @Html.DisplayFor(model => model.Content)</p>
+
+        </div>
+    }
+    else // IMAGE BOTTOM AND DEFAULT
+    {
+        <div class="col-xs-12">
+
+            <p><span class="capital bg-color-1">M</span>aecenas suscipit velit a vestibulum aliquet. Aliquam sagittis nisl ac risus tincidunt lacinia. Ut lacus eros, dapibus luctus consequat eget, vulputate non tellus. Ut ac malesuada eros. Donec aliquet quam justo, eu consequat nunc sollicitudin in. Donec non turpis dui. Sed sollicitudin tellus augue, cursus dictum mauris rhoncus in. Suspendisse auctor odio enim, non sollicitudin ex tempus a. Sed lobortis fringilla euismod. Etiam id lacus in augue maximus ornare in et nulla. Nunc consequat consequat nisi sit amet posuere. Quisque at fringilla ligula.</p>
+
+            <p>Content @Html.DisplayFor(model => model.Content)</p>
+
+        </div>
+
+        <div class="col-xs-12">
+            <img src="~/Content/Images/iStock-544357260.jpg" alt="Workshop" class="img-responsive" />
+            @Html.DisplayFor(model => model.Image)
+        </div>
+    }
+
+
+
+
+</div>

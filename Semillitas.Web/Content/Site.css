@@ -63,6 +63,15 @@ textarea {
     max-width: 280px;
 }
 
+.alert-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    margin-bottom: 0;
+}
+
 .bg-color-1 {	/* Yellow */
 	background-color: #EDBF47;
 }
@@ -236,6 +245,29 @@ textarea {
     margin-right: 10px;
 }
 
+#container-construction {
+    text-transform: uppercase;
+    color: #fff;
+    padding: 20px;
+    
+}
+#container-construction .content {
+    background-image: url("Images/iStock-544654620.jpg");
+    background-position: center center;
+    background-size: cover;
+    padding: 150px 10px;
+}
+#container-construction h2, #container-construction h4 {
+    text-align: center;
+    margin-top: 10px;
+    line-height: 60px;
+}
+#container-construction .highlight {
+    display: inline;
+    background-color: rgba(250, 71, 0, 0.7);
+    padding: 10px;
+}
+
 .dual-item {
     margin-bottom: 20px;
 }
@@ -337,8 +369,8 @@ footer, .footer-bottom {
 .container-fluid .jumbotron {
     border-radius: 0;
     background-image: url("Images/kids-blocks_02.jpg");
-    background-repeat: no-repeat;
-    background-position: right top;
+    background-repeat: repeat;
+    background-position: center center;
     /*background-attachment: fixed;*/
     margin: 0 -15px;
     color: #fff;
