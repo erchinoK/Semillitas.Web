@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Semillitas.Web.Models
 {
@@ -12,7 +13,11 @@ namespace Semillitas.Web.Models
         public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
+
+        [AllowHtml]
         public string Content { get; set; }
         public string Timetable { get; set; }
         public string TimetableNotes { get; set; }

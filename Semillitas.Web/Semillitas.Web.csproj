@@ -256,6 +256,7 @@
     <Content Include="Content\Images\gym.png" />
     <Content Include="Content\Images\homework.png" />
     <Content Include="Content\Images\Info-100.png" />
+    <Content Include="Content\Images\Info-48.png" />
     <Content Include="Content\Images\Instagram-48.png" />
     <Content Include="Content\Images\Instagram-White-48.png" />
     <Content Include="Content\Images\instagram.png" />
@@ -459,6 +460,7 @@
     <Content Include="Views\Marketing\Edit.cshtml" />
     <Content Include="Views\Marketing\Index.cshtml" />
     <Content Include="Views\Marketing\_MarketingSaved.cshtml" />
+    <Content Include="Views\Event\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

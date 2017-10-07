@@ -14,12 +14,11 @@ namespace Semillitas.Web.Controllers
             try
             {
                 // If the cookie exists
-                if (HttpContext.Request.Cookies.AllKeys.Contains("SemillitasCookie"))
+                if (HttpContext.Request.Cookies.AllKeys.Contains("cookie.consent"))
                 {
                     // Modifying the existing cookie
-                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["SemillitasCookie"];
-                    semillitasCookie.Values["IsAccepted"] = "true";
-                    semillitasCookie.Values["LastVisit"] = DateTime.Now.ToString();
+                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["cookie.consent"];
+                    semillitasCookie.Value = "true";
                     semillitasCookie.Expires = DateTime.Now.AddDays(30);
 
                     HttpContext.Response.Cookies.Add(semillitasCookie);
@@ -29,9 +28,8 @@ namespace Semillitas.Web.Controllers
                 else
                 {
                     // Creating a new cookie
-                    HttpCookie newCookie = new HttpCookie("SemillitasCookie");
-                    newCookie.Values["IsAccepted"] = "true";
-                    newCookie.Values["LastVisit"] = DateTime.Now.ToString();
+                    HttpCookie newCookie = new HttpCookie("cookie.consent");
+                    newCookie.Value = "true";
                     newCookie.Expires = DateTime.Now.AddDays(30);
 
                     HttpContext.Response.Cookies.Add(newCookie);
@@ -51,12 +49,11 @@ namespace Semillitas.Web.Controllers
             try
             {
                 // If the cookie exists
-                if (HttpContext.Request.Cookies.AllKeys.Contains("SemillitasCookie"))
+                if (HttpContext.Request.Cookies.AllKeys.Contains("subscription.visited"))
                 {
                     // Modifying the existing cookie
-                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["SemillitasCookie"];
-                    semillitasCookie.Values["LastVisit"] = DateTime.Now.ToString();
-                    semillitasCookie.Values["HideMarketing"] = "true";
+                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["subscription.visited"];
+                    semillitasCookie.Value = "true";
                     semillitasCookie.Expires = DateTime.Now.AddDays(30);
 
                     HttpContext.Response.Cookies.Add(semillitasCookie);
@@ -66,9 +63,8 @@ namespace Semillitas.Web.Controllers
                 else
                 {
                     // Creating a new cookie
-                    HttpCookie newCookie = new HttpCookie("SemillitasCookie");
-                    newCookie.Values["HideMarketing"] = "true";
-                    newCookie.Values["LastVisit"] = DateTime.Now.ToString();
+                    HttpCookie newCookie = new HttpCookie("subscription.visited");
+                    newCookie.Value = "true";
                     newCookie.Expires = DateTime.Now.AddDays(30);
 
                     HttpContext.Response.Cookies.Add(newCookie);
@@ -84,12 +80,13 @@ namespace Semillitas.Web.Controllers
 
         public ActionResult Remove()
         {
-            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("SemillitasCookie"))
+            foreach (var cookieName in this.ControllerContext.HttpContext.Request.Cookies.AllKeys)
             {
-                HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["SemillitasCookie"];
+                HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies[cookieName];
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
             }
+
             return RedirectToAction("Index", "Home");
         }
 

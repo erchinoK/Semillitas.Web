@@ -17,7 +17,7 @@ namespace Semillitas.Web.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            return View(db.Blog.ToList());
+            return View(db.Blog.Where(b => b.IsPublished).ToList());
         }
 
         // GET: Blog/List

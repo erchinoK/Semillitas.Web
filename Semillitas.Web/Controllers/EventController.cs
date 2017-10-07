@@ -17,6 +17,12 @@ namespace Semillitas.Web.Controllers
         // GET: Event
         public ActionResult Index()
         {
+            return View(db.Event.Where(e => e.IsPublished).ToList());
+        }
+
+        // GET: Event
+        public ActionResult List()
+        {
             return View(db.Event.ToList());
         }
 

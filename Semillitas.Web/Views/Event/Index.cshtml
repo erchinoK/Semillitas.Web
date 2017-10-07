@@ -1,147 +1,45 @@
 ﻿@model IEnumerable<Semillitas.Web.Models.Event>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Nuestros Eventos";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+        <h3 class="separator-left">Inserte una descripcion aqui</h3>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Timetable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimetableNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LocationNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contact)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pdf)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PdfNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Layout)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsPublished)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationUserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifUserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Timetable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimetableNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contact)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pdf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PdfNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Layout)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsPublished)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+@{ int i = 0; }
+
+@foreach (var item in Model)
+{
+    <div class="col-sm-3 margin-bottom-50">
+        
+        <div class="item-event  border-color-@(i+1)-bold">
+
+            <div class="image">
+                <img src="~/Content/Images/desarrolloafectivo.jpg" class="img-responsive" alt="" />
+                @*@Html.DisplayFor(modelItem => item.ImagePreview)*@
+                <span class="date">@Html.DisplayFor(modelItem => item.Date)</span>
+            </div>
+
+            <h3 class="title">@Html.DisplayFor(modelItem => item.Title)</h3>
+
+            <div class="content bg-color-@(i+1)">  
+                <p class="location"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>@Html.DisplayFor(modelItem => item.Location)</p>
+                <p class="time separator-left"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>@Html.DisplayFor(modelItem => item.Timetable)</p>
+                <p class="description">@Html.DisplayFor(modelItem => item.Description)</p>
+                <a class="btn btn-primary" href="@Url.Action("Details", "Event", new { id = item.ID })">Ver m&aacute;s</a>
+            </div>
+
+        </div>
+
+    </div>
+    i = ((i + 1) % 6);
 }
+</div>
 
-</table>

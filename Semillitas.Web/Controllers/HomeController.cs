@@ -9,35 +9,59 @@ namespace Semillitas.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            // Checking if the cookies has been accepted and if marketing should be displayed
-            ViewBag.CookiesAccepted = false;
-            ViewBag.HideMarketing = false;
-            try
-            {
-                if (HttpContext.Request.Cookies.AllKeys.Contains("SemillitasCookie"))
-                {
-                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["SemillitasCookie"];
+            // Checking if the cookies has been accepted
+            ViewBag.CookiesAccepted = CheckCookiesAccepted();
 
-                    bool cookiesAccepted = false;
-                    if (semillitasCookie.Values["IsAccepted"] != null)
-                        Boolean.TryParse(semillitasCookie.Values["IsAccepted"], out cookiesAccepted);
-                    ViewBag.CookiesAccepted = cookiesAccepted;
+            // Checking if marketing should be displayed
+            ViewBag.HideMarketing = CheckHideMarketing();
 
-                    bool hideMarketing = false;
-                    if (semillitasCookie.Values["HideMarketing"] != null)
-                        Boolean.TryParse(semillitasCookie.Values["HideMarketing"], out hideMarketing);
-                    ViewBag.HideMarketing = hideMarketing;
-                }
-
-            } catch (Exception e)
-            {
-            }
+            ViewBag.BlogEntries = db.Blog.Where(b => b.IsPublished).OrderBy(b => b.DatePublishment).Take(4).ToList<Models.Blog>();    
 
             return View();
         }
-        
+
+        public bool CheckCookiesAccepted()
+        {
+            bool cookiesAccepted = false;
+            try
+            {
+                if (HttpContext.Request.Cookies.AllKeys.Contains("cookie.consent"))
+                {
+                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["cookie.consent"];
+
+                    if (semillitasCookie.Value != null)
+                        Boolean.TryParse(semillitasCookie.Value, out cookiesAccepted);
+                }
+
+            }
+            catch (Exception e) { }
+
+            return cookiesAccepted;
+        }
+
+        public bool CheckHideMarketing()
+        {
+            bool hideMarketing = false;
+            try
+            {
+                if (HttpContext.Request.Cookies.AllKeys.Contains("subscription.visited"))
+                {
+                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["subscription.visited"];
+
+                    if (semillitasCookie.Value != null)
+                        Boolean.TryParse(semillitasCookie.Value, out hideMarketing);
+                }
+
+            }
+            catch (Exception e) { }
+
+            return hideMarketing;
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

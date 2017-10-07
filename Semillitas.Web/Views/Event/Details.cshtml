@@ -4,175 +4,82 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Timetable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Timetable)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TimetableNotes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TimetableNotes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LocationNotes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LocationNotes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Contact)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Contact)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactNotes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContactNotes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pdf)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pdf)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PdfNotes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PdfNotes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Layout)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Layout)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPublished)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsPublished)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationUserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreationUserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifUserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifUserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-
-    </dl>
+<div class="jumbotron">
+    <div class="container">
+        <h2>@Html.DisplayFor(model => model.Title)</h2>
+        <h3 class="separator-left">@Html.DisplayFor(model => model.Description)</h3>
+        <p class="date">Fecha: @Html.DisplayFor(model => model.Date)</p>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+
+    <div class="col-sm-3 simple-item simple-item-workshop">
+
+        <div class="content">
+            <div class="image">
+                <img src="~/Content/Images/Pin.png" alt="Location" class="img-responsive" />
+            </div>
+            <div class="description">
+                <span class="title">@Html.DisplayFor(model => model.Location)</span>
+                <p>@Html.DisplayFor(model => model.LocationNotes)</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-3 simple-item simple-item-workshop">
+
+        <div class="content">
+            <div class="image">
+                <img src="~/Content/Images/Clock.png" alt="Date" class="img-responsive" />
+            </div>
+            <div class="description">
+                <span class="title">@Html.DisplayFor(model => model.Timetable)</span>
+                <p>@Html.DisplayFor(model => model.TimetableNotes)</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-3 simple-item simple-item-workshop">
+
+        <div class="content">
+            <div class="image">
+                <img src="~/Content/Images/Phone.png" alt="Phone" class="img-responsive" />
+            </div>
+            <div class="description">
+                <span class="title">@Html.DisplayFor(model => model.Contact)</span>
+                <p>@Html.DisplayFor(model => model.ContactNotes)</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-3 simple-item simple-item-workshop">
+
+        <div class="content">
+            <div class="image">
+                <img src="~/Content/Images/Download.png" alt="Download" class="img-responsive" />
+            </div>
+            <div class="description">
+                <span class="title">Documento PDF</span>
+                <p>@Html.DisplayFor(model => model.PdfNotes)</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row margin-top-25 margin-bottom-25">
+
+    <div class="col-sm-6">
+
+        <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content)) </p>
+
+    </div>
+
+    <div class="col-sm-6">
+        <img src="@Url.Content("~/" + Model.Image)" alt="Evento" class="img-responsive" />
+    </div>
+</div>
