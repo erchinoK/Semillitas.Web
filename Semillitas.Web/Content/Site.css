@@ -9,6 +9,14 @@ Light Green #d1f8cb
 Pink #f4cfc9
 */
 
+h1 {
+    font-size: 45px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
 body {
     /*padding-top: 50px;*/
     /*padding-bottom: 20px;*/
@@ -244,7 +252,7 @@ textarea {
     height: 17px;
     margin-right: 10px;
 }
-.colum-item .icon.info {
+.column-item .icon.info {
     float: right;
 }
 
@@ -598,6 +606,18 @@ footer, .footer-bottom {
 }
 .item-link-image a {
     text-decoration: none;
+}
+
+.item-simple-title {
+    text-align: center;
+    margin: 40px 0 30px 0;
+}
+.item-simple-title h2 {
+
+}
+.item-simple-title p {
+    font-size: 20px;
+    color: #aaa;
 }
 
 

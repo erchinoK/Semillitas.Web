@@ -8,12 +8,6 @@ namespace Semillitas.Web.Models
 
     public enum test { Action, Drama, Comedy, Science_Fiction };
 
-    public class Variable
-    {
-        public string Name;
-        public string Value;
-    }
-
     public class RoleNames
     {
         public const string ROLE_ADMINISTRATOR = "ADMINISTRATOR";

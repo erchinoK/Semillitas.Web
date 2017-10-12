@@ -209,7 +209,12 @@
     <Compile Include="Migrations\201710052129555_add-marketing.Designer.cs">
       <DependentUpon>201710052129555_add-marketing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710111431551_add-variable.cs" />
+    <Compile Include="Migrations\201710111431551_add-variable.Designer.cs">
+      <DependentUpon>201710111431551_add-variable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\VariableModel.cs" />
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\MarketingModel.cs" />
     <Compile Include="Models\EventModel.cs" />
@@ -484,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710052129555_add-marketing.resx">
       <DependentUpon>201710052129555_add-marketing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710111431551_add-variable.resx">
+      <DependentUpon>201710111431551_add-variable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

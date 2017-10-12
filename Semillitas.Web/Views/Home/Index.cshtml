@@ -176,7 +176,7 @@
 
 <!-- Modal -->
 @{
-    if (!ViewBag.HideMarketing)
+    if (ViewBag.ShowModal)
     {
         <div class="modal fade modal-image-form" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-lg" role="document">
@@ -199,9 +199,11 @@
                                 {
                                     @Html.AntiForgeryToken()
                                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    <hr />
                                     <input type="submit" id="modal_send" value="Enviar" class="btn btn-primary" />
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                     <div id="modal_result"></div>
+                                    <br />
                                 }
                             </div>
                         </div>

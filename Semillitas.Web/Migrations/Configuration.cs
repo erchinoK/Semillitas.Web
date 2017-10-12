@@ -84,6 +84,12 @@ namespace Semillitas.Web.Migrations
                   new Membership { Code = MembershipCodes.MEMBERSHIP_DAILY, Name = "Daily", IsRegistrationRequired = false, NumberPayments = 1, PriceRegistration = 10, PriceFee = 0, Duration = "010000", CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" }
                 );
 
+            context.Variable.AddOrUpdate(
+                  v => v.Name,
+                  new Variable { Name = "SHOW_MODAL_INDEX", Value = "true", CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" },
+                  new Variable { Name = "SHOW_MODAL_INDEX_FORCE", Value = "true", CreationDate = DateTime.Now, CreationUserName = "Admin", ModifDate = DateTime.Now, ModifUserName = "Admin" }
+                );
+
 
 
         }

@@ -16,10 +16,12 @@ namespace Semillitas.Web.Controllers
             // Checking if the cookies has been accepted
             ViewBag.CookiesAccepted = CheckCookiesAccepted();
 
-            // Checking if marketing should be displayed
-            ViewBag.HideMarketing = CheckHideMarketing();
+            // Checking if modal should be displayed
+            ViewBag.ShowModal = CheckShowModal();
 
-            ViewBag.BlogEntries = db.Blog.Where(b => b.IsPublished).OrderBy(b => b.DatePublishment).Take(4).ToList<Models.Blog>();    
+            ViewBag.BlogEntries = db.Blog.Where(b => b.IsPublished).OrderBy(b => b.DatePublishment).Take(4).ToList<Models.Blog>();
+
+            
 
             return View();
         }
@@ -43,23 +45,46 @@ namespace Semillitas.Web.Controllers
             return cookiesAccepted;
         }
 
-        public bool CheckHideMarketing()
+
+        public bool CheckShowModal()
         {
-            bool hideMarketing = false;
+            bool showModalIndex = false;
+            bool showModalIndexForce = false;
+
+            // CHecking if we want to always show the modal
             try
             {
-                if (HttpContext.Request.Cookies.AllKeys.Contains("subscription.visited"))
-                {
-                    HttpCookie semillitasCookie = HttpContext.Request.Cookies["subscription.visited"];
+                var variable = db.Variable.Where(v => v.Name == "SHOW_MODAL_INDEX_FORCE").Single();
+                showModalIndexForce = Boolean.Parse(variable.Value);
+                if (showModalIndexForce) return true;
+            } catch (Exception e) { } 
 
-                    if (semillitasCookie.Value != null)
-                        Boolean.TryParse(semillitasCookie.Value, out hideMarketing);
+            // Checking if WE want to show the modal (checking later for cookies)
+            try
+            {
+                var variable = db.Variable.Where(v => v.Name == "SHOW_MODAL_INDEX").Single();
+                showModalIndex = variable.Value == "true";
+            } catch (Exception e) { }
+            
+            // Verifying if the USER already saw te modal
+            if (showModalIndex)
+            {                
+                try
+                {
+                    if (HttpContext.Request.Cookies.AllKeys.Contains("subscription.visited"))
+                    {
+                        HttpCookie semillitasCookie = HttpContext.Request.Cookies["subscription.visited"];
+
+                        bool subscriptionVisited = Boolean.Parse(semillitasCookie.Value);
+                        showModalIndex = !subscriptionVisited;
+                    }
+
                 }
+                catch (Exception e) { }
 
             }
-            catch (Exception e) { }
 
-            return hideMarketing;
+            return showModalIndex;
         }
 
         public ActionResult About()

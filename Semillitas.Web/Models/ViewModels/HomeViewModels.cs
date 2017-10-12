@@ -9,9 +9,10 @@ namespace Semillitas.Web.Models.ViewModels
 {
     public class HomeIndexViewModel
     {
-        [EmailAddress]
-        [Required]
+        [EmailAddress(ErrorMessage = "Por favor ingrese un email válido")]
+        [Required(ErrorMessage = "Por favor ingrese un email")]
         public string Email { get; set; }
+
     }
     
 }
