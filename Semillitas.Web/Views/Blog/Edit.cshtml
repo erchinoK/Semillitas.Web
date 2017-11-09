@@ -1,4 +1,8 @@
-﻿@model Semillitas.Web.Models.Blog
+﻿@section styles {
+    <link rel="Stylesheet" type="text/css" href="~/Content/jHtmlArea/jHtmlArea.css" />
+}
+
+@model Semillitas.Web.Models.Blog
 
 @{
     ViewBag.Title = "Edit";
@@ -35,7 +39,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextAreaFor(model => model.Content, htmlAttributes: new { @class = "htmlEditor", cols = 200, rows = 10 })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -125,3 +130,17 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section scripts {
+
+    <script type="text/javascript" src="~/Scripts/jHtmlArea-0.8.min.js"></script>
+
+    <script>
+
+        $(function () {
+            $(".htmlEditor").htmlarea();
+        });
+
+    </script>
+
+}

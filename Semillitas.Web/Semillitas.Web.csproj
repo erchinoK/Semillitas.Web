@@ -182,6 +182,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CookiesController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EnrollmentAdminController.cs" />
     <Compile Include="Controllers\EnrollmentController.cs" />
     <Compile Include="Controllers\EventController.cs" />
@@ -214,6 +215,7 @@
       <DependentUpon>201710111431551_add-variable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\VariableModel.cs" />
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\MarketingModel.cs" />
@@ -283,9 +285,12 @@
     <Content Include="Content\Images\Phone.png" />
     <Content Include="Content\Images\Pin.png" />
     <Content Include="Content\Images\pinterest.png" />
+    <Content Include="Content\Images\popup.jpg" />
     <Content Include="Content\Images\pregnant.jpg" />
     <Content Include="Content\Images\Semillitas.png" />
     <Content Include="Content\Images\siblings.jpg" />
+    <Content Include="Content\Images\slide-1.jpg" />
+    <Content Include="Content\Images\slide-2.jpg" />
     <Content Include="Content\Images\Spain-48.png" />
     <Content Include="Content\Images\Subway-100.png" />
     <Content Include="Content\Images\teacher.jpg" />
@@ -301,6 +306,12 @@
     <Content Include="Content\Images\yoga.png" />
     <Content Include="Content\Images\youtube.png" />
     <Content Include="Content\Images\zumba.png" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.Editor.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.png" />
+    <Content Include="Content\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
+    <Content Include="Content\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
     <Content Include="Content\paver.css" />
     <Content Include="Content\paver.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -344,6 +355,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Classes\Emails\Template1.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -367,6 +379,10 @@
     <Content Include="Scripts\ekko-lightbox.min.js" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jHtmlArea-0.8.js" />
+    <Content Include="Scripts\jHtmlArea-0.8.min.js" />
+    <Content Include="Scripts\jHtmlArea.ColorPickerMenu-0.8.js" />
+    <Content Include="Scripts\jHtmlArea.ColorPickerMenu-0.8.min.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -466,6 +482,7 @@
     <Content Include="Views\Marketing\Index.cshtml" />
     <Content Include="Views\Marketing\_MarketingSaved.cshtml" />
     <Content Include="Views\Event\List.cshtml" />
+    <Content Include="Views\Email\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
