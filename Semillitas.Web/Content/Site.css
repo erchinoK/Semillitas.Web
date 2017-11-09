@@ -164,7 +164,7 @@ textarea {
     padding: 2px 15px;
 }
 .carousel-caption {
-    bottom: 20%;
+    /*bottom: 20%;*/
 }
 
 .capital {
@@ -202,10 +202,6 @@ textarea {
     /*background-color: #dbfdff;*/
     color: #00aceb;
     padding: 3% 0;
-}
-
-.content-3 {
-    padding: 25px 0;
 }
 
 .column-item {
@@ -613,7 +609,7 @@ footer, .footer-bottom {
     margin: 40px 0 30px 0;
 }
 .item-simple-title h2 {
-
+    margin-top: 0;
 }
 .item-simple-title p {
     font-size: 20px;
