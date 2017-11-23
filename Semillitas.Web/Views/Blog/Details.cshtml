@@ -1,17 +1,31 @@
 ﻿@model Semillitas.Web.Models.Blog
 
+@section head {
+    <meta property="og:image" content="http://www.coachesneedsocial.com/wp-content/uploads/2014/12/BannerWCircleImages-1.jpg" />
+    <meta property="og:description" content="Coaches share their secrets to success so you can rock 2015. Join us for this inspiring, rejuvenating, motivating look at what secret sauce these coaches use to succeed in their business. This is for coaches of any level that are committed to changing the world. You will be elevated both in your life and your coaching business. Check out the topics below, there is something for everyone." />
+    <meta property="og:url" content="http://www.coachesneedsocial.com/coacheswisdomtelesummit/" />
+    <meta property="og:title" content="Coaches Wisdom Telesummit" />
+}
+
 @{
     ViewBag.Title = "Details";
 }
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-image: url('@Url.Content("~/Content/Images/jumbotron_blog.jpg")')">
     <div class="container">
-        <h2>@Html.DisplayFor(model => model.Title)</h2>
-        <h3 class="separator-left">@Html.DisplayFor(model => model.Description)</h3>
+        <h2>Noticias y Novedades</h2>
+        <h3 class="separator-left">Está al tanto de lo que tenemos para ofrecerte</h3>
     </div>
 </div>
 
-<div class="row  margin-top-25">
+<div class="row">
+
+    <div class="item-simple-title">
+        <h2 class="font-color-3">@Html.DisplayFor(model => model.Title)</h2>
+        <p>@Html.DisplayFor(model => model.Description)</p>
+    </div>    
+
+    <hr />
 
     @if (Model.Layout == "IMAGE_LEFT")
     {
@@ -72,7 +86,9 @@
         </div>
     }
 
-
+    
 
 
 </div>
+
+<div class="fb-share-button" data-href="@Url.Action("Edit", "Blog", new { id = Model.ID }, this.Request.Url.Scheme)" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>

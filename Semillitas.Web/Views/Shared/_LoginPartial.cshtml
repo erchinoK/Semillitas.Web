@@ -10,7 +10,7 @@
             @*@Html.ActionLink("Bienvenid@ " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
             <a href="@Url.Action("Index", "Manage")" title="Manage">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                Bienvenid&#64; @User.Identity.GetUserName()!
+                @User.Identity.GetUserName()!
             </a>
         </li>
         <li>

@@ -201,7 +201,8 @@ textarea {
 .content-2 {
     /*background-color: #dbfdff;*/
     color: #00aceb;
-    padding: 3% 0;
+    padding: 0;
+    padding-bottom: 3%;
 }
 
 .column-item {
@@ -237,6 +238,7 @@ textarea {
 .column-item .description .small, .column-item .description .separator-fixed {
     font-size: 0.5em;
     line-height: 2;
+    display: block;
 }
 .column-item .more p {
     border-bottom: 1px solid #ececec;
@@ -328,6 +330,14 @@ textarea {
     font-weight: bold;
 }
 
+.fb-like {
+    margin: 10px 0;
+}
+
+.fb-share-button {
+    margin: 10px 0;
+}
+
 footer, .footer-bottom {
     background-color: #fa4700;
     color: #fff;
@@ -384,9 +394,9 @@ footer, .footer-bottom {
 
 .container-fluid .jumbotron {
     border-radius: 0;
-    background-image: url("Images/kids-blocks_02.jpg");
+    background-image: url("Images/jumbotron_about.jpg");
     background-repeat: repeat;
-    background-position: center center;
+    background-position: left center;
     /*background-attachment: fixed;*/
     margin: 0 -15px;
     color: #fff;

@@ -173,11 +173,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Global.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Global.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\HtmlHelperExtensions.cs" />
+    <Compile Include="Classes\LocalizationAttribute.cs" />
+    <Compile Include="Classes\LocalizedControllerActivator.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Classes\UrlHelperExtensions.cs" />
     <Compile Include="Classes\Utility.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -247,10 +261,13 @@
     <Content Include="Content\Images\birthday.jpg" />
     <Content Include="Content\Images\Bus-100.png" />
     <Content Include="Content\Images\Car-100.png" />
+    <Content Include="Content\Images\Catalan-48.png" />
     <Content Include="Content\Images\Clock.png" />
+    <Content Include="Content\Images\construccion.jpg" />
     <Content Include="Content\Images\desarrolloafectivo.jpg" />
     <Content Include="Content\Images\Download.png" />
     <Content Include="Content\Images\Email-64.png" />
+    <Content Include="Content\Images\events.png" />
     <Content Include="Content\Images\Facebook-48.png" />
     <Content Include="Content\Images\Facebook-White-48.png" />
     <Content Include="Content\Images\facebook.png" />
@@ -262,6 +279,10 @@
     <Content Include="Content\Images\Great Britain-48.png" />
     <Content Include="Content\Images\gym.png" />
     <Content Include="Content\Images\homework.png" />
+    <Content Include="Content\Images\index_eventos.jpg" />
+    <Content Include="Content\Images\index_instalaciones.jpg" />
+    <Content Include="Content\Images\index_talleres.jpg" />
+    <Content Include="Content\Images\indoor.png" />
     <Content Include="Content\Images\Info-100.png" />
     <Content Include="Content\Images\Info-48.png" />
     <Content Include="Content\Images\Instagram-48.png" />
@@ -269,10 +290,19 @@
     <Content Include="Content\Images\instagram.png" />
     <Content Include="Content\Images\iStock-544357260.jpg" />
     <Content Include="Content\Images\iStock-544654620.jpg" />
+    <Content Include="Content\Images\jumbotron_about.jpg" />
+    <Content Include="Content\Images\jumbotron_blog.jpg" />
+    <Content Include="Content\Images\jumbotron_contacto.jpg" />
+    <Content Include="Content\Images\jumbotron_eventos.jpg" />
+    <Content Include="Content\Images\jumbotron_instalaciones.jpg" />
+    <Content Include="Content\Images\jumbotron_planes.jpg" />
+    <Content Include="Content\Images\jumbotron_talleres.jpg" />
     <Content Include="Content\Images\kid-balls.png" />
     <Content Include="Content\Images\kid-bucket.png" />
     <Content Include="Content\Images\kids-blocks_02.jpg" />
     <Content Include="Content\Images\kids-circle.png" />
+    <Content Include="Content\Images\language.png" />
+    <Content Include="Content\Images\library.png" />
     <Content Include="Content\Images\Ludoteca-responsive.jpg" />
     <Content Include="Content\Images\Marker-64.png" />
     <Content Include="Content\Images\massage.png" />
@@ -291,6 +321,7 @@
     <Content Include="Content\Images\siblings.jpg" />
     <Content Include="Content\Images\slide-1.jpg" />
     <Content Include="Content\Images\slide-2.jpg" />
+    <Content Include="Content\Images\slide-3.jpg" />
     <Content Include="Content\Images\Spain-48.png" />
     <Content Include="Content\Images\Subway-100.png" />
     <Content Include="Content\Images\teacher.jpg" />
@@ -377,6 +408,14 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ekko-lightbox.js" />
     <Content Include="Scripts\ekko-lightbox.min.js" />
+    <Content Include="App_GlobalResources\Global.ca.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+    </Content>
+    <EmbeddedResource Include="App_GlobalResources\Global.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="Properties\PublishProfiles\Default.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jHtmlArea-0.8.js" />
@@ -460,10 +499,7 @@
     <Content Include="Views\Home\Plans.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Home\Workshops.cshtml" />
-    <Content Include="Views\Home\Events.cshtml" />
-    <Content Include="Views\Home\Blog.cshtml" />
     <Content Include="Views\Home\UnderConstruction.cshtml" />
-    <Content Include="Views\Home\BlogEntry.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Blog\Delete.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
@@ -486,7 +522,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cookies\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -495,6 +530,13 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\Global.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Global.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Global.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+    </Content>
     <EmbeddedResource Include="Migrations\201708311858155_Initial.resx">
       <DependentUpon>201708311858155_Initial.cs</DependentUpon>
     </EmbeddedResource>

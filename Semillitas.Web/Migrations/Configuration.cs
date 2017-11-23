@@ -50,13 +50,13 @@ namespace Semillitas.Web.Migrations
             //context.SaveChanges();
 
             // Creating users
-            if (userManager.FindByName("admin@semillitas.com") == null)
+            if (userManager.FindByName("admin@ludotecasemillitas.com") == null)
             {
                 var user = new ApplicationUser()
                 {
-                    UserName = "admin@semillitas.com",
+                    UserName = "admin@ludotecasemillitas.com",
                     FirstName = "Admin",
-                    Email = "admin@semillitas.com"
+                    Email = "admin@ludotecasemillitas.com"
                 };
                 var userResult = userManager.Create(user, string.Format("admin12345"));
                 if (userResult.Succeeded)

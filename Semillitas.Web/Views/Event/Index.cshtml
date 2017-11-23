@@ -1,45 +1,62 @@
 ﻿@model IEnumerable<Semillitas.Web.Models.Event>
 
 @{
-    ViewBag.Title = "Nuestros Eventos";
+    ViewBag.Title = "Fiestas y Eventos";
 }
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-image: url('@Url.Content("~/Content/Images/jumbotron_eventos.jpg")')">
     <div class="container">
         <h2>@ViewBag.Title</h2>
-        <h3 class="separator-left">Inserte una descripcion aqui</h3>
+        <h3 class="separator-left">Ven y disfruta de nuestras fiestas temáticas</h3>
     </div>
 </div>
 
 <div class="row">
 
+    <div class="item-simple-title">
+        <h2 class="font-color-4">También ofrecemos alquiler de nuestros espacios</h2>
+        <p>Contáctanos para recibir más información</p>
+    </div>
+
+    <hr />
+
 @{ int i = 0; }
-
-@foreach (var item in Model)
+    
+@if (Model.Count() == 0)
 {
-    <div class="col-sm-3 margin-bottom-50">
-        
-        <div class="item-event  border-color-@(i+1)-bold">
+    <div class="item-simple-title">
+        <p>No existen eventos aún</p>
+    </div>
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="col-sm-3 margin-bottom-50">
 
-            <div class="image">
-                <img src="~/Content/Images/desarrolloafectivo.jpg" class="img-responsive" alt="" />
-                @*@Html.DisplayFor(modelItem => item.ImagePreview)*@
-                <span class="date">@Html.DisplayFor(modelItem => item.Date)</span>
-            </div>
+            <div class="item-event  border-color-@(i+1)-bold">
 
-            <h3 class="title">@Html.DisplayFor(modelItem => item.Title)</h3>
+                <div class="image">
+                    <img src="~/Content/Images/desarrolloafectivo.jpg" class="img-responsive" alt="" />
+                    @*@Html.DisplayFor(modelItem => item.ImagePreview)*@
+                    <span class="date">@Html.DisplayFor(modelItem => item.Date)</span>
+                </div>
 
-            <div class="content bg-color-@(i+1)">  
-                <p class="location"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>@Html.DisplayFor(modelItem => item.Location)</p>
-                <p class="time separator-left"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>@Html.DisplayFor(modelItem => item.Timetable)</p>
-                <p class="description">@Html.DisplayFor(modelItem => item.Description)</p>
-                <a class="btn btn-primary" href="@Url.Action("Details", "Event", new { id = item.ID })">Ver m&aacute;s</a>
+                <h3 class="title">@Html.DisplayFor(modelItem => item.Title)</h3>
+
+                <div class="content bg-color-@(i+1)">
+                    <p class="location"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>@Html.DisplayFor(modelItem => item.Location)</p>
+                    <p class="time separator-left"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>@Html.DisplayFor(modelItem => item.Timetable)</p>
+                    <p class="description">@Html.DisplayFor(modelItem => item.Description)</p>
+                    <a class="btn btn-primary" href="@Url.Action("Details", "Event", new { id = item.ID })">Ver m&aacute;s</a>
+                </div>
+
             </div>
 
         </div>
-
-    </div>
-    i = ((i + 1) % 6);
+        i = ((i + 1) % 6);
+    }
 }
+
 </div>
 

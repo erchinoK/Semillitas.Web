@@ -20,27 +20,22 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-        <div class="item">
+        @*<div class="item">
             <img src="~/Content/Images/desarrolloafectivo.jpg" alt="Los Angeles">
             <div class="carousel-caption">
                 <h1 class="hidden-xs"><span class="highlight">Semillitas</span></h1>
                 <p class="lead hidden-xs"><span class="highlight">La Ludoteca donde aprendes jugando</span></p>
                 <p class="lead visible-xs"><span class="highlight highlight-slim">La Ludoteca donde aprendes jugando</span></p>
-                @*<p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
             </div>
-        </div>
+        </div>*@
         <div class="item active">
-            <img src="~/Content/Images/slide-1.jpg" alt="Semillitas">
+            <img src="~/Content/Images/slide-1.jpg" alt="Pronto abriremos nuestras puertas">
+        </div>
+        <div class="item">
+            <img src="~/Content/Images/slide-2.jpg" alt="Planes desde &euro;25 al día">
             <div class="carousel-caption">
                 <p class="hidden-xs"><a href="@Url.Action("Plans", "Home")" class="btn btn-primary btn-lg">Más información</a></p>
                 <p class="visible-xs"><a href="@Url.Action("Plans", "Home")" class="btn btn-primary btn-sm">Más información</a></p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/Content/Images/slide-2.jpg" alt="Semillitas">
-            <div class="carousel-caption">
-                <p class="hidden-xs"><a href="@Url.Action("Gallery", "Home")" class="btn btn-primary btn-lg">Más información</a></p>
-                <p class="visible-xs"><a href="@Url.Action("Gallery", "Home")" class="btn btn-primary btn-sm">Más información</a></p>
             </div>
         </div>
 
@@ -65,54 +60,54 @@
 
 <div class="row content-2">
     <div class="item-simple-title">
-        <p>Inserte un texto aqui para describir esta seccion</p>
+        <p>Tenemos muchos servicios y comodidades que ofrecerte</p>
         <h2 class="font-color-4 separator-middle">Nuestras actividades</h2>
     </div>
 
-    <div class="col-sm-6 col-md-3 item-link-image">
+    <div class="col-sm-6 col-md-4 item-link-image">
         <a href="@Url.Action("Index", "Event")" class="">
-            <img src="~/Content/Images/birthday.jpg" alt="..." class="img-responsive">
+            <img src="~/Content/Images/index_eventos.jpg" alt="..Fiestas y Eventos" class="img-responsive">
             <div class="caption bg-color-1">
                 Fiestas y Eventos
             </div>
         </a>
     </div>
-    <div class="col-sm-6 col-md-3 item-link-image">
+    <div class="col-sm-6 col-md-4 item-link-image">
         <a href="@Url.Action("Workshops", "Home")" class="">
-            <img src="~/Content/Images/workshop.jpg" alt="..." class="img-responsive">
+            <img src="~/Content/Images/index_talleres.jpg" alt="Talleres" class="img-responsive">
             <div class="caption bg-color-2">
                 Talleres
             </div>
         </a>
     </div>
-    <div class="col-sm-6 col-md-3 item-link-image">
+    <div class="col-sm-6 col-md-4 item-link-image">
         <a href="@Url.Action("Gallery", "Home")" class="">
-            <img src="~/Content/Images/teacher.jpg" alt="..." class="img-responsive">
+            <img src="~/Content/Images/index_instalaciones.jpg" alt="Instalaciones" class="img-responsive">
             <div class="caption bg-color-3">
                 Instalaciones
             </div>
         </a>
     </div>
-    <div class="col-sm-6 col-md-3 item-link-image">
+    @*<div class="col-sm-6 col-md-3 item-link-image">
         <a href="@Url.Action("Details", "Blog", new { id = 1 })" class="">
             <img src="~/Content/Images/siblings.jpg" alt="..." class="img-responsive">
             <div class="caption bg-color-4">
                 Descuentos para hermanos
             </div>
         </a>
-    </div>
+    </div>*@
 </div>
 
 <div class="row content-1">
 
     <div class="item-simple-title">
-        <p style="color: #fff;">Inserte un texto aqui para describir esta seccion</p>
+        <p style="color: #fff;">Escoge el programa que más se adapte a ti</p>
         <h2 class="font-color-0 separator-middle">Planes y Servicios</h2>
     </div>
     <p>
         <a href="@Url.Action("Plans", "Home")" class="btn btn-primary">
             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-            Mas información
+            Más información
         </a>
     </p>
 </div>
@@ -156,37 +151,46 @@
 
 <div class="row content-3">
     
-    <div class="item-simple-title">
-        <p>Inserte un texto aqui para describir esta seccion</p>
-        <h2 class="font-color-2 separator-middle">Noticias y Novedades</h2>
-    </div>
-
     @{
         int i = 0;
         var BlogEntries = (List<Blog>)ViewBag.BlogEntries;
     }
 
-    @foreach (var item in BlogEntries)
+    @if (BlogEntries.Count() == 0)
     {
 
-        <div class="col-xs-12 col-sm-6">
-            <div class="item-content-image">
-                <div class="image">
-                    <img class="img-responsive" src="@Url.Content("~/" + item.Image)" alt="...">
-                </div>
-                <div class="content">
-                    <h4 class="separator-left">@Html.DisplayFor(modelItem => item.Title)</h4>
-                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                </div>
-                <a href="@Url.Action("Details", "Blog", new { id = item.ID })" class="bg-color-@(i+1)"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
-            </div>
+    }
+    else
+    {
+        <div class="item-simple-title">
+            <p>Está al tanto de lo que tenemos para ofrecerte</p>
+            <h2 class="font-color-2 separator-middle">Noticias y Novedades</h2>
         </div>
-        i = ((i + 1) % 6);
+
+        foreach (var item in BlogEntries)
+        {
+
+            <div class="col-xs-12 col-sm-6">
+                <div class="item-content-image">
+                    <div class="image">
+                        <img class="img-responsive" src="@Url.Content("~/" + item.Image)" alt="...">
+                    </div>
+                    <div class="content">
+                        <h4 class="separator-left">@Html.DisplayFor(modelItem => item.Title)</h4>
+                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+                    <a href="@Url.Action("Details", "Blog", new { id = item.ID })" class="bg-color-@(i+1)"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
+                </div>
+            </div>
+            i = ((i + 1) % 6);
+        }
+
+
+        <p class="text-center"><a href="@Url.Action("Index", "Blog")" class="btn btn-primary" role="button">Más Noticias</a></p>
+
     }
 
-
-    <p class="text-center"><a href="@Url.Action("Index", "Blog")" class="btn btn-primary" role="button">Más Noticias</a></p>
-
+    
 </div>
 
 
@@ -209,7 +213,7 @@
                             <div class="col-xs-12 item-content text-center">
                                 <br />
                                 <h1 class="separator-middle hidden-xs">¿Tienes algún interés en recibir actualizaciones y novedades?</h1>
-                                <p>Ingrese su correo electrónico y recibirá noticias, promociones y eventos</p>
+                                <p>Ingresa tu correo electrónico y recibirás noticias, promociones y eventos</p>
                                 @using (Ajax.BeginForm("Create", "Marketing", new AjaxOptions
                                 {
                                     HttpMethod = "POST",
@@ -218,7 +222,7 @@
                                 }))
                                 {
                                     @Html.AntiForgeryToken()
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder="Ingrese su correo", @class = "form-control center-block input-lg" } })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder= "Ingresa tu correo electrónico", @class = "form-control center-block input-lg" } })
                                     <hr />
                                     <input type="submit" id="modal_send" value="Enviar" class="btn btn-primary btn-lg" />
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger center-block" })
@@ -244,7 +248,7 @@
             <button id="alert-close" type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Nuestro sitio Web utiliza cookies para ofrecerle un mejor servicio. Al continuar navegando en nuestra p&aacute;gina usted est&aacute; aceptando el <a href="#">uso de cookies</a></p>
+            <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Nuestro sitio Web utiliza cookies para ofrecerte un mejor servicio. Al continuar navegando en nuestra p&aacute;gina estas aceptando el <a href="#">uso de cookies</a></p>
         </div>
     }
 }

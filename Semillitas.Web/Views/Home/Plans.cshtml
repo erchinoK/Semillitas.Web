@@ -1,15 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Planes";
+    ViewBag.Title = "Planes y Servicios";
 }
 
 @section Styles {
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
 }
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-image: url('@Url.Content("~/Content/Images/jumbotron_planes.jpg")')">
     <div class="container">
         <h2>@ViewBag.Title.</h2>
-        <h3 class="separator-left">@ViewBag.Message</h3>
+        <h3 class="separator-left">Escoge el programa que más se adapte a ti</h3>
     </div>
 </div>
 
@@ -109,7 +109,7 @@
 
     <div class="item-simple-title">
         <h2 class="font-color-3">Nuestras actividades</h2>
-        <p>Inserte un texto aqui para describir esta seccion</p>
+        <p>Todos nuestros servicios están pensados para ti y tus hij@s</p>
     </div>
 
     <div class="col-sm-3 item-icon-switch">
@@ -120,7 +120,7 @@
             <div class="col-xs-12 col-sm-9 content">
                 <span class="title">Baby Gym</span>
                 <p>A partir de los 4 meses hasta los 2 anos</p>
-                <a href="@Url.Action("Workshops")#gym"><span class="glyphicon glyphicon-chevron-right"></span>Ver mas</a>
+                <a href="@Url.Action("Workshops")#gym"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
             </div>
         </div>
     </div>
@@ -133,7 +133,7 @@
             <div class="col-xs-12 col-sm-9 content">
                 <span class="title">Masajes infantiles</span>
                 <p>Para ninos de 4 meses a un ano y medio</p>
-                <a href="@Url.Action("Workshops")#masajes"><span class="glyphicon glyphicon-chevron-right"></span>Ver mas</a>
+                <a href="@Url.Action("Workshops")#masajes"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
             </div>
         </div>
     </div>
@@ -146,7 +146,7 @@
             <div class="col-xs-12 col-sm-9 content">
                 <span class="title">Taller de Art &Aacute; Craft</span>
                 <p>A partir de los dos anos</p>
-                <a href="@Url.Action("Workshops")#art"><span class="glyphicon glyphicon-chevron-right"></span>Ver mas</a>
+                <a href="@Url.Action("Workshops")#art"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
             </div>
         </div>
     </div>
@@ -159,7 +159,7 @@
             <div class="col-xs-12 col-sm-9 content">
                 <span class="title">Lactancia para primerizas</span>
                 <p>Comadrona disponible</p>
-                <a href="@Url.Action("Workshops")#lactancia"><span class="glyphicon glyphicon-chevron-right"></span>Ver mas</a>
+                <a href="@Url.Action("Workshops")#lactancia"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
             </div>
         </div>
     </div>
@@ -176,7 +176,7 @@
             <div class="col-xs-12 col-sm-9 content">
                 <span class="title">Clases de Zumba</span>
                 <p>A partir de los 6 anos, Zumba con padres</p>
-                <a href="@Url.Action("Workshops")#zumba"><span class="glyphicon glyphicon-chevron-right"></span>Ver mas</a>
+                <a href="@Url.Action("Workshops")#zumba"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
             </div>
         </div>
     </div>
@@ -189,7 +189,7 @@
             <div class="col-xs-12 col-sm-9 content">
                 <span class="title">Yoga</span>
                 <p>Prenatal, postnatal y yoga con ninos y padres</p>
-                <a href="@Url.Action("Workshops")#yoga"><span class="glyphicon glyphicon-chevron-right"></span>Ver mas</a>
+                <a href="@Url.Action("Workshops")#yoga"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
             </div>
         </div>
     </div>
@@ -201,7 +201,59 @@
             </div>
             <div class="col-xs-12 col-sm-9 content">
                 <span class="title">Tareas dirigidas</span>
-                <p>A partir de los 6 anos</p>
+                <p>A partir de los 6 anos. Lunes a viernes 5-7pm</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 item-icon-switch">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 icon">
+                <img src="~/Content/Images/indoor.png" alt="Indoor" class="img-responsive" />
+            </div>
+            <div class="col-xs-12 col-sm-9 content">
+                <span class="title">Patio</span>
+                <p>Patio de juegos internos para todas las edades</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-sm-3 item-icon-switch">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 icon">
+                <img src="~/Content/Images/events.png" alt="Events" class="img-responsive" />
+            </div>
+            <div class="col-xs-12 col-sm-9 content">
+                <span class="title">Fiestas</span>
+                <p>Alquiler del local para fiestas temáticas</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 item-icon-switch">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 icon">
+                <img src="~/Content/Images/language.png" alt="Languages" class="img-responsive" />
+            </div>
+            <div class="col-xs-12 col-sm-9 content">
+                <span class="title">Multi-lenguaje</span>
+                <p>Las actividades se impartirán en tres idiomas: Catalán, Castellano e Inglés</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 item-icon-switch">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 icon">
+                <img src="~/Content/Images/library.png" alt="Library" class="img-responsive" />
+            </div>
+            <div class="col-xs-12 col-sm-9 content">
+                <span class="title">Biblioteca</span>
+                <p>Sala de biblioteca para todas las edades</p>
             </div>
         </div>
     </div>
@@ -225,28 +277,34 @@
 
     <div class="item-simple-title">
         <h2 class="font-color-4">Paquetes principales </h2>
-        <p>Inserte un texto aqui para describir esta seccion</p>
+        <p>Nuestros planes de afiliación están pensados para cualquier necesidad</p>
     </div>    
 
     <div class="col-sm-6 col-md-4 column-item">
         <div class="content">
             <div class="title">
-                12 meses
+                1 día
             </div>
             <div class="description bg-color-4">
-                &euro; 150.00
+                &euro; 25.00
+                <span class="small">Unico pago</span>
                 <span class="separator-fixed"></span>
-                <span class="small">Mensual</span>
+                <span class="small">Sin Inscripción</span>
             </div>
             <div class="more">
-                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Entrada ilimitada</p>
+                <p><img src="~/Content/Images/No-50.png" alt="No" class="icon" />Horario definido</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Baby gym</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Masajes infantiles</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Taller de Art &amp; Craft</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Lactancia para primerizas</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Clases de Zumba</p>
-                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Yoga</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Yoga <img src="~/Content/Images/Info-48.png" alt="Info" class="icon info" data-toggle="tooltip" title="Participación de padres: &euro;12" /></p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Salas de juegos</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Alquiler para fiestas</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Multi-lenguaje</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Biblioteca</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Patio</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Descuento a hermanos</p>
             </div>
         </div>
     </div>
@@ -254,22 +312,29 @@
     <div class="col-sm-6 col-md-4 column-item">
         <div class="content">
             <div class="title">
-                20 dias
+                Cupón 10 pases (1 mes)
             </div>
             <div class="description bg-color-5">
-                &euro; 50.00
-                <span class="separator-fixed"></span>
+                &euro; 200.00
                 <span class="small">Unico pago</span>
+                <span class="separator-fixed"></span>
+                <span class="small">Sin Inscripción</span>
             </div>
             <div class="more">
-                <p><img src="~/Content/Images/No-50.png" alt="No" class="icon" />Entrada ilimitada<img src="~/Content/Images/Info-48.png" alt="Info" class="icon info" data-toggle="tooltip" title="Estancia de 2pm a 6pm"/></p>
+                <p><img src="~/Content/Images/No-50.png" alt="No" class="icon" />Horario definido</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Baby gym</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Masajes infantiles</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Taller de Art &amp; Craft</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Lactancia para primerizas</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Clases de Zumba</p>
-                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Yoga</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Yoga 
+                    <img src="~/Content/Images/Info-48.png" alt="Info" class="icon info" data-toggle="tooltip" title="Participación de padres: &euro;12" /></p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Salas de juegos</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Alquiler para fiestas</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Multi-lenguaje</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Biblioteca</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Patio</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Descuento a hermanos</p>
             </div>
         </div>
     </div>
@@ -277,22 +342,28 @@
     <div class="col-sm-6 col-md-4 column-item">
         <div class="content">
             <div class="title">
-                1 dia
+                Taller After Schoolers
             </div>
             <div class="description bg-color-6">
-                &euro; 10.00
+                &euro; 350.00
+                <span class="small">Pago Mensual</span>
                 <span class="separator-fixed"></span>
-                <span class="small">Unico pago</span>
+                <span class="small">+ &euro; 200 Inscripción</span>
             </div>
             <div class="more">
-                <p><img src="~/Content/Images/No-50.png" alt="No" class="icon" />Entrada ilimitada<img src="~/Content/Images/Info-48.png" alt="Info" class="icon info" data-toggle="tooltip" title="Estancia de 2pm a 6pm" /></p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Horario definido<img src="~/Content/Images/Info-48.png" alt="Info" class="icon info" data-toggle="tooltip" title="2pm a 8pm" /></p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Baby gym</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Masajes infantiles</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Taller de Art &amp; Craft</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Lactancia para primerizas</p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Clases de Zumba</p>
-                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Yoga</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Yoga <img src="~/Content/Images/Info-48.png" alt="Info" class="icon info" data-toggle="tooltip" title="Participación de padres: &euro;12" /></p>
                 <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Salas de juegos</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Alquiler para fiestas</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Multi-lenguaje</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Biblioteca</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Patio</p>
+                <p><img src="~/Content/Images/Ok-48.png" alt="Yes" class="icon" />Descuento a hermanos</p>
             </div>
         </div>
     </div>

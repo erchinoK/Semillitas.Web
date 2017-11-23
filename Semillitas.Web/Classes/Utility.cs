@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 
 namespace Semillitas.Web.Classes
@@ -21,6 +22,11 @@ namespace Semillitas.Web.Classes
             result = originalDate.AddDays(days).AddMonths(months).AddYears(years);
 
             return result;
+        }
+
+        public static string GetLanguage()
+        {
+            return Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
         }
     }
 }

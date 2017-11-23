@@ -4,16 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="~/Content/Images/favicon.png">
-    <title>@ViewBag.Title - Ludoteca Semillitas</title>
+    <title>@ViewBag.Title - Semillitas</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
+    @RenderSection("head", required: false)
     @*Menu*@ 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet"> 
 
 </head>
 <body>
+
+    <div id="fb-root"></div>
+    <script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1704749536215417';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
     <div class="navbar navbar-static-top navbar-inverse navbar-slim hidden-xs">
         <div class="container">
             <ul class="nav navbar-nav navbar-left">
@@ -31,37 +44,46 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                @*<li>
-                    <a href="@Url.Action("Index", "Home")">
-                        <img alt="Espanol" src="~/Content/Images/Spain-48.png">
-                        Espanol
-                    </a>
-                </li>*@
-                <li>
-                    <a href="@Url.Action("Index", "Home")">
-                        <img alt="English" src="~/Content/Images/Great Britain-48.png">
-                        English
-                    </a>
-                </li>
+                @if (Semillitas.Web.Classes.Utility.GetLanguage() != "ca")
+                {
+                    <li>
+                        <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "ca" })">
+                            <img alt="Catalan" src="~/Content/Images/Catalan-48.png">
+                            Catalan
+                        </a>
+                    </li>
+                }
+                @if (Semillitas.Web.Classes.Utility.GetLanguage() != "es")
+                {
+                    <li>
+                        <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "es" })">
+                            <img alt="Espanol" src="~/Content/Images/Spain-48.png">
+                            Espanol
+                        </a>
+                    </li>
+                }
+                @if (Semillitas.Web.Classes.Utility.GetLanguage() != "en")
+                {
+                    <li>
+                        <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "en" })">
+                            <img alt="English" src="~/Content/Images/Great Britain-48.png">
+                            English
+                        </a>
+                    </li>
+                }
             </ul>
             @Html.Partial("_LoginPartial")
-            <ul class="nav navbar-nav navbar-right">
+            @*<ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
                 </li>
-                @*<li>
-                    <a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>
-                </li>*@
                 <li>
                     <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
                 </li>
                 <li>
                     <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
                 </li>
-                @*<li>
-                    <a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>
-                </li>*@
-            </ul>
+            </ul>*@
         </div>
     </div>
 
@@ -93,20 +115,11 @@
                     <li class="navbar-nav-1">@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li class="navbar-nav-2">@Html.ActionLink("Quienes Somos", "About", "Home")</li>
                     <li class="navbar-nav-3">@Html.ActionLink("Planes", "Plans", "Home")</li>
-                    @*<li class="dropdown navbar-nav-3">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-                           aria-haspopup="true" aria-expanded="false">Planes <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Membresia Anual", "Plans", "Home")</li>    
-                            <li>@Html.ActionLink("Plan 1 Mes", "Plans", "Home")</li>    
-                            <li>@Html.ActionLink("Pase Diario", "Plans", "Home")</li>    
-                        </ul>
-                    </li>*@
                     <li class="dropdown navbar-nav-4">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">De Interes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Galeria", "Gallery", "Home")</li>
+                            <li>@Html.ActionLink("Instalaciones", "Gallery", "Home")</li>
                             <li>@Html.ActionLink("Talleres", "Workshops", "Home")</li>
                             <li>@Html.ActionLink("Eventos", "Index", "Event")</li>
                             <li>@Html.ActionLink("Novedades", "Index", "Blog")</li>
@@ -117,29 +130,42 @@
                     <li class="navbar-nav-5">@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 </ul>
                 <div class="visible-xs">
-                    <ul class="nav navbar-nav navbar-right navbar-social-xs">
+                    @*<ul class="nav navbar-nav navbar-right navbar-social-xs">
                         <li>
                             <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
-                            @*<a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>*@
                             <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
                             <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
-                            @*<a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>*@                        
                         </li>
-                    </ul>
+                    </ul>*@
                     @Html.Partial("_LoginPartial")
                     <ul class="nav navbar-nav navbar-right">
-                        @*<li>
-                            <a href="@Url.Action("Index", "Home")">
-                                <img alt="Espanol" src="~/Content/Images/Spain-48.png" style="height: 25px">
-                                Espanol
-                            </a>
-                        </li>*@
-                        <li>
-                            <a href="@Url.Action("Index", "Home")">
-                                <img alt="English" src="~/Content/Images/Great Britain-48.png" style="height: 25px">
-                                English
-                            </a>
-                        </li>
+                        @if (Semillitas.Web.Classes.Utility.GetLanguage() != "ca")
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Home")"><a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "ca" })">
+                                    <img alt="Catalan" src="~/Content/Images/Catalan-48.png" style="height: 25px">
+                                    Catalan
+                                </a>
+                            </li>
+                        }
+                        @if (Semillitas.Web.Classes.Utility.GetLanguage() != "es")
+                        {
+                            <li>
+                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "es" })">
+                                    <img alt="Espanol" src="~/Content/Images/Spain-48.png" style="height: 25px">
+                                    Espanol
+                                </a>
+                            </li>
+                        }
+                        @if (Semillitas.Web.Classes.Utility.GetLanguage() != "en")
+                        {
+                            <li>
+                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "en" })">
+                                    <img alt="English" src="~/Content/Images/Great Britain-48.png" style="height: 25px">
+                                    English
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>                
             </div>
@@ -153,7 +179,10 @@
         <div class="row">
             
             @*Verifying if the menu for user/admin must be displayed*@
-            @if (!Request.RequestContext.RouteData.Values["controller"].ToString().Contains("Home") && User.Identity.IsAuthenticated)
+            @if (!Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Contains("home")
+                        && !Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Contains("event")
+                && !Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Contains("blog")
+                && User.Identity.IsAuthenticated)
             {
                 <div class="col-sm-2">
 
@@ -219,36 +248,36 @@
                     </div>
                     
                     <div class="media">
-                        <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
-                        @*<a href="http://www.youtube.com" class="btn-social" target="_blank"><img alt="Youtube" src="~/Content/Images/youtube.png" /></a>*@
-                        <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
-                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>                        
-                        @*<a href="http://www.pinterest.com" class="btn-social" target="_blank"><img alt="Pinterest" src="~/Content/Images/pinterest.png" /></a>*@                        
+                        <a href="https://www.facebook.com/ludotecasemillitas/" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
+                        @*<a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
+                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>*@                        
+                        
+                        <div class="fb-like" data-href="https://www.facebook.com/ludotecasemillitas/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
                     </div>
 
                 </div>
                 <div class="col-md-4">
                     <h3>Horario</h3>
                     <p class="pull-left">Lunes:</p>
-                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
+                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Martes:</p>
-                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
+                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Miércoles:</p>
-                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
+                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Jueves:</p>
-                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
+                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Viernes:</p>
-                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
+                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Sábado:</p>
-                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
+                    <p class="pull-right">2pm a 7pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Domingo:</p>
-                    <p class="pull-right">10am a 2pm / 4pm a 8pm</p>
+                    <p class="pull-right">2pm a 7pm</p>
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-4">
@@ -269,7 +298,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
+    
     @*<script>
         function myMap() {
             var mapProp= {
