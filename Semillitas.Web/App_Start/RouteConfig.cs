@@ -14,10 +14,19 @@ namespace Semillitas.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "DefaultLocalized",
+                url: "{language}/{controller}/{action}/{id}",
+                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new { language = @"[a-z]{2}|[a-z]{2}-[a-zA-Z]{2}" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            
         }
     }
 }
