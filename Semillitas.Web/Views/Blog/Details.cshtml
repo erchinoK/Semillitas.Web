@@ -30,7 +30,7 @@
     @if (Model.Layout == "IMAGE_LEFT")
     {
         <div class="col-xs-12 col-sm-6 margin-bottom-15">
-            <img src="@Url.Content("~" + Model.Image)" alt="Workshop" class="img-responsive" />
+            <img src="@Url.Content(Model.Image)" alt="Workshop" class="img-responsive" />
         </div>
 
         <div class="col-xs-12 col-sm-6 margin-bottom-50">
@@ -52,7 +52,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 margin-bottom-15">
-            <img src="@Url.Content("~" + Model.Image)" alt="Workshop" class="img-responsive" />
+            <img src="@Url.Content(Model.Image)" alt="Workshop" class="img-responsive" />
         </div>
 
 
@@ -60,7 +60,7 @@
     else if (Model.Layout == "IMAGE_TOP")
     {
         <div class="col-xs-12margin-bottom-15">
-            <img src="@Url.Content("~" + Model.Image)" alt="Workshop" class="img-responsive" />
+            <img src="@Url.Content(Model.Image)" alt="Workshop" class="img-responsive" />
         </div>
 
         <div class="col-xs-12">
@@ -82,7 +82,7 @@
         </div>
 
         <div class="col-xs-12">
-            <img src="@Url.Content("~" + Model.Image)" alt="Workshop" class="img-responsive" />
+            <img src="@Url.Content(Model.Image)" alt="Workshop" class="img-responsive" />
         </div>
     }
 

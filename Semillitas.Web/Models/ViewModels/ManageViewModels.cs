@@ -27,7 +27,7 @@ namespace Semillitas.Web.Models
 
     public class SetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Este campo es obligatorio")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
@@ -41,19 +41,19 @@ namespace Semillitas.Web.Models
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Este campo es obligatorio")]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Contraseña actual")]
         public string OldPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este campo es obligatorio")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nueva contraseña")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
+        [Display(Name = "Confirmar nueva contraseña")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }

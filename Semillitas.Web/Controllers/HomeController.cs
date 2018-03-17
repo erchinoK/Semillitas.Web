@@ -21,8 +21,8 @@ namespace Semillitas.Web.Controllers
 
             ViewBag.BlogEntries = db.Blog.Where(b => b.IsPublished).OrderBy(b => b.DatePublishment).Take(4).ToList<Models.Blog>();
 
+            ViewBag.Slides = db.Slide.Where(s => s.IsPublished).OrderBy(s => s.Position);
             
-
             return View();
         }
 

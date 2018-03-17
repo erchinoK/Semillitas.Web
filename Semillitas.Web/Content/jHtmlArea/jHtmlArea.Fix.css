@@ -1,0 +1,14 @@
+﻿div.jHtmlArea h1, 
+div.jHtmlArea a.h1, 
+div.jHtmlArea h2, 
+div.jHtmlArea .h2, 
+div.jHtmlArea h3, 
+div.jHtmlArea .h3, 
+div.jHtmlArea h4, 
+div.jHtmlArea .h4, 
+div.jHtmlArea h5, 
+div.jHtmlArea .h5, 
+div.jHtmlArea h6, 
+div.jHtmlArea .h6 {
+    margin: 0;
+}

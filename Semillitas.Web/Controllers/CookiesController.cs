@@ -54,7 +54,7 @@ namespace Semillitas.Web.Controllers
                     // Modifying the existing cookie
                     HttpCookie semillitasCookie = HttpContext.Request.Cookies["subscription.visited"];
                     semillitasCookie.Value = "true";
-                    semillitasCookie.Expires = DateTime.Now.AddDays(30);
+                    semillitasCookie.Expires = DateTime.Now.AddDays(1);
 
                     HttpContext.Response.Cookies.Add(semillitasCookie);
 
@@ -65,7 +65,7 @@ namespace Semillitas.Web.Controllers
                     // Creating a new cookie
                     HttpCookie newCookie = new HttpCookie("subscription.visited");
                     newCookie.Value = "true";
-                    newCookie.Expires = DateTime.Now.AddDays(30);
+                    newCookie.Expires = DateTime.Now.AddDays(1);
 
                     HttpContext.Response.Cookies.Add(newCookie);
                 }

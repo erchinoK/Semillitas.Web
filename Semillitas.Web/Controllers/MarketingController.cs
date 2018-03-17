@@ -11,6 +11,7 @@ using Semillitas.Web.Models.ViewModels;
 
 namespace Semillitas.Web.Controllers
 {
+    [Authorize(Roles = RoleNames.ROLE_ADMINISTRATOR)]
     public class MarketingController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

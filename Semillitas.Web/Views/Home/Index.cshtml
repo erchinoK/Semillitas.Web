@@ -13,9 +13,21 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
+        @*<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>*@
+        @{
+        int s = 0;
+        foreach (Slide slide in ViewBag.Slides)
+        {
+            <li data-target="#myCarousel" data-slide-to="@s" class="@(s==0?"active":"")"></li>
+
+        s = s + 1;
+    }
+    if (!((IQueryable<Slide>)ViewBag.Slides).Any())
+    {
+        <li data-target="#myCarousel" data-slide-to="0" class="active")"></li>
+}
+        }
     </ol>
 
     <!-- Wrapper for slides -->
@@ -28,7 +40,7 @@
                 <p class="lead visible-xs"><span class="highlight highlight-slim">La Ludoteca donde aprendes jugando</span></p>
             </div>
         </div>*@
-        <div class="item active">
+        @*<div class="item active">
             <img src="~/Content/Images/slide-1.jpg" alt="Pronto abriremos nuestras puertas">
         </div>
         <div class="item">
@@ -37,8 +49,30 @@
                 <p class="hidden-xs"><a href="@Url.Action("Plans", "Home")" class="btn btn-primary btn-lg">Más información</a></p>
                 <p class="visible-xs"><a href="@Url.Action("Plans", "Home")" class="btn btn-primary btn-sm">Más información</a></p>
             </div>
-        </div>
+        </div>*@
+        @{
+        s = 0;
+        foreach (Slide slide in ViewBag.Slides)
+        {
+            <div class="item @(s==0?"active":"")">
+                <img src="@Url.Content(slide.ImagePathEsp)" alt="@slide.Description">
+                @if (!String.IsNullOrEmpty(slide.Html))
+            {
+                <div class="carousel-caption">
+                    @Html.Raw(slide.Html)
+                </div>
+        }
+            </div>
 
+                s = s + 1;
+            }
+            if (!((IQueryable<Slide>)ViewBag.Slides).Any())
+            {
+        <div class="item active">
+            <img src="@Url.Content("~/Content/Images/slide-1.jpg")" alt="Ya abrimos nuestras puertas">
+        </div>
+    }
+    }
     </div>
 
     <!-- Left and right controls -->

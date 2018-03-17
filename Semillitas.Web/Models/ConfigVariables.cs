@@ -8,6 +8,10 @@ namespace Semillitas.Web.Models
 
     public enum test { Action, Drama, Comedy, Science_Fiction };
 
+    public class UploadDirectory {
+        public static String path = "~/_Uploaded";
+    }
+
     public class RoleNames
     {
         public const string ROLE_ADMINISTRATOR = "ADMINISTRATOR";
@@ -45,6 +49,23 @@ namespace Semillitas.Web.Models
         public const string METHOD_CREDITCARD = "CREDIT_CARD";
     }
 
+    public class ImageLayout
+    {
+        public const string IMAGE_TOP = "IMAGE_TOP";
+        public const string IMAGE_LEFT = "IMAGE_LEFT";
+        public const string IMAGE_RIGHT = "IMAGE_RIGHT";
+        public const string IMAGE_BOTTOM = "IMAGE_BOTTOM";
+        public const string IMAGE_NONE = "IMAGE_NONE";
+    }
+
+    public class ImageLayoutText
+    {
+        public const string IMAGE_TOP = "Imagen arriba";
+        public const string IMAGE_LEFT = "Imagen a la izquierda";
+        public const string IMAGE_RIGHT = "Imagen a la derecha";
+        public const string IMAGE_BOTTOM = "Imagen abajo";
+        public const string IMAGE_NONE = "Sin imagen";
+    }
     //public class Month
     //{
     //    public int ID;

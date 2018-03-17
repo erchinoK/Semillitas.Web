@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<Semillitas.Web.Models.Event>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Eventos";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<p>
+    @Html.ActionLink("Ver publicados", "Index")
 </p>
 <table class="table">
     <tr>
@@ -15,61 +18,19 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Timetable)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TimetableNotes)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LocationNotes)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Contact)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContactNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pdf)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PdfNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Layout)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.IsPublished)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationUserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifUserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
         </th>
         <th></th>
     </tr>
@@ -80,66 +41,24 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Timetable)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TimetableNotes)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationNotes)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Contact)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContactNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pdf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PdfNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Layout)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.IsPublished)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Ver", "Details", new { id = item.ID }, new { target = "_blank" }) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
         </td>
     </tr>
 }

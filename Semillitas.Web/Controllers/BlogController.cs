@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Semillitas.Web.Models;
+using Semillitas.Web.Models.ViewModels;
 
 namespace Semillitas.Web.Controllers
 {
+    [Authorize(Roles = RoleNames.ROLE_ADMINISTRATOR)]
     public class BlogController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -44,7 +46,9 @@ namespace Semillitas.Web.Controllers
         // GET: Blog/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new BlogCreateViewModel();
+
+            return View(model);
         }
 
         // POST: Blog/Create
@@ -52,16 +56,49 @@ namespace Semillitas.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Description,Content,Image,Layout,IsPublished,DatePublishment,CreationDate,CreationUserName,ModifDate,ModifUserName,Notes")] Blog blog)
+        public ActionResult Create([Bind(Include = "ID,Title,Description,Content,ImageFile,Layout,IsPublished,Notes")] BlogCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
+
+                String imagePath = "";
+                if (model.ImageFile != null)
+                {
+                    //string pic = System.IO.Path.GetFileName();
+                    //string newPic = System.IO.Path.GetFileNameWithoutExtension(file.FileName) + "_" + System.IO.Path.GetExtension(file.FileName);
+                    imagePath = System.IO.Path.Combine(UploadDirectory.path, model.ImageFile.FileName);
+                    // file is uploaded
+                    model.ImageFile.SaveAs(Server.MapPath(imagePath));                    
+                }
+
+                var blog = new Blog()
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    Content = model.Content,
+                    Image = imagePath,
+                    ImagePreview = imagePath,
+                    Layout = model.Layout,
+                    IsPublished = model.IsPublished,
+                    Notes = model.Notes,
+                    CreationDate = DateTime.Now,
+                    CreationUserName = User.Identity.Name,
+                    ModifDate = DateTime.Now,
+                    ModifUserName = User.Identity.Name
+                };
+
+                blog.DatePublishment = DateTime.Now;
+                //if (blog.IsPublished)
+                //{
+                //    blog.DatePublishment = DateTime.Now;
+                //}
+                
                 db.Blog.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(blog);
+            return View(model);
         }
 
         // GET: Blog/Edit/5
@@ -88,6 +125,14 @@ namespace Semillitas.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (blog.IsPublished)
+                {
+                    blog.DatePublishment = DateTime.Now;
+                }
+
+                blog.ModifDate = DateTime.Now;
+                blog.ModifUserName = User.Identity.Name;
+
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

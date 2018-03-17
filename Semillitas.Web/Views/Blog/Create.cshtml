@@ -2,18 +2,17 @@
     <link rel="Stylesheet" type="text/css" href="~/Content/jHtmlArea/jHtmlArea.css" />
 }
 
-@model Semillitas.Web.Models.Blog
+@model Semillitas.Web.Models.ViewModels.BlogCreateViewModel
 
 @{
     ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Blog</h4>
         <hr />
@@ -38,24 +37,28 @@
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.TextAreaFor(model => model.Content, htmlAttributes: new { @class = "htmlEditor", cols = 200, rows = 10 })    
+                @Html.TextAreaFor(model => model.Content, htmlAttributes: new { @class = "htmlEditor", cols = 200, rows = 10 })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
-            
+
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <mark class="">Dimension recomendada: 1220 x 730 pixeles</mark>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                <input type="file" name="@Html.NameFor(model => model.ImageFile)" id="@Html.IdFor(model => model.ImageFile)" />
+                @*<input type="file" name="@Html.NameFor(model => model.Image)" id="@Html.IdFor(model => model.Image)" />*@
+                @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Layout, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Layout, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Layout, Model.ImageLayoutList, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Layout, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.Layout, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -67,46 +70,6 @@
                     @Html.EditorFor(model => model.IsPublished)
                     @Html.ValidationMessageFor(model => model.IsPublished, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DatePublishment, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DatePublishment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatePublishment, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreationDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreationUserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreationUserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreationUserName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifUserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifUserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifUserName, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -131,7 +94,7 @@
 </div>
 
 @section scripts {
-    
+
     <script type="text/javascript" src="~/Scripts/jHtmlArea-0.8.min.js"></script>
 
     <script>

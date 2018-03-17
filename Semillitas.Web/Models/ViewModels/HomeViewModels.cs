@@ -9,6 +9,8 @@ namespace Semillitas.Web.Models.ViewModels
 {
     public class HomeIndexViewModel
     {
+        public virtual IList<Variable> Carousel { get; set; }
+
         [EmailAddress(ErrorMessage = "Por favor ingrese un email válido")]
         [Required(ErrorMessage = "Por favor ingrese un email")]
         public string Email { get; set; }

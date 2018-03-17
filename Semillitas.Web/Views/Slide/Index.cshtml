@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Semillitas.Web.Models.Slide>
+
+@{
+    ViewBag.Title = "Banners";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 margin-bottom-50">
+        <span><small>(@item.Position)</small></span>
+        @if (item.IsPublished)
+    {
+        <span class="text-success"><small>(Publicado)</small></span>
+}
+else
+{
+    <span class="text-danger"><small>(No publicado)</small></span>
+}
+
+        <img src="@Url.Content(item.ImagePathEsp)" class="img-responsive" alt="Slide" />
+
+        @if (item.IsPublished)
+    {
+        @Html.ActionLink("No publicar", "Publish", new { id = item.ID }) <br />
+}
+else
+{
+    @Html.ActionLink("Publicar", "Publish", new { id = item.ID }) <br />
+}
+        @Html.ActionLink("Editar", "Edit", new { id = item.ID })<br />
+        @Html.ActionLink("Subir", "Move", new { id = item.ID, dir = "up" })<br />
+        @Html.ActionLink("Bajar", "Move", new { id = item.ID, dir = "down" }) <br />
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
+    </div>
+
+    }
+</div>
+

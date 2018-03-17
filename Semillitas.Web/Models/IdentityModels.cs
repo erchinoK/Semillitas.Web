@@ -60,6 +60,7 @@ namespace Semillitas.Web.Models
         public DbSet<Event> Event { get; set; }
         public DbSet<Marketing> Marketing { get; set; }
         public DbSet<Variable> Variable { get; set; }
+        public DbSet<Slide> Slide { get; set; }
 
         public static ApplicationDbContext Create()
         {

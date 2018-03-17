@@ -1,18 +1,21 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
+
+<ul class="nav nav-pills nav-stacked margin-top-15" id="menu-user">
+    <li role="separator"><img src="~/Content/Images/User-25.png" alt="User" />Menu</li>
+    <li role="presentation" @if (Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Equals("manage") && Request.RequestContext.RouteData.Values["action"].ToString().ToLower().Equals("index")) { <text> class="active" </text> }>@Html.ActionLink("Inicio", "Index", "Manage")</li>
+    @*<li role="presentation">@Html.ActionLink("Membresias", "Index", "Enrollment")</li>*@
+    <li role="presentation" @if (Request.RequestContext.RouteData.Values["action"].ToString().ToLower().Equals("changepassword")) { <text> class="active" </text> }>@Html.ActionLink("Cambiar clave personal", "ChangePassword", "Manage")</li>
+    @*<li role="presentation">@Html.ActionLink("Cambiar clave personal", "Index", "Enrollment")</li>*@
+    @*<li role="presentation">@Html.ActionLink("Cerrar sesion", "Index", "Enrollment")</li>*@
+</ul>
+<ul class="nav nav-pills nav-stacked margin-top-25 margin-bottom-25" id="menu-admin">
+    <li role="separator"><img src="~/Content/Images/Admin-25.png" alt="Admin" />Administrador</li>
+    <li role="presentation" @if (Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Equals("marketing")) { <text> class="active" </text> }>@Html.ActionLink("Administrar correos guardados", "Index", "Marketing")</li>
+    <li role="presentation" @if (Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Equals("slide")) { <text> class="active" </text> }>@Html.ActionLink("Administrar Banners", "Index", "Slide")</li>
+    <li role="presentation" @if (Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Equals("event")) { <text> class="active" </text> }>@Html.ActionLink("Administrar Eventos", "List", "Event")</li>
     
-    <ul class="nav nav-pills nav-stacked margin-top-15" id="menu-user">
-        <li role="separator"><img src="~/Content/Images/User-25.png" alt="User" />Menu</li>
-        <li role="presentation" class="active">@Html.ActionLink("Inicio", "Index", "Manage")</li>
-        <li role="presentation">@Html.ActionLink("Membresias", "Index", "Enrollment")</li>
-        <li role="presentation">@Html.ActionLink("Cambiar clave personal", "Index", "Enrollment")</li>
-        <li role="presentation">@Html.ActionLink("Cerrar sesion", "Index", "Enrollment")</li>
-    </ul>
-    <ul class="nav nav-pills nav-stacked margin-top-25 margin-bottom-25" id="menu-admin">
-        <li role="separator"><img src="~/Content/Images/Admin-25.png" alt="Admin" />Administrador</li>
-        <li role="presentation">@Html.ActionLink("Membresias", "Index", "EnrollmentAdmin")</li>
-        <li role="presentation">@Html.ActionLink("Pagos", "Index", "PaymentAdmin")</li>
-    </ul>
+</ul>
 
 }

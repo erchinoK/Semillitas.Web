@@ -70,6 +70,9 @@ select,
 textarea {
     max-width: 280px;
 }
+.htmlEditor {/*fix for jHtmlArea*/
+    max-width: 1200px;
+}
 
 .alert-fixed {
     position: fixed;
@@ -97,6 +100,12 @@ textarea {
 }
 .bg-color-6 {	/* Purple */
 	background-color: #C289CE;
+}
+.bg-color-7 { /* Dark Blue */
+    background-color: #5187ea;
+}
+.bg-color-8 { /* Pink */
+    background-color: #e386a4;
 }
 
 .border-weight-1 {
@@ -165,6 +174,9 @@ textarea {
 }
 .carousel-caption {
     /*bottom: 20%;*/
+}
+.carousel-inner .item img {
+    margin: 0 auto;
 }
 
 .capital {
@@ -246,11 +258,18 @@ textarea {
     padding: 10px 20px;
     text-align: left;
 }
+.column-item .more p .name {
+    float: left;
+}
 .column-item .more .icon {
     height: 17px;
     margin-right: 10px;
 }
 .column-item .icon.info {
+    float: right;
+}
+.column-item .text.info {
+    font-size: 1.2em;
     float: right;
 }
 
@@ -403,17 +422,6 @@ footer, .footer-bottom {
     position: relative; 
 }
 
-.container-fluid .jumbotron .date {
-    position: absolute;
-    background-color: #EC774B;
-    padding: 10px 20px;
-    right: 10%;
-    bottom: 0;
-    border-radius: 5px;
-    border-bottom: 3px solid #cc4411;
-    border-right: 3px solid #cc4411;
-}
-
 #googleMapZoomIn {
     margin: 0 auto 50px;
 }
@@ -452,6 +460,16 @@ footer, .footer-bottom {
 }
 .icon-item p {
 
+}
+
+.img-100w {
+    width:100px;
+}
+.img-200w {
+    width: 200px;
+}
+.img-300w {
+    width: 300px;
 }
 
 .item-content-image {
@@ -616,7 +634,7 @@ footer, .footer-bottom {
 
 .item-simple-title {
     text-align: center;
-    margin: 40px 0 30px 0;
+    margin: 15px 0 15px 0;
 }
 .item-simple-title h2 {
     margin-top: 0;
@@ -625,6 +643,14 @@ footer, .footer-bottom {
     font-size: 20px;
     color: #aaa;
 }
+    .item-simple-title .date {
+        background-color: #ee8b85;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border-bottom: 3px solid #cc4411;
+        border-right: 3px solid #cc4411;
+        color: #FFF;
+    }
 
 
 .margin-bottom-15 {
@@ -667,6 +693,22 @@ background-color: red;}
 .media-list img.media-object {
     width: 150px;
 }*/
+
+.message-lg {
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.message-center {
+    text-align: center;
+}
+
+.minwidth {
+    min-width: 100px;
+    width: auto !important;
+    width: 100px;
+}
 
 .modal-image-form {
     color: #fff;
@@ -941,7 +983,7 @@ span.separator-flexible::after {
     font-weight: bold;
     color: #868585;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 0.9em;
 }
 .simple-item-workshop p {

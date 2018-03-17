@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -194,6 +195,7 @@
     <Compile Include="Classes\UrlHelperExtensions.cs" />
     <Compile Include="Classes\Utility.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SlideController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CookiesController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -228,13 +230,25 @@
     <Compile Include="Migrations\201710111431551_add-variable.Designer.cs">
       <DependentUpon>201710111431551_add-variable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803021516080_AddSlide.cs" />
+    <Compile Include="Migrations\201803021516080_AddSlide.Designer.cs">
+      <DependentUpon>201803021516080_AddSlide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803051400412_AddEventFilePath.cs" />
+    <Compile Include="Migrations\201803051400412_AddEventFilePath.Designer.cs">
+      <DependentUpon>201803051400412_AddEventFilePath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmailModel.cs" />
+    <Compile Include="Models\ViewModels\EventViewModels.cs" />
+    <Compile Include="Models\SlideModel.cs" />
     <Compile Include="Models\VariableModel.cs" />
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\MarketingModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\SlideViewModels.cs" />
+    <Compile Include="Models\ViewModels\BlogViewModels.cs" />
     <Compile Include="Models\ViewModels\HomeViewModels.cs" />
     <Compile Include="Models\ViewModels\PaymentViewModels.cs" />
     <Compile Include="Models\ViewModels\EnrollmentViewModels.cs" />
@@ -268,11 +282,66 @@
     <Content Include="Content\Images\Download.png" />
     <Content Include="Content\Images\Email-64.png" />
     <Content Include="Content\Images\events.png" />
-    <Content Include="Content\Images\Facebook-48.png" />
-    <Content Include="Content\Images\Facebook-White-48.png" />
     <Content Include="Content\Images\facebook.png" />
+    <Content Include="Content\Images\Facilities\1.jpg" />
+    <Content Include="Content\Images\Facilities\10.jpg" />
+    <Content Include="Content\Images\Facilities\10sm.jpg" />
+    <Content Include="Content\Images\Facilities\11.jpg" />
+    <Content Include="Content\Images\Facilities\11sm.jpg" />
+    <Content Include="Content\Images\Facilities\12.jpg" />
+    <Content Include="Content\Images\Facilities\12sm.jpg" />
+    <Content Include="Content\Images\Facilities\13.jpg" />
+    <Content Include="Content\Images\Facilities\13sm.jpg" />
+    <Content Include="Content\Images\Facilities\14.jpg" />
+    <Content Include="Content\Images\Facilities\14sm.jpg" />
+    <Content Include="Content\Images\Facilities\15.jpg" />
+    <Content Include="Content\Images\Facilities\15sm.jpg" />
+    <Content Include="Content\Images\Facilities\16.jpg" />
+    <Content Include="Content\Images\Facilities\16sm.jpg" />
+    <Content Include="Content\Images\Facilities\17.jpg" />
+    <Content Include="Content\Images\Facilities\17sm.jpg" />
+    <Content Include="Content\Images\Facilities\18.jpg" />
+    <Content Include="Content\Images\Facilities\18sm.jpg" />
+    <Content Include="Content\Images\Facilities\19.jpg" />
+    <Content Include="Content\Images\Facilities\19sm.jpg" />
+    <Content Include="Content\Images\Facilities\1sm.jpg" />
+    <Content Include="Content\Images\Facilities\2.jpg" />
+    <Content Include="Content\Images\Facilities\20.jpg" />
+    <Content Include="Content\Images\Facilities\20sm.jpg" />
+    <Content Include="Content\Images\Facilities\21.jpg" />
+    <Content Include="Content\Images\Facilities\21sm.jpg" />
+    <Content Include="Content\Images\Facilities\22.jpg" />
+    <Content Include="Content\Images\Facilities\22sm.jpg" />
+    <Content Include="Content\Images\Facilities\23.jpg" />
+    <Content Include="Content\Images\Facilities\23sm.jpg" />
+    <Content Include="Content\Images\Facilities\24.jpg" />
+    <Content Include="Content\Images\Facilities\24sm.jpg" />
+    <Content Include="Content\Images\Facilities\25.jpg" />
+    <Content Include="Content\Images\Facilities\25sm.jpg" />
+    <Content Include="Content\Images\Facilities\26.jpg" />
+    <Content Include="Content\Images\Facilities\26sm.jpg" />
+    <Content Include="Content\Images\Facilities\27.jpg" />
+    <Content Include="Content\Images\Facilities\27sm.jpg" />
+    <Content Include="Content\Images\Facilities\28.jpg" />
+    <Content Include="Content\Images\Facilities\28sm.jpg" />
+    <Content Include="Content\Images\Facilities\29.jpg" />
+    <Content Include="Content\Images\Facilities\29sm.jpg" />
+    <Content Include="Content\Images\Facilities\2sm.jpg" />
+    <Content Include="Content\Images\Facilities\3.jpg" />
+    <Content Include="Content\Images\Facilities\3sm.jpg" />
+    <Content Include="Content\Images\Facilities\4.jpg" />
+    <Content Include="Content\Images\Facilities\4sm.jpg" />
+    <Content Include="Content\Images\Facilities\5.jpg" />
+    <Content Include="Content\Images\Facilities\5sm.jpg" />
+    <Content Include="Content\Images\Facilities\6.jpg" />
+    <Content Include="Content\Images\Facilities\6sm.jpg" />
+    <Content Include="Content\Images\Facilities\7.jpg" />
+    <Content Include="Content\Images\Facilities\7sm.jpg" />
+    <Content Include="Content\Images\Facilities\8.jpg" />
+    <Content Include="Content\Images\Facilities\8sm.jpg" />
+    <Content Include="Content\Images\Facilities\9.jpg" />
+    <Content Include="Content\Images\Facilities\9sm.jpg" />
     <Content Include="Content\Images\favicon.png" />
-    <Content Include="Content\Images\favicon3.png" />
     <Content Include="Content\Images\food.jpg" />
     <Content Include="Content\Images\funny-baby.jpg" />
     <Content Include="Content\Images\Goal-100.png" />
@@ -285,8 +354,6 @@
     <Content Include="Content\Images\indoor.png" />
     <Content Include="Content\Images\Info-100.png" />
     <Content Include="Content\Images\Info-48.png" />
-    <Content Include="Content\Images\Instagram-48.png" />
-    <Content Include="Content\Images\Instagram-White-48.png" />
     <Content Include="Content\Images\instagram.png" />
     <Content Include="Content\Images\iStock-544357260.jpg" />
     <Content Include="Content\Images\iStock-544654620.jpg" />
@@ -325,9 +392,6 @@
     <Content Include="Content\Images\Spain-48.png" />
     <Content Include="Content\Images\Subway-100.png" />
     <Content Include="Content\Images\teacher.jpg" />
-    <Content Include="Content\Images\Twitter-48.png" />
-    <Content Include="Content\Images\Twitter-White-48.png" />
-    <Content Include="Content\Images\twitter.png" />
     <Content Include="Content\Images\unique-birthday-party-palo-alto.jpg" />
     <Content Include="Content\Images\User-25.png" />
     <Content Include="Content\Images\videogame.png" />
@@ -337,6 +401,7 @@
     <Content Include="Content\Images\yoga.png" />
     <Content Include="Content\Images\youtube.png" />
     <Content Include="Content\Images\zumba.png" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.Fix.css" />
     <Content Include="Content\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
     <Content Include="Content\jHtmlArea\jHtmlArea.css" />
     <Content Include="Content\jHtmlArea\jHtmlArea.Editor.css" />
@@ -415,6 +480,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Global.en.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803021516080_AddSlide.resx">
+      <DependentUpon>201803021516080_AddSlide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803051400412_AddEventFilePath.resx">
+      <DependentUpon>201803051400412_AddEventFilePath.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\Default.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
@@ -519,9 +590,14 @@
     <Content Include="Views\Marketing\_MarketingSaved.cshtml" />
     <Content Include="Views\Event\List.cshtml" />
     <Content Include="Views\Email\Index.cshtml" />
+    <Content Include="Views\Slide\Create.cshtml" />
+    <Content Include="Views\Slide\Delete.cshtml" />
+    <Content Include="Views\Slide\Index.cshtml" />
+    <Content Include="Views\Slide\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="_Uploaded\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

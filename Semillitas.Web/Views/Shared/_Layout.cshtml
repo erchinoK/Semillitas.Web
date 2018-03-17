@@ -15,16 +15,16 @@
 
 </head>
 <body>
-
+    <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1704749536215417';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1704749536215417';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
 
     <div class="navbar navbar-static-top navbar-inverse navbar-slim hidden-xs">
@@ -43,47 +43,47 @@
                     </a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                @if (Semillitas.Web.Classes.Utility.GetLanguage() != "ca")
-                {
-                    <li>
-                        <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "ca" })">
-                            <img alt="Catalan" src="~/Content/Images/Catalan-48.png">
-                            Catalan
-                        </a>
-                    </li>
-                }
-                @if (Semillitas.Web.Classes.Utility.GetLanguage() != "es")
-                {
-                    <li>
-                        <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "es" })">
-                            <img alt="Espanol" src="~/Content/Images/Spain-48.png">
-                            Espanol
-                        </a>
-                    </li>
-                }
-                @if (Semillitas.Web.Classes.Utility.GetLanguage() != "en")
-                {
-                    <li>
-                        <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "en" })">
-                            <img alt="English" src="~/Content/Images/Great Britain-48.png">
-                            English
-                        </a>
-                    </li>
-                }
-            </ul>
-            @Html.Partial("_LoginPartial")
             @*<ul class="nav navbar-nav navbar-right">
+                    @if (Semillitas.Web.Classes.Utility.GetLanguage() != "ca")
+                    {
+                        <li>
+                            <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "ca" })">
+                                <img alt="Catalan" src="~/Content/Images/Catalan-48.png">
+                                Catalan
+                            </a>
+                        </li>
+                    }
+                    @if (Semillitas.Web.Classes.Utility.GetLanguage() != "es")
+                    {
+                        <li>
+                            <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "es" })">
+                                <img alt="Espanol" src="~/Content/Images/Spain-48.png">
+                                Espanol
+                            </a>
+                        </li>
+                    }
+                    @if (Semillitas.Web.Classes.Utility.GetLanguage() != "en")
+                    {
+                        <li>
+                            <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "en" })">
+                                <img alt="English" src="~/Content/Images/Great Britain-48.png">
+                                English
+                            </a>
+                        </li>
+                    }
+                </ul>*@
+            @Html.Partial("_LoginPartial")
+            <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
+                    <a href="http://www.facebook.com/ludotecasemillitas" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
                 </li>
+                @*<li>
+                        <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
+                    </li>*@
                 <li>
-                    <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
+                    <a href="https://www.instagram.com/ludotecasemillitas/" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
                 </li>
-                <li>
-                    <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
-                </li>
-            </ul>*@
+            </ul>
         </div>
     </div>
 
@@ -99,7 +99,7 @@
                     <img alt="Semillitas" src="~/Content/Images/Semillitas.png" class="hidden-xs" style="height: 50px;">
                     <img alt="Semillitas" src="~/Content/Images/Semillitas.png" class="visible-xs-block" style="width: 200px;">
                 </a>
-            </div>            
+            </div>
             <div class="visible-xs navbar-brand-xs">
                 <p>
                     <span class="glyphicon glyphicon-earphone"></span>
@@ -117,67 +117,67 @@
                     <li class="navbar-nav-3">@Html.ActionLink("Planes", "Plans", "Home")</li>
                     <li class="dropdown navbar-nav-4">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false">De Interes <span class="caret"></span></a>
+                           aria-haspopup="true" aria-expanded="false">De Interes<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Instalaciones", "Gallery", "Home")</li>
                             <li>@Html.ActionLink("Talleres", "Workshops", "Home")</li>
                             <li>@Html.ActionLink("Eventos", "Index", "Event")</li>
                             <li>@Html.ActionLink("Novedades", "Index", "Blog")</li>
                             @*<li role="separator" class="divider"></li>
-                            <li>@Html.ActionLink("Fiestas y Eventos", "Index", "Home")</li>*@
+                                <li>@Html.ActionLink("Fiestas y Eventos", "Index", "Home")</li>*@
                         </ul>
                     </li>
                     <li class="navbar-nav-5">@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 </ul>
                 <div class="visible-xs">
-                    @*<ul class="nav navbar-nav navbar-right navbar-social-xs">
+                    <ul class="nav navbar-nav navbar-right navbar-social-xs">
                         <li>
-                            <a href="http://www.facebook.com" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
-                            <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
-                            <a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
+                            <a href="http://www.facebook.com/ludotecasemillitas" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
+                            <a href="https://www.instagram.com/ludotecasemillitas/" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
+                            @*<a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>*@
                         </li>
-                    </ul>*@
-                    @Html.Partial("_LoginPartial")
-                    <ul class="nav navbar-nav navbar-right">
-                        @if (Semillitas.Web.Classes.Utility.GetLanguage() != "ca")
-                        {
-                            <li>
-                                <a href="@Url.Action("Index", "Home")"><a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "ca" })">
-                                    <img alt="Catalan" src="~/Content/Images/Catalan-48.png" style="height: 25px">
-                                    Catalan
-                                </a>
-                            </li>
-                        }
-                        @if (Semillitas.Web.Classes.Utility.GetLanguage() != "es")
-                        {
-                            <li>
-                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "es" })">
-                                    <img alt="Espanol" src="~/Content/Images/Spain-48.png" style="height: 25px">
-                                    Espanol
-                                </a>
-                            </li>
-                        }
-                        @if (Semillitas.Web.Classes.Utility.GetLanguage() != "en")
-                        {
-                            <li>
-                                <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "en" })">
-                                    <img alt="English" src="~/Content/Images/Great Britain-48.png" style="height: 25px">
-                                    English
-                                </a>
-                            </li>
-                        }
                     </ul>
-                </div>                
+                    @Html.Partial("_LoginPartial")
+                    @*<ul class="nav navbar-nav navbar-right">
+                            @if (Semillitas.Web.Classes.Utility.GetLanguage() != "ca")
+                            {
+                                <li>
+                                    <a href="@Url.Action("Index", "Home")"><a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "ca" })">
+                                        <img alt="Catalan" src="~/Content/Images/Catalan-48.png" style="height: 25px">
+                                        Catalan
+                                    </a>
+                                </li>
+                            }
+                            @if (Semillitas.Web.Classes.Utility.GetLanguage() != "es")
+                            {
+                                <li>
+                                    <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "es" })">
+                                        <img alt="Espanol" src="~/Content/Images/Spain-48.png" style="height: 25px">
+                                        Espanol
+                                    </a>
+                                </li>
+                            }
+                            @if (Semillitas.Web.Classes.Utility.GetLanguage() != "en")
+                            {
+                                <li>
+                                    <a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new { language = "en" })">
+                                        <img alt="English" src="~/Content/Images/Great Britain-48.png" style="height: 25px">
+                                        English
+                                    </a>
+                                </li>
+                            }
+                        </ul>*@
+                </div>
             </div>
         </div>
     </div>
-       
+
     <div class="container-fluid body-content">
-        
+
         @*<h1>@ViewBag.Message</h1>*@
 
         <div class="row">
-            
+
             @*Verifying if the menu for user/admin must be displayed*@
             @if (!Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Contains("home")
                         && !Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Contains("event")
@@ -187,13 +187,13 @@
                 <div class="col-sm-2">
 
                     @Html.Partial("_AccountMenuPartial")
-                
+
                 </div>
 
                 <div class="col-sm-10">
 
                     @RenderBody()
-                
+
                 </div>
             }
             else
@@ -201,12 +201,12 @@
                 @RenderBody()
             }
 
-                
+
 
         </div>
 
         <footer>
-            
+
             <div class="row" id="footer">
 
                 <div class="col-md-4">
@@ -219,13 +219,13 @@
                         <div class="media-body">
                             <address>
                                 <strong>Semillitas</strong><br>
-                                Ronda del General Mitre 132, 08022<br>
+                                Ronda General Mitre 132, 08022<br>
                                 Barcelona, Espa&ntilde;a<br>
                             </address>
                         </div>
-                    </div>                   
-                    
-                    
+                    </div>
+
+
 
                     <div class="media border-down">
                         <div class="media-left">
@@ -234,9 +234,9 @@
                         <div class="media-body media-middle">
                             <p>(+34) 692 340 490</p>
                         </div>
-                    </div>                   
-                    
-                    
+                    </div>
+
+
 
                     <div class="media">
                         <div class="media-left">
@@ -246,12 +246,12 @@
                             <p>hola@ludotecasemillitas.com</p>
                         </div>
                     </div>
-                    
+
                     <div class="media">
                         <a href="https://www.facebook.com/ludotecasemillitas/" class="btn-social" target="_blank"><img alt="Facebook" src="~/Content/Images/facebook.png" /></a>
-                        @*<a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>
-                        <a href="http://www.instagram.com" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>*@                        
-                        
+                        @*<a href="http://www.twitter.com" class="btn-social" target="_blank"><img alt="Twitter" src="~/Content/Images/twitter.png" /></a>*@
+                        <a href="https://www.instagram.com/ludotecasemillitas/" class="btn-social" target="_blank"><img alt="Instagram" src="~/Content/Images/instagram.png" /></a>
+
                         <div class="fb-like" data-href="https://www.facebook.com/ludotecasemillitas/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
                     </div>
 
@@ -259,25 +259,25 @@
                 <div class="col-md-4">
                     <h3>Horario</h3>
                     <p class="pull-left">Lunes:</p>
-                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
+                    <p class="pull-right">9am a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Martes:</p>
-                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
+                    <p class="pull-right">9am a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Miércoles:</p>
-                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
+                    <p class="pull-right">9am a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Jueves:</p>
-                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
+                    <p class="pull-right">9am a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Viernes:</p>
-                    <p class="pull-right">10am a 1pm / 2pm a 7pm</p>
+                    <p class="pull-right">9am a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Sábado:</p>
-                    <p class="pull-right">2pm a 7pm</p>
+                    <p class="pull-right">2pm a 8pm</p>
                     <div class="clearfix"></div>
                     <p class="pull-left">Domingo:</p>
-                    <p class="pull-right">2pm a 7pm</p>
+                    <p class="pull-right">Sólo para fiestas</p>
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-4">
@@ -298,27 +298,27 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    
+
     @*<script>
-        function myMap() {
-            var mapProp= {
-                center: new google.maps.LatLng(41.4029974, 2.138232),
-                zoom:15,
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            function myMap() {
+                var mapProp= {
+                    center: new google.maps.LatLng(41.4029974, 2.138232),
+                    zoom:15,
+                };
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-            // Map inside Contact page
-            var mapPropZoomIn = {
-                center: new google.maps.LatLng(41.4029974, 2.138232),
-                zoom: 17,
-            };
-            try {
-                var mapZoomIn = new google.maps.Map(document.getElementById("googleMapZoomIn"), mapPropZoomIn);
-            } catch (err) { /*Not in the Contact page*/ }
-        }
+                // Map inside Contact page
+                var mapPropZoomIn = {
+                    center: new google.maps.LatLng(41.4029974, 2.138232),
+                    zoom: 17,
+                };
+                try {
+                    var mapZoomIn = new google.maps.Map(document.getElementById("googleMapZoomIn"), mapPropZoomIn);
+                } catch (err) { /*Not in the Contact page*/ }
+            }
 
-    </script> 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCyDVf5H8vzovSYPYPhs_hQlxJkODjDrw &callback=myMap"></script>*@
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCyDVf5H8vzovSYPYPhs_hQlxJkODjDrw &callback=myMap"></script>*@
 
 </body>
 </html>

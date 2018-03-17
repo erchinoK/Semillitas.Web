@@ -4,22 +4,56 @@
     ViewBag.Title = "Details";
 }
 
+@section head {
+
+    <meta property="fb:app_id" content="1704749536215417" />
+    <meta property="og:url" content="@this.Url.Action("Details", "Event", new { id = Model.ID }, this.Request.Url.Scheme)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@Model.Description" />
+    @if (!String.IsNullOrEmpty(Model.ImagePath))
+    {
+        <meta property="og:image" content="@Semillitas.Web.Classes.Utility.ResolveServerUrl(Url.Content(Model.ImagePath), false)" />
+        if (!String.IsNullOrEmpty(ViewBag.ImageWidth))
+        {
+            <meta property="og:image:width" content="@ViewBag.ImageWidth" />
+        }
+        if (!String.IsNullOrEmpty(ViewBag.ImageHeight))
+        {
+            <meta property="og:image:height" content="@ViewBag.ImageHeight" />
+        }
+    }
+
+}
+
 <div class="jumbotron" style="background-image: url('@Url.Content("~/Content/Images/jumbotron_eventos.jpg")')">
     <div class="container">
         <h2>Fiestas y Eventos</h2>
         <h3 class="separator-left">Ven y disfruta de nuestras fiestas temáticas</h3>
-        <p class="date">Fecha: @Html.DisplayFor(model => model.Date)</p>
     </div>
 </div>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="row">
+
+        <p class="bg-warning message-lg message-center">@ViewBag.Message</p>
+
+    </div>
+}
 
 <div class="row">
 
     <div class="item-simple-title">
+
+
+
         <h2 class="font-color-2">@Html.DisplayFor(model => model.Title)</h2>
         <p>@Html.DisplayFor(model => model.Description)</p>
-    </div>    
 
-    <hr />
+        <p class="date">Fecha: @Html.DisplayFor(model => model.Date)</p>
+    </div>
+
 
     <div class="col-sm-3 simple-item simple-item-workshop">
 
@@ -63,32 +97,140 @@
 
     </div>
 
-    <div class="col-sm-3 simple-item simple-item-workshop">
+    @if (String.IsNullOrEmpty(Model.FilePath))
+    {
+        <div class="col-sm-3 simple-item simple-item-workshop">
 
-        <div class="content">
-            <div class="image">
-                <img src="~/Content/Images/Download.png" alt="Download" class="img-responsive" />
+            <div class="content">
+                <div class="image">
+                    <img src="~/Content/Images/Download.png" alt="Descargar" class="img-responsive" />
+                </div>
+                <div class="description">
+                    <span class="title">Descargar</span>
+                    @if (!String.IsNullOrEmpty(Model.FileNotes))
+                    {
+                        <p>@Html.DisplayFor(model => model.FileNotes)</p>
+                    }
+                    else
+                    {
+                        <p>No disponible</p>
+                    }
+                </div>
             </div>
-            <div class="description">
-                <span class="title">Documento PDF</span>
-                <p>@Html.DisplayFor(model => model.PdfNotes)</p>
-            </div>
+
         </div>
+    }
+    else
+    {
+        <a href="@Url.Content(Model.FilePath)" target="_blank" class="col-sm-3 simple-item simple-item-workshop">
+
+            <div class="content">
+                <div class="image">
+                    <img src="~/Content/Images/Download.png" alt="Descargar" class="img-responsive" />
+                </div>
+                <div class="description">
+                    <span class="title">Descargar</span>
+                    @if (!String.IsNullOrEmpty(Model.FileNotes))
+                    {
+                        <p>@Html.DisplayFor(model => model.FileNotes)</p>
+                    }
+                    else
+                    {
+                        <p>No disponible</p>
+                    }
+                </div>
+            </div>
+
+        </a>
+    }
+
+</div>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="row">
+
+        <p class="bg-warning message-lg message-center">@ViewBag.Message</p>
 
     </div>
-</div>
+}
 
 <div class="row margin-top-25 margin-bottom-25">
 
-    <div class="col-sm-6">
+    @if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_TOP))
+    {
+        <div class="col-sm-12">
+            @if (!String.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
+            }
+        </div>
 
-        <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content)) </p>
+        <div class="col-xs-12">
 
-    </div>
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
 
-    <div class="col-sm-6">
-        <img src="@Url.Content("~/" + Model.Image)" alt="Evento" class="img-responsive" />
-    </div>
+        </div>
+    }
+    else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_LEFT))
+    {
+        <div class="col-sm-6">
+            @if (!String.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
+            }
+        </div>
+
+        <div class="col-sm-6">
+
+            <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content)) </p>
+
+        </div>
+
+    }
+    else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_RIGHT))
+    {
+        <div class="col-sm-6">
+
+            <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content)) </p>
+
+        </div>
+
+        <div class="col-sm-6">
+            @if (!String.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
+            }
+        </div>
+
+    }
+    else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_BOTTOM))
+    {
+        <div class="col-xs-12">
+
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
+
+        </div>
+
+        <div class="col-sm-12">
+            @if (!String.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
+            }
+        </div>
+
+    }
+    else
+    {
+        <div class="col-xs-12">
+
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
+
+        </div>
+
+    }
+
 </div>
 
-<div class="fb-share-button" data-href="@Url.Action("Edit", "Blog", new { id = Model.ID }, this.Request.Url.Scheme)" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+@*<div class="fb-share-button" data-href="@Url.Action("Edit", "Blog", new { id = Model.ID }, this.Request.Url.Scheme)" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>*@
+<div class="fb-share-button" data-href="@this.Url.Action("Details", "Event", new { id = Model.ID }, this.Request.Url.Scheme)" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>

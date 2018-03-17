@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row margin-top-25 margin-bottom-25">
 
     <div class="item-simple-title">
         <h2 class="font-color-4">También ofrecemos alquiler de nuestros espacios</h2>
@@ -19,6 +19,10 @@
     </div>
 
     <hr />
+
+</div>
+
+<div class="row">
 
 @{ int i = 0; }
     
@@ -37,7 +41,14 @@ else
             <div class="item-event  border-color-@(i+1)-bold">
 
                 <div class="image">
-                    <img src="~/Content/Images/desarrolloafectivo.jpg" class="img-responsive" alt="" />
+                    @if (String.IsNullOrEmpty(item.ImagePreviewPath))
+    {
+                <img src="~/Content/Images/desarrolloafectivo.jpg" class="img-responsive" alt="@item.Title" />
+}
+else
+{
+                <img src="@Url.Content(item.ImagePreviewPath)" class="img-responsive" alt="@item.Title" />
+}
                     @*@Html.DisplayFor(modelItem => item.ImagePreview)*@
                     <span class="date">@Html.DisplayFor(modelItem => item.Date)</span>
                 </div>

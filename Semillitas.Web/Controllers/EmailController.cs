@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Semillitas.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Semillitas.Web.Controllers
 {
+    [Authorize(Roles = RoleNames.ROLE_ADMINISTRATOR)]
     public class EmailController : Controller
     {
         // GET: Email
