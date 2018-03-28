@@ -135,6 +135,7 @@ namespace Semillitas.Web.Models.ViewModels
         [Display(Name = "Remover")]
         public bool FileRemove { get; set; }
 
+        // Just to show the image
         public string ImagePath { get; set; }
 
         [Display(Name = "Imagen principal")]

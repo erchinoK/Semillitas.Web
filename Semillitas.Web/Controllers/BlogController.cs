@@ -17,6 +17,7 @@ namespace Semillitas.Web.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Blog
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Blog.Where(b => b.IsPublished).ToList());
@@ -29,6 +30,7 @@ namespace Semillitas.Web.Controllers
         }
 
         // GET: Blog/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,6 +42,34 @@ namespace Semillitas.Web.Controllers
             {
                 return HttpNotFound();
             }
+
+            // Verifying if the admin is trying to view an unpublished Event
+            if (!blog.IsPublished)
+            {
+                if (User.IsInRole(RoleNames.ROLE_ADMINISTRATOR))
+                {
+                    ViewBag.Message = "Este blog no esta publicado por lo tanto no es visible al publico";
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+                }
+
+            }
+
+            // Getting the width and height of the image to send them to the fb-share button
+            int imageWidth = 0;
+            int imageHeight = 0;
+            string imageFullPath = Request.MapPath(blog.Image);
+            if (System.IO.File.Exists(imageFullPath))
+            {
+                System.Drawing.Image image = System.Drawing.Image.FromFile(imageFullPath);
+                imageWidth = image.Width;
+                imageHeight = image.Height;
+            }
+            ViewBag.ImageWidth = imageWidth.ToString();
+            ViewBag.ImageHeight = imageHeight.ToString();
+
             return View(blog);
         }
 
@@ -56,19 +86,31 @@ namespace Semillitas.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Description,Content,ImageFile,Layout,IsPublished,Notes")] BlogCreateViewModel model)
+        public ActionResult Create([Bind(Include = "ID,Title,Description,Content,ImageFile,ImagePreviewFile,Layout,Notes")] BlogCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
 
-                String imagePath = "";
+                string imagePath = "";
+                // Checking if there is any file
                 if (model.ImageFile != null)
                 {
-                    //string pic = System.IO.Path.GetFileName();
-                    //string newPic = System.IO.Path.GetFileNameWithoutExtension(file.FileName) + "_" + System.IO.Path.GetExtension(file.FileName);
+                    // Generating the full paths
                     imagePath = System.IO.Path.Combine(UploadDirectory.path, model.ImageFile.FileName);
-                    // file is uploaded
-                    model.ImageFile.SaveAs(Server.MapPath(imagePath));                    
+
+                    // Uploading the files
+                    model.ImageFile.SaveAs(Server.MapPath(imagePath));
+                }
+
+                string imagePreviewPath = "";
+                // Checking if there is any file
+                if (model.ImagePreviewFile != null)
+                {
+                    // Generating the full paths
+                    imagePreviewPath = System.IO.Path.Combine(UploadDirectory.path, model.ImagePreviewFile.FileName);
+
+                    // Uploading the files
+                    model.ImagePreviewFile.SaveAs(Server.MapPath(imagePreviewPath));
                 }
 
                 var blog = new Blog()
@@ -77,9 +119,9 @@ namespace Semillitas.Web.Controllers
                     Description = model.Description,
                     Content = model.Content,
                     Image = imagePath,
-                    ImagePreview = imagePath,
+                    ImagePreview = imagePreviewPath,
                     Layout = model.Layout,
-                    IsPublished = model.IsPublished,
+                    IsPublished = false,
                     Notes = model.Notes,
                     CreationDate = DateTime.Now,
                     CreationUserName = User.Identity.Name,
@@ -95,7 +137,7 @@ namespace Semillitas.Web.Controllers
                 
                 db.Blog.Add(blog);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
 
             return View(model);
@@ -113,7 +155,20 @@ namespace Semillitas.Web.Controllers
             {
                 return HttpNotFound();
             }
-            return View(blog);
+            BlogEditViewModel model = new BlogEditViewModel()
+            {
+                Title = blog.Title,
+                Description = blog.Description,
+                IsPublished = blog.IsPublished,
+                Content = blog.Content,
+                Image = blog.Image,
+                ImagePreview = blog.ImagePreview,
+                Layout = blog.Layout,
+                Notes = blog.Notes,
+            };
+
+
+            return View(model);
         }
 
         // POST: Blog/Edit/5
@@ -121,23 +176,74 @@ namespace Semillitas.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Description,Content,Image,Layout,IsPublished,DatePublishment,CreationDate,CreationUserName,ModifDate,ModifUserName,Notes")] Blog blog)
+        public ActionResult Edit([Bind(Include = "ID,Title,Description,Content,Image,ImageRemove, ImageFile, ImagePreview, ImagePreviewRemove, ImagePreviewFile,Layout,IsPublished,Notes")] BlogEditViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (blog.IsPublished)
+                Blog blog = db.Blog.Find(model.ID);
+
+                string imagePath = blog.Image;
+
+                // Checking if the image must be removed
+                if (model.ImageRemove)
                 {
-                    blog.DatePublishment = DateTime.Now;
+                    string imageFullPath = Request.MapPath(blog.Image);
+                    if (System.IO.File.Exists(imageFullPath))
+                    {
+                        System.IO.File.Delete(imageFullPath);
+                    }
+                    imagePath = "";
                 }
 
+                // Checking if there is any file
+                if (model.ImageFile != null)
+                {
+                    // Generating the full paths
+                    imagePath = System.IO.Path.Combine(UploadDirectory.path, model.ImageFile.FileName);
+
+                    // Uploading the files
+                    model.ImageFile.SaveAs(Server.MapPath(imagePath));
+                }
+
+                string imagePreviewPath = blog.ImagePreview;
+
+                // Checking if the image must be removed
+                if (model.ImagePreviewRemove)
+                {
+                    string imagePreviewFullPath = Request.MapPath(blog.ImagePreview);
+                    if (System.IO.File.Exists(imagePreviewFullPath))
+                    {
+                        System.IO.File.Delete(imagePreviewFullPath);
+                    }
+                    imagePreviewPath = "";
+                }
+
+                // Checking if there is any file
+                if (model.ImagePreviewFile != null)
+                {
+                    // Generating the full paths
+                    imagePreviewPath = System.IO.Path.Combine(UploadDirectory.path, model.ImagePreviewFile.FileName);
+
+                    // Uploading the files
+                    model.ImagePreviewFile.SaveAs(Server.MapPath(imagePreviewPath));
+                }
+
+                blog.Title = model.Title;
+                blog.Description = model.Description;
+                blog.IsPublished = model.IsPublished;
+                blog.Content = model.Content;
+                blog.Image = imagePath;
+                blog.ImagePreview = imagePreviewPath;
+                blog.Layout = model.Layout;
+                blog.Notes = model.Notes;
                 blog.ModifDate = DateTime.Now;
                 blog.ModifUserName = User.Identity.Name;
 
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
-            return View(blog);
+            return View(model);
         }
 
         // GET: Blog/Delete/5

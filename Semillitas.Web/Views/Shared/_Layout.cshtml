@@ -3,15 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @if (String.IsNullOrEmpty(ViewBag.MetaTitle))
+    {
+        ViewBag.MetaTitle = "Semillitas, la Ludoteca donde aprendes jugando";
+    }
+    @if (String.IsNullOrEmpty(ViewBag.MetaDescription))
+    {
+        ViewBag.MetaDescription = "Semillitas es una institución recreativa-cultural dirigida por profesionales y especialmente pensada para desarrollar la personalidad del niño a través del juego y el juguete, trabajando la psicomotricidad, pedagogía y participación en equipo.";
+    }
+    <meta name="title" content="@ViewBag.MetaTitle" />
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    
     <link rel="icon" href="~/Content/Images/favicon.png">
     <title>@ViewBag.Title - Semillitas</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
     @RenderSection("head", required: false)
-    @*Menu*@ 
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet"> 
+
+    @*Menu*@
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
 
 </head>
 <body>

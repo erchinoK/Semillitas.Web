@@ -122,26 +122,26 @@ namespace Semillitas.Web.Controllers
             return View();
         }
 
-        public ActionResult Events()
-        {
-            ViewBag.Message = "Your events page.";
+        //public ActionResult Events()
+        //{
+        //    ViewBag.Message = "Your events page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Blog()
-        {
-            ViewBag.Message = "Your blog page.";
+        //public ActionResult Blog()
+        //{
+        //    ViewBag.Message = "Your blog page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult BlogEntry()
-        {
-            ViewBag.Message = "Your blog page.";
+        //public ActionResult BlogEntry()
+        //{
+        //    ViewBag.Message = "Your blog page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public ActionResult UnderConstruction()
         {

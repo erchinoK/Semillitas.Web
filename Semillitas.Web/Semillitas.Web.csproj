@@ -271,7 +271,11 @@
     <Content Include="Content\Images\3669360eccafca4762b80678595ae940.jpg" />
     <Content Include="Content\Images\Admin-25.png" />
     <Content Include="Content\Images\art.png" />
+    <Content Include="Content\Images\art_craft.jpg" />
+    <Content Include="Content\Images\baby.jpg" />
     <Content Include="Content\Images\baby.png" />
+    <Content Include="Content\Images\baby_gym.jpg" />
+    <Content Include="Content\Images\baby_massage.jpg" />
     <Content Include="Content\Images\birthday.jpg" />
     <Content Include="Content\Images\Bus-100.png" />
     <Content Include="Content\Images\Car-100.png" />
@@ -368,6 +372,8 @@
     <Content Include="Content\Images\kid-bucket.png" />
     <Content Include="Content\Images\kids-blocks_02.jpg" />
     <Content Include="Content\Images\kids-circle.png" />
+    <Content Include="Content\Images\kids_yoga.jpg" />
+    <Content Include="Content\Images\kids_zumba.jpg" />
     <Content Include="Content\Images\language.png" />
     <Content Include="Content\Images\library.png" />
     <Content Include="Content\Images\Ludoteca-responsive.jpg" />

@@ -4,6 +4,8 @@
 
 @{
     ViewBag.Title = "Inicio";
+    ViewBag.MetaTitle = "Semillitas, la Ludoteca donde aprendes jugando";
+    ViewBag.MetaDescription = "Semillitas es una institución recreativa-cultural dirigida por profesionales y especialmente pensada para desarrollar la personalidad del niño a través del juego y el juguete, trabajando la psicomotricidad, pedagogía y participación en equipo.";
 }
 
 @section styles {
@@ -100,7 +102,7 @@
 
     <div class="col-sm-6 col-md-4 item-link-image">
         <a href="@Url.Action("Index", "Event")" class="">
-            <img src="~/Content/Images/index_eventos.jpg" alt="..Fiestas y Eventos" class="img-responsive">
+            <img src="~/Content/Images/index_eventos.jpg" alt="Fiestas y Eventos" class="img-responsive">
             <div class="caption bg-color-1">
                 Fiestas y Eventos
             </div>
@@ -203,17 +205,16 @@
 
         foreach (var item in BlogEntries)
         {
-
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 @(BlogEntries.Count==1?"col-sm-12":"col-sm-6")">
                 <div class="item-content-image">
                     <div class="image">
-                        <img class="img-responsive" src="@Url.Content("~/" + item.Image)" alt="...">
+                        <img class="img-responsive" src="@Url.Content(item.ImagePreview)" alt="@item.Title">
                     </div>
                     <div class="content">
                         <h4 class="separator-left">@Html.DisplayFor(modelItem => item.Title)</h4>
                         <p>@Html.DisplayFor(modelItem => item.Description)</p>
                     </div>
-                    <a href="@Url.Action("Details", "Blog", new { id = item.ID })" class="bg-color-@(i+1)"><span class="glyphicon glyphicon-chevron-right"></span>Leer mas</a>
+                    <a href="@Url.Action("Details", "Blog", new { id = item.ID })" class="bg-color-@(i+1)"><span class="glyphicon glyphicon-chevron-right"></span>Leer m&aacute;s</a>
                 </div>
             </div>
             i = ((i + 1) % 6);

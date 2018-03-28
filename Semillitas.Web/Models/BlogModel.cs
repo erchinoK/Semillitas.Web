@@ -11,7 +11,11 @@ namespace Semillitas.Web.Models
     public class Blog
     {
         public int ID { get; set; }
+
+        [Display(Name = "Titulo")]
         public string Title { get; set; }
+
+        [Display(Name = "Descripcion")]
         public string Description { get; set; }
 
         [AllowHtml]
@@ -19,6 +23,8 @@ namespace Semillitas.Web.Models
         public string Image { get; set; }
         public string ImagePreview { get; set; }
         public string Layout { get; set; }
+
+        [Display(Name = "Publicado")]
         public bool IsPublished { get; set; }
         public DateTime DatePublishment { get; set; }
 

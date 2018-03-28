@@ -1,5 +1,9 @@
 ﻿@model Semillitas.Web.Models.Event
 
+@section head {
+    <meta name="robots" content="noindex, nofollow" />
+}
+
 @{
     ViewBag.Title = "Eliminar";
 }
@@ -53,7 +57,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

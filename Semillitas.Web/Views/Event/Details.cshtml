@@ -1,7 +1,9 @@
 ﻿@model Semillitas.Web.Models.Event
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
+    ViewBag.MetaTitle = Model.Title + " - Semillitas, la Ludoteca donde aprendes jugando";
+    ViewBag.MetaDescription = Model.Description;
 }
 
 @section head {
