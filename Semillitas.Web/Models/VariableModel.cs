@@ -12,11 +12,15 @@ namespace Semillitas.Web.Models
     {
         public int ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Requerido")]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
+
+        [Display(Name = "Descripcion")]
         public string Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Requerido")]
+        [Display(Name = "Valor")]
         public string Value { get; set; }
         
         public DateTime CreationDate { get; set; }

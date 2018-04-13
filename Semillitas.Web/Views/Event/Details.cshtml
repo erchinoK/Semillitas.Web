@@ -157,15 +157,15 @@
     </div>
 }
 
-<div class="row margin-top-25 margin-bottom-25">
+    <div class="row margin-top-25 margin-bottom-25">
 
-    @if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_TOP))
+        @if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_TOP))
     {
         <div class="col-sm-12">
             @if (!String.IsNullOrEmpty(Model.ImagePath))
-            {
-                <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
-            }
+        {
+            <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive center-block" />
+    }
         </div>
 
         <div class="col-xs-12">
@@ -173,66 +173,76 @@
             @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
 
         </div>
-    }
-    else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_LEFT))
+}
+else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_LEFT))
+{
+    <div class="col-sm-6">
+        @if (!String.IsNullOrEmpty(Model.ImagePath))
     {
-        <div class="col-sm-6">
-            @if (!String.IsNullOrEmpty(Model.ImagePath))
-            {
-                <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
-            }
-        </div>
+        <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
+}
+    </div>
 
-        <div class="col-sm-6">
+    <div class="col-sm-6">
 
-            <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content)) </p>
+        <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content)) </p>
 
-        </div>
+    </div>
 
-    }
-    else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_RIGHT))
+}
+else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_RIGHT))
+{
+    <div class="col-sm-6">
+
+        <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content)) </p>
+
+    </div>
+
+    <div class="col-sm-6">
+        @if (!String.IsNullOrEmpty(Model.ImagePath))
     {
-        <div class="col-sm-6">
+        <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
+}
+    </div>
 
-            <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content)) </p>
+}
+else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_BOTTOM))
+{
+    <div class="col-xs-12">
 
-        </div>
+        @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
 
-        <div class="col-sm-6">
-            @if (!String.IsNullOrEmpty(Model.ImagePath))
-            {
-                <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
-            }
-        </div>
+    </div>
 
-    }
-    else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_BOTTOM))
+    <div class="col-sm-12">
+        @if (!String.IsNullOrEmpty(Model.ImagePath))
     {
-        <div class="col-xs-12">
+        <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive center-block" />
+}
+    </div>
 
-            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
-
-        </div>
-
-        <div class="col-sm-12">
-            @if (!String.IsNullOrEmpty(Model.ImagePath))
-            {
-                <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive" />
-            }
-        </div>
-
-    }
-    else
+}
+else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_ONLY))
+{
+    <div class="col-sm-12">
+        @if (!String.IsNullOrEmpty(Model.ImagePath))
     {
-        <div class="col-xs-12">
+        <img src="@Url.Content(Model.ImagePath)" alt="@Model.Title" class="img-responsive center-block" />
+}
+    </div>
 
-            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
+}
+else
+{
+    <div class="col-xs-12">
 
-        </div>
+        @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
 
-    }
+    </div>
 
-</div>
+}
+
+    </div>
 
 @*<div class="fb-share-button" data-href="@Url.Action("Edit", "Blog", new { id = Model.ID }, this.Request.Url.Scheme)" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>*@
 <div class="fb-share-button" data-href="@this.Url.Action("Details", "Event", new { id = Model.ID }, this.Request.Url.Scheme)" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>

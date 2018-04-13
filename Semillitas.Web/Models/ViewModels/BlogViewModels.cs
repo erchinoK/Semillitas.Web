@@ -36,6 +36,7 @@ namespace Semillitas.Web.Models.ViewModels
                     new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_LEFT, Value = ImageLayout.IMAGE_LEFT },
                     new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_RIGHT, Value = ImageLayout.IMAGE_RIGHT },
                     new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_BOTTOM, Value = ImageLayout.IMAGE_BOTTOM },
+                    new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_ONLY, Value = ImageLayout.IMAGE_ONLY },
                     new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_NONE, Value = ImageLayout.IMAGE_NONE }
                     }, "Value", "Text");
 
@@ -69,7 +70,7 @@ namespace Semillitas.Web.Models.ViewModels
         [Display(Name = "Imagen principal")]
         public HttpPostedFileBase ImageFile { get; set; }
 
-        [Display(Name = "Remover")]
+        [Display(Name = "Remover imagen principal")]
         public bool ImageRemove { get; set; }
 
         // Just to show the image
@@ -78,7 +79,7 @@ namespace Semillitas.Web.Models.ViewModels
         [Display(Name = "Imagen preliminar")]
         public HttpPostedFileBase ImagePreviewFile { get; set; }
 
-        [Display(Name = "Remover")]
+        [Display(Name = "Remover imagen preliminar")]
         public bool ImagePreviewRemove { get; set; }
 
         [Required(ErrorMessage = "Requerido")]
@@ -91,6 +92,7 @@ namespace Semillitas.Web.Models.ViewModels
                     new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_LEFT, Value = ImageLayout.IMAGE_LEFT },
                     new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_RIGHT, Value = ImageLayout.IMAGE_RIGHT },
                     new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_BOTTOM, Value = ImageLayout.IMAGE_BOTTOM },
+                    new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_ONLY, Value = ImageLayout.IMAGE_ONLY },
                     new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_NONE, Value = ImageLayout.IMAGE_NONE }
                     }, "Value", "Text");
 

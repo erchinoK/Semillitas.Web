@@ -68,7 +68,8 @@
                     </li>
                 </ul>
             }
-            <mark class="">Dimension recomendada: Ancho > 700px</mark>
+            <span><b>Modificar imagen principal:</b></span>
+            <mark class="">Dimension recomendada: Grande (Ancho > 700px)</mark>
             <input type="file" name="@Html.NameFor(model => model.ImageFile)" id="@Html.IdFor(model => model.ImageFile)" />
             @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
         </div>
@@ -89,7 +90,8 @@
                     </li>
                 </ul>
             }
-            <mark class="">Dimension recomendada: 1200x700px o cuadrada</mark>
+            <span><b>Modificar imagen principal:</b></span>
+            <mark class="">Dimension recomendada: cuadrado y pequeño (Ancho < 500px)</mark>
             <input type="file" name="@Html.NameFor(model => model.ImagePreviewFile)" id="@Html.IdFor(model => model.ImagePreviewFile)" />
             @Html.ValidationMessageFor(model => model.ImagePreviewFile, "", new { @class = "text-danger" })
         </div>

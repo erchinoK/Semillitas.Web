@@ -12,13 +12,20 @@
     {
         ViewBag.MetaDescription = "Semillitas es una institución recreativa-cultural dirigida por profesionales y especialmente pensada para desarrollar la personalidad del niño a través del juego y el juguete, trabajando la psicomotricidad, pedagogía y participación en equipo.";
     }
+    @if (String.IsNullOrEmpty(ViewBag.MetaKeywords))
+    {
+        ViewBag.MetaKeywords = "ludoteca, semillitas, Barcelona, fiestas infantiles, guarderia, niños, bebes";
+    }
     <meta name="title" content="@ViewBag.MetaTitle" />
     <meta name="description" content="@ViewBag.MetaDescription" />
-    
+    <meta name="keywords" content="@ViewBag.MetaKeywords" />
+
     <link rel="icon" href="~/Content/Images/favicon.png">
     <title>@ViewBag.Title - Semillitas</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @*Scripts.RenderFormat(@"<script src="{0}" async></script>", "~/bundles/modernizr")*@
+    @Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}\" async></script>", "~/bundles/modernizr")
     @RenderSection("styles", required: false)
     @RenderSection("head", required: false)
 
@@ -309,7 +316,9 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}\" async></script>", "~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}\" async></script>", "~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 
     @*<script>

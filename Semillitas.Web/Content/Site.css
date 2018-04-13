@@ -486,6 +486,10 @@ footer, .footer-bottom {
     float: left;
     width: 40%;
 }
+.item-content-image .image-xs {
+    float: left;
+    width: 20%;
+}
 .item-content-image .content {
     float: left;
     width: 60%;

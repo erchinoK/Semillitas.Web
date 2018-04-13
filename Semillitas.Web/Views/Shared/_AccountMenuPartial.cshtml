@@ -16,6 +16,7 @@
     <li role="presentation" @if (Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Equals("slide")) { <text> class="active" </text> }>@Html.ActionLink("Administrar Banners", "Index", "Slide")</li>
     <li role="presentation" @if (Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Equals("event")) { <text> class="active" </text> }>@Html.ActionLink("Administrar Eventos", "List", "Event")</li>
     <li role="presentation" @if (Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Equals("blog")) { <text> class="active" </text> }>@Html.ActionLink("Administrar Blog", "List", "Blog")</li>
+    <li role="presentation" @if (Request.RequestContext.RouteData.Values["controller"].ToString().ToLower().Equals("variable")) { <text> class="active" </text> }>@Html.ActionLink("Administrar Variables", "Index", "Variable")</li>
 
 </ul>
 

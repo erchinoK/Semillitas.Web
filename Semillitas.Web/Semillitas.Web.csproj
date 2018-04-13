@@ -207,6 +207,7 @@
     <Compile Include="Controllers\MarketingController.cs" />
     <Compile Include="Controllers\MembershipController.cs" />
     <Compile Include="Controllers\PaymentAdminController.cs" />
+    <Compile Include="Controllers\VariableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -600,6 +601,11 @@
     <Content Include="Views\Slide\Delete.cshtml" />
     <Content Include="Views\Slide\Index.cshtml" />
     <Content Include="Views\Slide\Edit.cshtml" />
+    <Content Include="Views\Variable\Create.cshtml" />
+    <Content Include="Views\Variable\Delete.cshtml" />
+    <Content Include="Views\Variable\Details.cshtml" />
+    <Content Include="Views\Variable\Edit.cshtml" />
+    <Content Include="Views\Variable\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

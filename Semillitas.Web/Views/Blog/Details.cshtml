@@ -58,7 +58,7 @@
         <div class="col-sm-12">
             @if (!String.IsNullOrEmpty(Model.Image))
         {
-            <img src="@Url.Content(Model.Image)" alt="@Model.Title" class="img-responsive" />
+            <img src="@Url.Content(Model.Image)" alt="@Model.Title" class="img-responsive center-block" />
     }
         </div>
 
@@ -111,7 +111,17 @@ else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_BOTTOM))
     <div class="col-sm-12">
         @if (!String.IsNullOrEmpty(Model.Image))
     {
-        <img src="@Url.Content(Model.Image)" alt="@Model.Title" class="img-responsive" />
+        <img src="@Url.Content(Model.Image)" alt="@Model.Title" class="img-responsive center-block" />
+}
+    </div>
+
+}
+else if (Model.Layout.Equals(Semillitas.Web.Models.ImageLayout.IMAGE_ONLY))
+{
+    <div class="col-sm-12">
+        @if (!String.IsNullOrEmpty(Model.Image))
+    {
+        <img src="@Url.Content(Model.Image)" alt="@Model.Title" class="img-responsive center-block" />
 }
     </div>
 

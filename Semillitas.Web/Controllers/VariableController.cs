@@ -7,128 +7,121 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Semillitas.Web.Models;
-using Semillitas.Web.Models.ViewModels;
 
 namespace Semillitas.Web.Controllers
 {
     [Authorize(Roles = RoleNames.ROLE_ADMINISTRATOR)]
-    public class MarketingController : Controller
+    public class VariableController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Marketing
+        // GET: Variable
         public ActionResult Index()
         {
-            return View(db.Marketing.ToList());
+            return View(db.Variable.ToList());
         }
 
-        // GET: Marketing/Details/5
+        // GET: Variable/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Marketing marketing = db.Marketing.Find(id);
-            if (marketing == null)
+            Variable variable = db.Variable.Find(id);
+            if (variable == null)
             {
                 return HttpNotFound();
             }
-            return View(marketing);
+            return View(variable);
         }
 
-        // GET: Marketing/Create
+        // GET: Variable/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Marketing/Create
+        // POST: Variable/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public ActionResult Create([Bind(Include = "Email")] HomeIndexViewModel hivm)
+        public ActionResult Create([Bind(Include = "ID,Name,Description,Value,Notes")] Variable variable)
         {
-            string Type = "MARKETING_0";
-
             if (ModelState.IsValid)
             {
-                try {
-                    // If the email is not registered then it is saved
-                    if (db.Marketing.Where(m => m.Email == hivm.Email && m.Type == Type).Count() == 0)
-                    {
-                        Marketing newMarketing = new Marketing();
-                        newMarketing.Email = hivm.Email;
-                        newMarketing.Date = DateTime.Now;
-                        newMarketing.Type = Type;
-                        db.Marketing.Add(newMarketing);
-                        db.SaveChanges();
-                    }                    
-                } catch (Exception e)
-                {
-
-                }
-                
+                variable.CreationDate = DateTime.Now;
+                variable.CreationUserName = User.Identity.Name;
+                variable.ModifDate = DateTime.Now;
+                variable.ModifUserName = User.Identity.Name;
+                db.Variable.Add(variable);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            return PartialView("_MarketingSaved");
+            return View(variable);
         }
 
-        // GET: Marketing/Edit/5
+        // GET: Variable/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Marketing marketing = db.Marketing.Find(id);
-            if (marketing == null)
+            Variable variable = db.Variable.Find(id);
+            if (variable == null)
             {
                 return HttpNotFound();
             }
-            return View(marketing);
+            return View(variable);
         }
 
-        // POST: Marketing/Edit/5
+        // POST: Variable/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Email,Name,Type,Date,Notes")] Marketing marketing)
+        public ActionResult Edit([Bind(Include = "ID,Name,Description,Value,Notes")] Variable model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(marketing).State = EntityState.Modified;
+                var variable = db.Variable.Find(model.ID);
+                variable.Description = model.Description;
+                variable.Value = model.Value;
+                variable.ModifDate = DateTime.Now;
+                variable.ModifUserName = User.Identity.Name;
+                variable.Notes = model.Notes;
+                db.Entry(variable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(marketing);
+            return View(model);
         }
 
-        // GET: Marketing/Delete/5
+        // GET: Variable/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Marketing marketing = db.Marketing.Find(id);
-            if (marketing == null)
+            Variable variable = db.Variable.Find(id);
+            if (variable == null)
             {
                 return HttpNotFound();
             }
-            return View(marketing);
+            return View(variable);
         }
 
-        // POST: Marketing/Delete/5
+        // POST: Variable/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Marketing marketing = db.Marketing.Find(id);
-            db.Marketing.Remove(marketing);
+            Variable variable = db.Variable.Find(id);
+            db.Variable.Remove(variable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

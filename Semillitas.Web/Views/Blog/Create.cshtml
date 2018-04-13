@@ -56,7 +56,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <mark class="">Dimension recomendada: Ancho > 700px</mark>
+            <mark class="">Dimension recomendada: Grande (Ancho > 700px)</mark>
             <input type="file" name="@Html.NameFor(model => model.ImageFile)" id="@Html.IdFor(model => model.ImageFile)" />
             @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
         </div>
@@ -65,7 +65,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ImagePreviewFile, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <mark class="">Dimension recomendada: 1200x700px o cuadrada</mark>
+            <mark class="">Dimension recomendada: cuadrado y pequeño (Ancho < 500px)</mark>
             <input type="file" name="@Html.NameFor(model => model.ImagePreviewFile)" id="@Html.IdFor(model => model.ImagePreviewFile)" />
             @Html.ValidationMessageFor(model => model.ImagePreviewFile, "", new { @class = "text-danger" })
         </div>

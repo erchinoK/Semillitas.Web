@@ -22,6 +22,8 @@ namespace Semillitas.Web.Controllers
             ViewBag.BlogEntries = db.Blog.Where(b => b.IsPublished).OrderBy(b => b.DatePublishment).Take(4).ToList<Models.Blog>();
 
             ViewBag.Slides = db.Slide.Where(s => s.IsPublished).OrderBy(s => s.Position);
+
+            ViewBag.MetaKeywords = GetKeywords();
             
             return View();
         }
@@ -55,16 +57,20 @@ namespace Semillitas.Web.Controllers
             try
             {
                 var variable = db.Variable.Where(v => v.Name == "SHOW_MODAL_INDEX_FORCE").Single();
-                showModalIndexForce = Boolean.Parse(variable.Value);
+                showModalIndexForce = variable.Value.Equals("true");
                 if (showModalIndexForce) return true;
-            } catch (Exception e) { } 
+            } catch (Exception e) {
+                showModalIndexForce = false;
+            } 
 
             // Checking if WE want to show the modal (checking later for cookies)
             try
             {
                 var variable = db.Variable.Where(v => v.Name == "SHOW_MODAL_INDEX").Single();
-                showModalIndex = variable.Value == "true";
-            } catch (Exception e) { }
+                showModalIndex = variable.Value.Equals("true");
+            } catch (Exception e) {
+                showModalIndex = false;
+            }
             
             // Verifying if the USER already saw te modal
             if (showModalIndex)
@@ -80,11 +86,28 @@ namespace Semillitas.Web.Controllers
                     }
 
                 }
-                catch (Exception e) { }
+                catch (Exception e) {
+                    showModalIndex = false;
+                }
 
             }
 
             return showModalIndex;
+        }
+
+        public String GetKeywords()
+        {
+            String keywords = "";
+
+            try {
+                var variable = db.Variable.Where(v => v.Name == "KEYWORDS").Single();
+                keywords = variable.Value;
+            }
+            catch (Exception e)
+            {
+            }
+            
+            return keywords;
         }
 
         public ActionResult About()

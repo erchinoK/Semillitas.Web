@@ -55,6 +55,7 @@ namespace Semillitas.Web.Models
         public const string IMAGE_LEFT = "IMAGE_LEFT";
         public const string IMAGE_RIGHT = "IMAGE_RIGHT";
         public const string IMAGE_BOTTOM = "IMAGE_BOTTOM";
+        public const string IMAGE_ONLY = "IMAGE_ONLY";
         public const string IMAGE_NONE = "IMAGE_NONE";
     }
 
@@ -64,6 +65,7 @@ namespace Semillitas.Web.Models
         public const string IMAGE_LEFT = "Imagen a la izquierda";
         public const string IMAGE_RIGHT = "Imagen a la derecha";
         public const string IMAGE_BOTTOM = "Imagen abajo";
+        public const string IMAGE_ONLY = "Imagen sola";
         public const string IMAGE_NONE = "Sin imagen";
     }
     //public class Month

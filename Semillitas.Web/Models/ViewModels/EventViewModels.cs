@@ -72,6 +72,7 @@ namespace Semillitas.Web.Models.ViewModels
                         new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_LEFT, Value = ImageLayout.IMAGE_LEFT },
                         new SelectListItem { Selected = true, Text = ImageLayoutText.IMAGE_RIGHT, Value = ImageLayout.IMAGE_RIGHT },
                         new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_BOTTOM, Value = ImageLayout.IMAGE_BOTTOM },
+                        new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_ONLY, Value = ImageLayout.IMAGE_ONLY },
                         new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_NONE, Value = ImageLayout.IMAGE_NONE }
                     }, "Value", "Text");
 
@@ -132,7 +133,7 @@ namespace Semillitas.Web.Models.ViewModels
         [Display(Name = "Descripcion de archivo descargable")]
         public string FileNotes { get; set; }
 
-        [Display(Name = "Remover")]
+        [Display(Name = "Remover archivo descargable")]
         public bool FileRemove { get; set; }
 
         // Just to show the image
@@ -141,7 +142,7 @@ namespace Semillitas.Web.Models.ViewModels
         [Display(Name = "Imagen principal")]
         public HttpPostedFileBase Image { get; set; }
 
-        [Display(Name = "Remover")]
+        [Display(Name = "Remover imagen principal")]
         public bool ImageRemove { get; set; }
 
         public string ImagePreviewPath { get; set; }
@@ -149,7 +150,7 @@ namespace Semillitas.Web.Models.ViewModels
         [Display(Name = "Imagen preliminar")]
         public HttpPostedFileBase ImagePreview { get; set; }
 
-        [Display(Name = "Remover")]
+        [Display(Name = "Remover imagen preliminar")]
         public bool ImagePreviewRemove { get; set; }
 
         [Required(ErrorMessage = "Requerido")]
@@ -162,6 +163,7 @@ namespace Semillitas.Web.Models.ViewModels
                         new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_LEFT, Value = ImageLayout.IMAGE_LEFT },
                         new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_RIGHT, Value = ImageLayout.IMAGE_RIGHT },
                         new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_BOTTOM, Value = ImageLayout.IMAGE_BOTTOM },
+                        new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_ONLY, Value = ImageLayout.IMAGE_ONLY },
                         new SelectListItem { Selected = false, Text = ImageLayoutText.IMAGE_NONE, Value = ImageLayout.IMAGE_NONE }
                     }, "Value", "Text");
 
